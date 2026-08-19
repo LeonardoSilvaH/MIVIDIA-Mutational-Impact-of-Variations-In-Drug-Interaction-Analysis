@@ -1,0 +1,102 @@
+{
+    "1": {
+        "total_score": -60.5691,
+        "score_rb_pen": -44.5691,
+        "score_norm_hevatoms": -1.83543,
+        "score_norm_crt_hevatoms": -18.8834,
+        "score_norm_weight": -0.123859,
+        "score_norm_crt_weight": -7.68795,
+        "score_rb_pen_norm_crt_hevatoms": -13.8951,
+        "score_norm_contact": -1.95384
+    },
+    "2": {
+        "total_score": -59.3927,
+        "score_rb_pen": -43.3927,
+        "score_norm_hevatoms": -1.79978,
+        "score_norm_crt_hevatoms": -18.5166,
+        "score_norm_weight": -0.121453,
+        "score_norm_crt_weight": -7.53862,
+        "score_rb_pen_norm_crt_hevatoms": -13.5284,
+        "score_norm_contact": -1.6498
+    },
+    "3": {
+        "total_score": -57.0999,
+        "score_rb_pen": -41.0999,
+        "score_norm_hevatoms": -1.7303,
+        "score_norm_crt_hevatoms": -17.8018,
+        "score_norm_weight": -0.116765,
+        "score_norm_crt_weight": -7.2476,
+        "score_rb_pen_norm_crt_hevatoms": -12.8135,
+        "score_norm_contact": -1.7303
+    },
+    "4": {
+        "total_score": -56.1329,
+        "score_rb_pen": -40.1329,
+        "score_norm_hevatoms": -1.701,
+        "score_norm_crt_hevatoms": -17.5003,
+        "score_norm_weight": -0.114787,
+        "score_norm_crt_weight": -7.12486,
+        "score_rb_pen_norm_crt_hevatoms": -12.5121,
+        "score_norm_contact": -1.65097
+    },
+    "5": {
+        "total_score": -54.2265,
+        "score_rb_pen": -38.2265,
+        "score_norm_hevatoms": -1.64323,
+        "score_norm_crt_hevatoms": -16.906,
+        "score_norm_weight": -0.110889,
+        "score_norm_crt_weight": -6.88289,
+        "score_rb_pen_norm_crt_hevatoms": -11.9177,
+        "score_norm_contact": -1.5949
+    },
+    "6": {
+        "total_score": -53.0047,
+        "score_rb_pen": -37.0047,
+        "score_norm_hevatoms": -1.6062,
+        "score_norm_crt_hevatoms": -16.5251,
+        "score_norm_weight": -0.108391,
+        "score_norm_crt_weight": -6.72781,
+        "score_rb_pen_norm_crt_hevatoms": -11.5368,
+        "score_norm_contact": -1.47235
+    },
+    "7": {
+        "total_score": -52.2724,
+        "score_rb_pen": -36.2724,
+        "score_norm_hevatoms": -1.58401,
+        "score_norm_crt_hevatoms": -16.2968,
+        "score_norm_weight": -0.106893,
+        "score_norm_crt_weight": -6.63485,
+        "score_rb_pen_norm_crt_hevatoms": -11.3085,
+        "score_norm_contact": -1.58401
+    },
+    "8": {
+        "total_score": -51.7961,
+        "score_rb_pen": -35.7961,
+        "score_norm_hevatoms": -1.56958,
+        "score_norm_crt_hevatoms": -16.1483,
+        "score_norm_weight": -0.105919,
+        "score_norm_crt_weight": -6.5744,
+        "score_rb_pen_norm_crt_hevatoms": -11.16,
+        "score_norm_contact": -1.39989
+    },
+    "9": {
+        "total_score": -51.6391,
+        "score_rb_pen": -35.6391,
+        "score_norm_hevatoms": -1.56482,
+        "score_norm_crt_hevatoms": -16.0993,
+        "score_norm_weight": -0.105598,
+        "score_norm_crt_weight": -6.55447,
+        "score_rb_pen_norm_crt_hevatoms": -11.1111,
+        "score_norm_contact": -1.7213
+    },
+    "10": {
+        "total_score": -50.0349,
+        "score_rb_pen": -34.0349,
+        "score_norm_hevatoms": -1.51621,
+        "score_norm_crt_hevatoms": -15.5992,
+        "score_norm_weight": -0.102318,
+        "score_norm_crt_weight": -6.35085,
+        "score_rb_pen_norm_crt_hevatoms": -10.6109,
+        "score_norm_contact": -1.85314
+    }
+}

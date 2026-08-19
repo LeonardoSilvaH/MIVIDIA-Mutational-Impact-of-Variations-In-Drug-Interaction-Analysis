@@ -1,0 +1,92 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: KRAS_Fruquintinib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: KRAS_Fruquintinib_PLANTS_SPORES.mol2
+Description: KRAS_Fruquintinib
+
+
+Ligand rotatable bonds (5): 
+C    (10  , C.ar ) -O    (26  , O.3  )
+O    (26  , O.3  ) -C    (15  , C.ar )
+C    (6   , C.2  ) -C    (13  , C.2  )
+C    (18  , C.ar ) -O    (27  , O.3  )
+C    (20  , C.ar ) -O    (28  , O.3  )
+
+
+Ligand formal charge table:
+Ligand formal charge: 0.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(1): 
+    N(   1)      
+
+ACCEPTOR(7): 
+    N(   2)          N(   3)          O(  25)          O(  26)          O(  27)          O(  28)          O(  29)      
+
+NONPOLAR(21): 
+    C(   4)          C(   5)          C(   6)          C(   7)          C(   8)          C(   9)          C(  10)          C(  11)      
+    C(  12)          C(  13)          C(  14)          C(  15)          C(  16)          C(  17)          C(  18)          C(  19)      
+    C(  20)          C(  21)          C(  22)          C(  23)          C(  24)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(1): 
+    N(   1)      
+
+ACCEPTOR(7): 
+    N(   2)          N(   3)          O(  25)          O(  26)          O(  27)          O(  28)          O(  29)      
+
+NONPOLAR(21): 
+    C(   4)          C(   5)          C(   6)          C(   7)          C(   8)          C(   9)          C(  10)          C(  11)      
+    C(  12)          C(  13)          C(  14)          C(  15)          C(  16)          C(  17)          C(  18)          C(  19)      
+    C(  20)          C(  21)          C(  22)          C(  23)          C(  24)      
+
+HYDROGEN(2): 
+    H(  30)          H(  39)[CHO] 
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 248
+
+Ligand torsions: 12 (12 parameters matched)
+
+Ligand input conformation score: 1096.07
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+1133.48,21.6227,449.442,0,69.6715,-0.0801263,29,0,0,0,0,0,2,7,0,7,0,3.37157
+
+ACO iterations 309  time 8.92s  evaluations 3498051
+
+Cluster time 0.07s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -64.49  file KRAS_Fruquintinib_entry_00001_conf_01
+rank  2  score   -62.10  file KRAS_Fruquintinib_entry_00001_conf_02
+rank  3  score   -61.51  file KRAS_Fruquintinib_entry_00001_conf_03
+rank  4  score   -60.40  file KRAS_Fruquintinib_entry_00001_conf_04
+rank  5  score   -59.65  file KRAS_Fruquintinib_entry_00001_conf_05
+rank  6  score   -59.43  file KRAS_Fruquintinib_entry_00001_conf_06
+rank  7  score   -59.17  file KRAS_Fruquintinib_entry_00001_conf_07
+rank  8  score   -59.10  file KRAS_Fruquintinib_entry_00001_conf_08
+rank  9  score   -58.83  file KRAS_Fruquintinib_entry_00001_conf_09
+rank 10  score   -58.33  file KRAS_Fruquintinib_entry_00001_conf_10
+
+

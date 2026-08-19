@@ -1,0 +1,22 @@
+
+# scoring function and search settings
+scoring_function chemplp
+search_speed speed1
+
+# input
+protein_file KRAS-G13C_A_prepared_protonated_7.4_PLANTS.mol2
+ligand_file KRAS_Trametinib_PLANTS_SPORES.mol2
+
+# output
+output_dir plants_output
+
+# write single mol2 files (e.g. for RMSD calculation)
+write_multi_mol2 0
+
+# binding site definition
+bindingsite_center 6.559 8.618 -4.747
+bindingsite_radius 26.0
+
+# cluster algorithm
+cluster_structures 10
+cluster_rmsd 2.0

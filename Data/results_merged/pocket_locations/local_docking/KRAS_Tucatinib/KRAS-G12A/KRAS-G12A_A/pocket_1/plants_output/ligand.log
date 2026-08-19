@@ -1,0 +1,96 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: KRAS_Tucatinib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: KRAS_Tucatinib_PLANTS_SPORES.mol2
+Description: KRAS_Tucatinib
+
+
+Ligand rotatable bonds (6): 
+N    (3   , N.pl3) -C    (19  , C.ar )
+N    (3   , N.pl3) -C    (21  , C.ar )
+C    (14  , C.ar ) -N    (2   , N.pl3)
+C    (24  , C.ar ) -O    (36  , O.3  )
+N    (2   , N.pl3) -C    (13  , C.2  )
+O    (36  , O.3  ) -C    (29  , C.ar )
+
+
+Ligand formal charge table:
+6     N     1.00 
+Ligand formal charge: 1.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(3): 
+    N(   2)          N(   3)          N(   8)      
+
+ACCEPTOR(6): 
+    N(   1)          N(   4)          N(   5)          N(   7)          O(  35)          O(  36)      
+
+NONPOLAR(27): 
+    N(   6)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)          C(  15)      
+    C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)          C(  23)      
+    C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          C(  29)          C(  30)          C(  31)      
+    C(  32)          C(  33)          C(  34)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(3): 
+    N(   2)          N(   3)          N(   8)      
+
+ACCEPTOR(6): 
+    N(   1)          N(   4)          N(   5)          N(   7)          O(  35)          O(  36)      
+
+NONPOLAR(27): 
+    N(   6)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)          C(  15)      
+    C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)          C(  23)      
+    C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          C(  29)          C(  30)          C(  31)      
+    C(  32)          C(  33)          C(  34)      
+
+HYDROGEN(5): 
+    H(  37)          H(  38)          H(  53)[CHO]     H(  60)[CHO]     H(  61)      
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 452
+
+Ligand torsions: 20 (20 parameters matched)
+
+Ligand input conformation score: 1679.49
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+1713.85,46.7986,606.047,0,107.365,-0.0562032,36,0,0,0,0,0,5,6,5,6,0,6.62041
+
+ACO iterations 362  time 36.36s  evaluations 8446291
+
+Cluster time 0.19s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -85.62  file KRAS_Tucatinib_entry_00001_conf_01
+rank  2  score   -81.25  file KRAS_Tucatinib_entry_00001_conf_02
+rank  3  score   -80.38  file KRAS_Tucatinib_entry_00001_conf_03
+rank  4  score   -79.96  file KRAS_Tucatinib_entry_00001_conf_04
+rank  5  score   -79.39  file KRAS_Tucatinib_entry_00001_conf_05
+rank  6  score   -77.39  file KRAS_Tucatinib_entry_00001_conf_06
+rank  7  score   -74.63  file KRAS_Tucatinib_entry_00001_conf_07
+rank  8  score   -74.14  file KRAS_Tucatinib_entry_00001_conf_08
+rank  9  score   -74.04  file KRAS_Tucatinib_entry_00001_conf_09
+rank 10  score   -73.68  file KRAS_Tucatinib_entry_00001_conf_10
+
+

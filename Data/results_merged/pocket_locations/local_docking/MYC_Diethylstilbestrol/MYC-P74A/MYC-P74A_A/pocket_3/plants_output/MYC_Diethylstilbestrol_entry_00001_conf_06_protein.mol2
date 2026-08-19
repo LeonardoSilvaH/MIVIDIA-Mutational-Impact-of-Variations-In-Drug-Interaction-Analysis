@@ -1,0 +1,15 @@
+@<TRIPOS>MOLECULE
+MYC_Diethylstilbestrol_entry_00001_conf_06_protein
+2 1 1
+SMALL
+NO_CHARGES
+
+
+@<TRIPOS>ATOM
+      1 HG         26.6444  -28.9004   12.6017 H        82 SER82       0.2095
+      2 OG         27.4000  -28.3250   12.2940 O.3      82 SER82      -0.3927
+@<TRIPOS>BOND
+     1    1    2 1
+@<TRIPOS>SUBSTRUCTURE
+82 SER82 1
+@<TRIPOS>COMMENT

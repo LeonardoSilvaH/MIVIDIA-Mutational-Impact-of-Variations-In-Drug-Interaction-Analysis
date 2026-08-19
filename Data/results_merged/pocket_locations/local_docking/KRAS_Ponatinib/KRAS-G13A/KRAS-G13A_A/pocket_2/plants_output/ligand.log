@@ -1,0 +1,101 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: KRAS_Ponatinib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: KRAS_Ponatinib_PLANTS_SPORES.mol2
+Description: KRAS_Ponatinib
+
+
+Ligand rotatable bonds (7): 
+N    (3   , N.am ) -C    (18  , C.ar )
+C    (20  , C.2  ) -C    (21  , C.ar )
+C    (14  , C.ar ) -C    (19  , C.3  )
+C    (12  , C.ar ) -C    (11  , C.3  )
+C    (24  , C.ar ) -C    (28  , C.1  )
+C    (11  , C.3  ) -N    (1   , N.4  )
+C    (31  , C.1  ) -C    (29  , C.2  )
+
+
+Ligand formal charge table:
+1     N     1.00 
+2     N     1.00 
+4     N     1.00 
+Ligand formal charge: 3.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(4): 
+    N(   1) [ch]     N(   2) [ch]     N(   3)          N(   5)      
+
+ACCEPTOR(2): 
+    N(   6)          O(  36)      
+
+NONPOLAR(33): 
+    N(   4)          C(   7)          C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)      
+    C(  14)          C(  15)          C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)      
+    C(  22)          C(  23)          C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          C(  29)      
+    C(  30)          C(  31)          C(  32)          C(  33)          C(  34)          C(  35)          F(  37)          F(  38)      
+    F(  39)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(4): 
+    N(   1) [ch]     N(   2) [ch]     N(   3)          N(   5)      
+
+ACCEPTOR(2): 
+    N(   6)          O(  36)      
+
+NONPOLAR(33): 
+    N(   4)          C(   7)          C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)      
+    C(  14)          C(  15)          C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)      
+    C(  22)          C(  23)          C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          C(  29)      
+    C(  30)          C(  31)          C(  32)          C(  33)          C(  34)          C(  35)          F(  37)          F(  38)      
+    F(  39)      
+
+HYDROGEN(5): 
+    H(  40) [ch]     H(  41) [ch]     H(  42)          H(  68)[CHO]     H(  69)      
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 574
+
+Ligand torsions: 33 (33 parameters matched)
+
+Ligand input conformation score: 1317.74
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+1334.6,-1.53858,812.599,0,25.2013,-0.0306851,39,0,0,0,0,0,5,2,3,2,0,2.46357
+
+ACO iterations 403  time 31.96s  evaluations 7892332
+
+Cluster time 0.19s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -88.33  file KRAS_Ponatinib_entry_00001_conf_01
+rank  2  score   -85.33  file KRAS_Ponatinib_entry_00001_conf_02
+rank  3  score   -84.04  file KRAS_Ponatinib_entry_00001_conf_03
+rank  4  score   -83.00  file KRAS_Ponatinib_entry_00001_conf_04
+rank  5  score   -80.95  file KRAS_Ponatinib_entry_00001_conf_05
+rank  6  score   -80.60  file KRAS_Ponatinib_entry_00001_conf_06
+rank  7  score   -80.45  file KRAS_Ponatinib_entry_00001_conf_07
+rank  8  score   -79.66  file KRAS_Ponatinib_entry_00001_conf_08
+rank  9  score   -78.17  file KRAS_Ponatinib_entry_00001_conf_09
+rank 10  score   -78.08  file KRAS_Ponatinib_entry_00001_conf_10
+
+

@@ -1,0 +1,19 @@
+@<TRIPOS>MOLECULE
+KRAS_Capecitabine_entry_00001_conf_09_protein
+4 2 2
+SMALL
+NO_CHARGES
+
+
+@<TRIPOS>ATOM
+      1 HG1         1.8308   -3.9692  -20.4156 H       127 THR127      0.2099
+      2 OG1         1.6520   -3.9880  -19.4220 O.3     127 THR127     -0.3897
+      3 HG1        -7.8442    1.7972   -8.3460 H       158 THR158      0.2099
+      4 OG1        -7.6510    2.4890   -7.6360 O.3     158 THR158     -0.3897
+@<TRIPOS>BOND
+     1    2    1 1
+     2    3    4 1
+@<TRIPOS>SUBSTRUCTURE
+127 THR127 1
+158 THR158 3
+@<TRIPOS>COMMENT

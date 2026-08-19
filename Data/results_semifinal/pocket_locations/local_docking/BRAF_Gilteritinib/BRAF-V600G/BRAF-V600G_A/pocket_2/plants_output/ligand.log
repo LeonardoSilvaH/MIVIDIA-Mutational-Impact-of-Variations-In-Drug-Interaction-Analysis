@@ -1,0 +1,101 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: BRAF_Gilteritinib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: BRAF_Gilteritinib_PLANTS_SPORES.mol2
+Description: BRAF_Gilteritinib
+
+
+Ligand rotatable bonds (9): 
+C    (20  , C.ar ) -O    (38  , O.3  )
+C    (18  , C.ar ) -N    (2   , N.4  )
+C    (24  , C.ar ) -N    (5   , N.pl3)
+N    (5   , N.pl3) -C    (31  , C.ar )
+C    (9   , C.3  ) -N    (1   , N.4  )
+C    (34  , C.ar ) -C    (36  , C.2  )
+C    (30  , C.ar ) -N    (4   , N.pl3)
+N    (4   , N.pl3) -C    (25  , C.3  )
+C    (33  , C.ar ) -C    (35  , C.3  )
+
+
+Ligand formal charge table:
+1     N     1.00 
+2     N     1.00 
+3     N     1.00 
+Ligand formal charge: 3.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(6): 
+    N(   1) [ch]     N(   2) [ch]     N(   3) [ch]     N(   4)          N(   5)          N(   8)      
+
+ACCEPTOR(5): 
+    N(   6)          N(   7)          O(  38)          O(  39)          O(  40)      
+
+NONPOLAR(29): 
+    C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)          C(  15)          C(  16)      
+    C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)          C(  23)          C(  24)      
+    C(  25)          C(  26)          C(  27)          C(  28)          C(  29)          C(  30)          C(  31)          C(  32)      
+    C(  33)          C(  34)          C(  35)          C(  36)          C(  37)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(6): 
+    N(   1) [ch]     N(   2) [ch]     N(   3) [ch]     N(   4)          N(   5)          N(   8)      
+
+ACCEPTOR(5): 
+    N(   6)          N(   7)          O(  38)          O(  39)          O(  40)      
+
+NONPOLAR(29): 
+    C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)          C(  15)          C(  16)      
+    C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)          C(  23)          C(  24)      
+    C(  25)          C(  26)          C(  27)          C(  28)          C(  29)          C(  30)          C(  31)          C(  32)      
+    C(  33)          C(  34)          C(  35)          C(  36)          C(  37)      
+
+HYDROGEN(7): 
+    H(  41) [ch]     H(  42) [ch]     H(  43)          H(  44)          H(  45)          H(  46)          H(  87) [ch] 
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 613
+
+Ligand torsions: 45 (45 parameters matched)
+
+Ligand input conformation score: 2907.33
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+1634.78,-2.46915,728.955,0,104.531,-0.1,40,0,0,0,0,0,7,5,7,5,0,5.80678
+
+ACO iterations 468  time 22.07s  evaluations 6659892
+
+Cluster time 0.14s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -89.32  file BRAF_Gilteritinib_entry_00001_conf_01
+rank  2  score   -86.32  file BRAF_Gilteritinib_entry_00001_conf_02
+rank  3  score   -86.21  file BRAF_Gilteritinib_entry_00001_conf_03
+rank  4  score   -85.17  file BRAF_Gilteritinib_entry_00001_conf_04
+rank  5  score   -84.89  file BRAF_Gilteritinib_entry_00001_conf_05
+rank  6  score   -84.74  file BRAF_Gilteritinib_entry_00001_conf_06
+rank  7  score   -84.71  file BRAF_Gilteritinib_entry_00001_conf_07
+rank  8  score   -79.33  file BRAF_Gilteritinib_entry_00001_conf_08
+rank  9  score   -75.90  file BRAF_Gilteritinib_entry_00001_conf_09
+rank 10  score   -74.72  file BRAF_Gilteritinib_entry_00001_conf_10
+
+

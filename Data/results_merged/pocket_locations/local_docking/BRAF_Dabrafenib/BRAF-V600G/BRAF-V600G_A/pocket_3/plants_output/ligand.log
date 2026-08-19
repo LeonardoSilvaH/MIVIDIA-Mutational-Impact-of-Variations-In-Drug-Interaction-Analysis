@@ -1,0 +1,95 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: BRAF_Dabrafenib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: BRAF_Dabrafenib_PLANTS_SPORES.mol2
+Description: BRAF_Dabrafenib
+
+
+Ligand rotatable bonds (6): 
+C    (13  , C.ar ) -C    (11  , C.2  )
+C    (16  , C.ar ) -N    (2   , N.am )
+N    (2   , N.am ) -S    (35  , S.o2 )
+C    (12  , C.2  ) -C    (15  , C.ar )
+S    (35  , S.o2 ) -C    (21  , C.ar )
+C    (7   , C.2  ) -C    (6   , C.3  )
+
+
+Ligand formal charge table:
+Ligand formal charge: 0.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(2): 
+    N(   2)          N(   5)      
+
+ACCEPTOR(5): 
+    N(   1)          N(   3)          N(   4)          O(  29)          O(  30)      
+
+NONPOLAR(28): 
+    C(   6)          C(   7)          C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)      
+    C(  14)          C(  15)          C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)      
+    C(  22)          C(  23)          C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          F(  31)      
+    F(  32)          F(  33)          S(  34)          S(  35)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(2): 
+    N(   2)          N(   5)      
+
+ACCEPTOR(5): 
+    N(   1)          N(   3)          N(   4)          O(  29)          O(  30)      
+
+NONPOLAR(28): 
+    C(   6)          C(   7)          C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)      
+    C(  14)          C(  15)          C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)      
+    C(  22)          C(  23)          C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          F(  31)      
+    F(  32)          F(  33)          S(  34)          S(  35)      
+
+HYDROGEN(4): 
+    H(  36)          H(  37)          H(  38)          H(  52)[CHO] 
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 450
+
+Ligand torsions: 30 (24 parameters matched)
+
+Ligand input conformation score: 2084.62
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+1534.96,21.4592,770.993,0,33.0106,0,35,0,0,0,0,0,4,5,4,5,0,14.1456
+
+ACO iterations 359  time 21.99s  evaluations 6184416
+
+Cluster time 0.14s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -86.92  file BRAF_Dabrafenib_entry_00001_conf_01
+rank  2  score   -80.74  file BRAF_Dabrafenib_entry_00001_conf_02
+rank  3  score   -80.29  file BRAF_Dabrafenib_entry_00001_conf_03
+rank  4  score   -80.24  file BRAF_Dabrafenib_entry_00001_conf_04
+rank  5  score   -79.37  file BRAF_Dabrafenib_entry_00001_conf_05
+rank  6  score   -79.12  file BRAF_Dabrafenib_entry_00001_conf_06
+rank  7  score   -79.10  file BRAF_Dabrafenib_entry_00001_conf_07
+rank  8  score   -77.04  file BRAF_Dabrafenib_entry_00001_conf_08
+rank  9  score   -76.73  file BRAF_Dabrafenib_entry_00001_conf_09
+rank 10  score   -76.48  file BRAF_Dabrafenib_entry_00001_conf_10
+
+

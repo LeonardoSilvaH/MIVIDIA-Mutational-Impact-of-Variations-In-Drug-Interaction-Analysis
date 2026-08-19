@@ -1,0 +1,23 @@
+@<TRIPOS>MOLECULE
+KRAS_Fruquintinib_entry_00001_conf_03_protein
+6 4 2
+SMALL
+NO_CHARGES
+
+
+@<TRIPOS>ATOM
+      1 HG1       -25.4191   -0.6297    9.9987 H       177 THR177      0.2099
+      2 OG1       -25.5240    0.1980    9.4300 O.3     177 THR177     -0.3897
+      3 HZ1       -39.3091   -4.7222    3.7348 H       182 LYS182     -0.0901
+      4 NZ        -40.0940   -4.9430    4.3130 N.4     182 LYS182      0.3781
+      5 HZ2       -40.2454   -5.9319    4.3077 H       182 LYS182     -0.0901
+      6 HZ3       -40.9074   -4.4791    3.9630 H       182 LYS182     -0.0901
+@<TRIPOS>BOND
+     1    5    4 1
+     2    6    4 1
+     3    3    4 1
+     4    2    1 1
+@<TRIPOS>SUBSTRUCTURE
+177 THR177 1
+182 LYS182 3
+@<TRIPOS>COMMENT

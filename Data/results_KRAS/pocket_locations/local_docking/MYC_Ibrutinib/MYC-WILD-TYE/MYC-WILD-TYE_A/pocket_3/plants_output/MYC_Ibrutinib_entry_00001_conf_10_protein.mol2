@@ -1,0 +1,15 @@
+@<TRIPOS>MOLECULE
+MYC_Ibrutinib_entry_00001_conf_10_protein
+2 1 1
+SMALL
+NO_CHARGES
+
+
+@<TRIPOS>ATOM
+      1 HG         52.0642  -17.5059  -35.0268 H       351 SER351      0.2095
+      2 OG         51.9180  -16.8440  -34.2940 O.3     351 SER351     -0.3927
+@<TRIPOS>BOND
+     1    1    2 1
+@<TRIPOS>SUBSTRUCTURE
+351 SER351 1
+@<TRIPOS>COMMENT

@@ -1,0 +1,93 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: BRAF_Tovorafenib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: BRAF_Tovorafenib_PLANTS_SPORES.mol2
+Description: BRAF_Tovorafenib
+
+
+Ligand rotatable bonds (6): 
+C    (9   , C.2  ) -C    (8   , C.3  )
+C    (11  , C.2  ) -C    (14  , C.2  )
+C    (8   , C.3  ) -N    (1   , N.am )
+N    (3   , N.am ) -C    (16  , C.ar )
+C    (12  , C.2  ) -C    (15  , C.ar )
+C    (17  , C.ar ) -C    (21  , C.3  )
+
+
+Ligand formal charge table:
+Ligand formal charge: 0.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(3): 
+    N(   1)          N(   3)          N(   7)      
+
+ACCEPTOR(6): 
+    N(   2)          N(   4)          N(   5)          N(   6)          O(  25)          O(  26)      
+
+NONPOLAR(23): 
+    C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)          C(  15)      
+    C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)          C(  23)      
+    C(  24)         CL(  27)         CL(  28)          F(  29)          F(  30)          F(  31)          S(  32)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(3): 
+    N(   1)          N(   3)          N(   7)      
+
+ACCEPTOR(6): 
+    N(   2)          N(   4)          N(   5)          N(   6)          O(  25)          O(  26)      
+
+NONPOLAR(23): 
+    C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)          C(  15)      
+    C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)          C(  23)      
+    C(  24)         CL(  27)         CL(  28)          F(  29)          F(  30)          F(  31)          S(  32)      
+
+HYDROGEN(7): 
+    H(  33)          H(  34)          H(  35)          H(  36)          H(  41)[CHO]     H(  43)[CHO]     H(  44)[CHO] 
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 373
+
+Ligand torsions: 30 (30 parameters matched)
+
+Ligand input conformation score: 1615.27
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+1298.55,28.1435,513.96,0,68.8615,0,31,1,0,0,0,0,7,6,7,6,0,1.9753
+
+ACO iterations 350  time 13.13s  evaluations 4370374
+
+Cluster time 0.10s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -77.05  file BRAF_Tovorafenib_entry_00001_conf_01
+rank  2  score   -72.71  file BRAF_Tovorafenib_entry_00001_conf_02
+rank  3  score   -71.14  file BRAF_Tovorafenib_entry_00001_conf_03
+rank  4  score   -71.02  file BRAF_Tovorafenib_entry_00001_conf_04
+rank  5  score   -70.42  file BRAF_Tovorafenib_entry_00001_conf_05
+rank  6  score   -70.25  file BRAF_Tovorafenib_entry_00001_conf_06
+rank  7  score   -70.10  file BRAF_Tovorafenib_entry_00001_conf_07
+rank  8  score   -69.59  file BRAF_Tovorafenib_entry_00001_conf_08
+rank  9  score   -68.77  file BRAF_Tovorafenib_entry_00001_conf_09
+rank 10  score   -68.59  file BRAF_Tovorafenib_entry_00001_conf_10
+
+

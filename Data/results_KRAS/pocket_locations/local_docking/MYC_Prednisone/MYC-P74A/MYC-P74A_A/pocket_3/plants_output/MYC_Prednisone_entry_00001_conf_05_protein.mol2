@@ -1,0 +1,15 @@
+@<TRIPOS>MOLECULE
+MYC_Prednisone_entry_00001_conf_05_protein
+2 1 1
+SMALL
+NO_CHARGES
+
+
+@<TRIPOS>ATOM
+      1 HG         27.6082  -28.3269   11.3176 H        82 SER82       0.0000
+      2 OG         27.4000  -28.3250   12.2940 O.3      82 SER82       0.0000
+@<TRIPOS>BOND
+     1    2    1 1
+@<TRIPOS>SUBSTRUCTURE
+82 SER82 1
+@<TRIPOS>COMMENT

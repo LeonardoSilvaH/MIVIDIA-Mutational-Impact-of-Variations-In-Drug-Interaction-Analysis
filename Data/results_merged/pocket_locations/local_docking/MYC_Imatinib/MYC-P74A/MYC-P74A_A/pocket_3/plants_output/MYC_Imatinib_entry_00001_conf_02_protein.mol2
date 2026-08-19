@@ -1,0 +1,15 @@
+@<TRIPOS>MOLECULE
+MYC_Imatinib_entry_00001_conf_02_protein
+2 1 1
+SMALL
+NO_CHARGES
+
+
+@<TRIPOS>ATOM
+      1 HG         26.9948  -27.4981   12.6795 H        82 SER82       0.2095
+      2 OG         27.4000  -28.3250   12.2940 O.3      82 SER82      -0.3927
+@<TRIPOS>BOND
+     1    1    2 1
+@<TRIPOS>SUBSTRUCTURE
+82 SER82 1
+@<TRIPOS>COMMENT

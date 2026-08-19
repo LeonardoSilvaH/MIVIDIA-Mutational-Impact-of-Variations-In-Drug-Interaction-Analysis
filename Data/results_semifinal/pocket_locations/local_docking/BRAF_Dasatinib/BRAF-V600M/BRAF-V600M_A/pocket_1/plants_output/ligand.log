@@ -1,0 +1,104 @@
+
+
+                  PLANTS
+        Protein-Ligand ANT System
+               version 1.2
+
+
+author: Oliver Korb
+
+scientific contributors: T.E. Exner, T. Stuetzle
+
+contact: Oliver.Korb@uni-konstanz.de
+
+
+
+-------------------------------------------------------------
+Ligand data file: BRAF_Dasatinib_PLANTS_SPORES.mol2 (entry 1)
+-------------------------------------------------------------
+
+
+Input molecule: BRAF_Dasatinib_PLANTS_SPORES.mol2
+Description: BRAF_Dasatinib
+
+
+Ligand rotatable bonds (8): 
+N    (5   , N.pl3) -C    (16  , C.ar )
+N    (5   , N.pl3) -C    (19  , C.2  )
+C    (13  , C.ar ) -N    (2   , N.pl3)
+C    (20  , C.2  ) -C    (24  , C.2  )
+N    (7   , N.am ) -C    (21  , C.ar )
+N    (1   , N.4  ) -C    (12  , C.3  )
+C    (12  , C.3  ) -C    (14  , C.3  )
+C    (14  , C.3  ) -O    (30  , O.3  )
+
+
+Ligand formal charge table:
+1     N     1.00 
+Ligand formal charge: 1.00
+
+
+Atom type assignment for partial score term CHEMPLP-PLP:
+
+DONOR(3): 
+    N(   1) [ch]     N(   5)          N(   7)      
+
+ACCEPTOR(4): 
+    N(   3)          N(   4)          N(   6)          O(  31)      
+
+DONACC(1): 
+    O(  30)      
+
+NONPOLAR(25): 
+    N(   2)          C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)      
+    C(  15)          C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)      
+    C(  23)          C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          C(  29)         CL(  32)      
+    S(  33)      
+
+Atom type assignment for partial score term CHEM-HB:
+
+DONOR(3): 
+    N(   1) [ch]     N(   5)          N(   7)      
+
+ACCEPTOR(4): 
+    N(   3)          N(   4)          N(   6)          O(  31)      
+
+DONACC(1): 
+    O(  30)      
+
+NONPOLAR(25): 
+    N(   2)          C(   8)          C(   9)          C(  10)          C(  11)          C(  12)          C(  13)          C(  14)      
+    C(  15)          C(  16)          C(  17)          C(  18)          C(  19)          C(  20)          C(  21)          C(  22)      
+    C(  23)          C(  24)          C(  25)          C(  26)          C(  27)          C(  28)          C(  29)         CL(  32)      
+    S(  33)      
+
+HYDROGEN(5): 
+    H(  34)          H(  35) [ch]     H(  36)          H(  37)          H(  54)[CHO] 
+
+Intra-ligand score: CLASH2
+Ligand clash pairs: 395
+
+Ligand torsions: 38 (38 parameters matched)
+
+Ligand input conformation score: 1705.73
+
+PLPtotal,PLPparthbond,PLPpartsteric,PLPpartmetal,PLPpartrepulsive,PLPpartburpolar,LIG_NUM_CLASH,LIG_NUM_CONTACT,LIG_NUM_NO_CONTACT,CHEMpartmetal,CHEMparthbond,CHEMparthbondCHO,DON,ACC,UNUSED_DON,UNUSED_ACC,CHEMPLP_CLASH2,TRIPOS_TORS
+
+931.782,15.0168,358.802,0,32.8239,-0.071534,33,0,0,0,0,0,5,5,5,5,0,20.8798
+
+ACO iterations 415  time 34.03s  evaluations 8744843
+
+Cluster time 0.18s (max. 10 structures, RMSD similarity 2.00 A):
+
+rank  1  score   -82.58  file BRAF_Dasatinib_entry_00001_conf_01
+rank  2  score   -80.05  file BRAF_Dasatinib_entry_00001_conf_02
+rank  3  score   -75.31  file BRAF_Dasatinib_entry_00001_conf_03
+rank  4  score   -72.17  file BRAF_Dasatinib_entry_00001_conf_04
+rank  5  score   -68.28  file BRAF_Dasatinib_entry_00001_conf_05
+rank  6  score   -67.97  file BRAF_Dasatinib_entry_00001_conf_06
+rank  7  score   -66.81  file BRAF_Dasatinib_entry_00001_conf_07
+rank  8  score   -66.24  file BRAF_Dasatinib_entry_00001_conf_08
+rank  9  score   -66.22  file BRAF_Dasatinib_entry_00001_conf_09
+rank 10  score   -65.45  file BRAF_Dasatinib_entry_00001_conf_10
+
+

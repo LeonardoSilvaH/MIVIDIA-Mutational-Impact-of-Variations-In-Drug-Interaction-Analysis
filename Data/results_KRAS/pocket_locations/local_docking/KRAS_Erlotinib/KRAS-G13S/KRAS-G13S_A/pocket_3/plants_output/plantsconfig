@@ -1,0 +1,22 @@
+
+# scoring function and search settings
+scoring_function chemplp
+search_speed speed1
+
+# input
+protein_file KRAS-G13S_A_prepared_protonated_7.4_PLANTS.mol2
+ligand_file KRAS_Erlotinib_PLANTS_SPORES.mol2
+
+# output
+output_dir plants_output
+
+# write single mol2 files (e.g. for RMSD calculation)
+write_multi_mol2 0
+
+# binding site definition
+bindingsite_center -11.679 5.134 9.485
+bindingsite_radius 18.0
+
+# cluster algorithm
+cluster_structures 10
+cluster_rmsd 2.0
