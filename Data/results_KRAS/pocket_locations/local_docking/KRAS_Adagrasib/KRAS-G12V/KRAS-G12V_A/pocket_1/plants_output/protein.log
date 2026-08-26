@@ -835,5 +835,5 @@ HYDROGEN(132):
     H(2357,    H, GLN150)       HE21(2365,    H, GLN150)       HE22(2366,    H, GLN150)          H(2378,    H, ARG151)         HE(2386,    H, ARG151)[ch]   HH11(2387,    H, ARG151)[ch]   HH21(2389,    H, ARG151)[ch]      H(2398,    H, VAL152)      
     H(2416,    H, GLU153)          H(2430,    H, ASP154)         HH(2484,    H, TYR157)        HG1(2498,    H, THR158)      
 
-Protein setup time: 1s
+Protein setup time: 1.4s
 

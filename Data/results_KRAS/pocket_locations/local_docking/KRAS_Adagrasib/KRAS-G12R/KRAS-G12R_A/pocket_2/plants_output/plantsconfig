@@ -14,7 +14,7 @@ output_dir plants_output
 write_multi_mol2 0
 
 # binding site definition
-bindingsite_center 0.416 -4.631 -12.425
+bindingsite_center -14.994 -3.913 -4.075
 bindingsite_radius 15
 
 # cluster algorithm

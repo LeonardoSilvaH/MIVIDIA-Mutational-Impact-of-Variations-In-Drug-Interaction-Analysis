@@ -767,5 +767,5 @@ HYDROGEN(67):
  HE21(1549,    H, GLN99 )       HE22(1550,    H, GLN99 )        HZ1(1589,    H, LYS101)[ch]      H(1603,    H, ARG102)         HE(1611,    H, ARG102)[ch]   HH11(1612,    H, ARG102)[ch]   HH12(1613,    H, ARG102)[ch]   HH21(1614,    H, ARG102)[ch]  
  HH22(1615,    H, ARG102)[ch]      H(1662,    H, ASP105)         HH(2154,    H, TYR137)      
 
-Protein setup time: 0.51s
+Protein setup time: 0.62s
 

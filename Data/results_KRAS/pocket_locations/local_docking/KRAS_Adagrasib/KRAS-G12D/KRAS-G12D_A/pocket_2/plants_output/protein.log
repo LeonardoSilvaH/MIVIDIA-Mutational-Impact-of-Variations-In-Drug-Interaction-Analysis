@@ -843,5 +843,5 @@ HYDROGEN(138):
     H(2208,    H, PHE141)          H(2563,    H, GLU162)          H(2641,    H, TYR166)         HH(2649,    H, TYR166)         HE(2669,    H, ARG167)[ch]   HH21(2672,    H, ARG167)[ch]    HZ2(2713,    H, LYS169)[ch]    HZ1(2734,    H, LYS170)[ch]  
   HZ2(2735,    H, LYS170)[ch]    HZ3(2736,    H, LYS170)[ch]  
 
-Protein setup time: 1.1s
+Protein setup time: 1.6s
 

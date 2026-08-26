@@ -772,5 +772,5 @@ HYDROGEN(50):
   HZ1(2798,    H, LYS173)[ch]    HZ2(2799,    H, LYS173)[ch]    HZ3(2800,    H, LYS173)[ch]      H(2810,    H, GLU174)          H(2825,    H, GLU175)          H(2840,    H, LYS176)        HZ1(2850,    H, LYS176)[ch]    HZ3(2852,    H, LYS176)[ch]  
     H(2860,    H, THR177)        HG1(2866,    H, THR177)      
 
-Protein setup time: 0.39s
+Protein setup time: 0.52s
 

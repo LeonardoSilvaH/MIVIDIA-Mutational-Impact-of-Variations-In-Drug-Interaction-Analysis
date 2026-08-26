@@ -35,8 +35,8 @@ from scipy.spatial.distance import cdist
 ###############################################################################
 
 ALIGNMENT_FILE = Path("Analysis/01_align_structures/alignment_matrices.pkl")
-POSE_JSON = Path("Data/results_merged/pocket_locations/pose_data.json")
-POCKET_JSON = Path("Data/results_merged/pocket_locations/top_3_pockets.json")
+POSE_JSON = Path("Data/results_KRAS/pocket_locations/pose_data.json")
+POCKET_JSON = Path("Data/results_KRAS/pocket_locations/top_3_pockets.json")
 
 OUTPUT_DIR = Path("Analysis/02_matched_pockets")
 OUTPUT_DIR.mkdir(exist_ok=True)

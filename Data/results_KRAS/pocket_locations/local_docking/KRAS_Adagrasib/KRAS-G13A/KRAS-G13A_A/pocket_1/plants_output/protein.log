@@ -861,5 +861,5 @@ HYDROGEN(163):
     H(2486,    H, THR158)        HG1(2492,    H, THR158)         HE(2547,    H, ARG161)[ch]   HH11(2548,    H, ARG161)[ch]   HH12(2549,    H, ARG161)[ch]   HH21(2550,    H, ARG161)[ch]   HH22(2551,    H, ARG161)[ch]      H(2561,    H, GLU162)      
  HH11(2606,    H, ARG164)[ch]   HH22(2609,    H, ARG164)[ch]   HH22(2671,    H, ARG167)[ch]  
 
-Protein setup time: 1.2s
+Protein setup time: 1.6s
 

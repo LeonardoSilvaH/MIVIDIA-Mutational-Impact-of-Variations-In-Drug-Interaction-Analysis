@@ -18,18 +18,16 @@ Description: KRAS-G12V_A_prepared_protonated_7.4
 
 
 Flexible protein side-chains:
-16 LYS16:  230 --(bond 240)-> 241 242 243
-17 SER17:  249 --(bond 254)-> 254
-32 TYR32:  493 --(bond 506)-> 503
-35 THR35:  536 --(bond 542)-> 543
-58 THR58:  901 --(bond 909)-> 908
-64 TYR64:  983 --(bond 999)-> 993
-65 SER65:  999 --(bond 1009)-> 1004
-71 TYR71:  1095 --(bond 1113)-> 1105
-88 LYS88:  1355 --(bond 1373)-> 1366 1367 1368
-96 TYR96:  1490 --(bond 1513)-> 1500
+4 TYR4:  59 --(bond 69)-> 69
 101 LYS101:  1584 --(bond 1606)-> 1595 1596 1597
-137 TYR137:  2150 --(bond 2176)-> 2160
+104 LYS104:  1646 --(bond 1668)-> 1657 1659 1658
+106 SER106:  1677 --(bond 1694)-> 1682
+158 THR158:  2491 --(bond 2514)-> 2498
+166 TYR166:  2643 --(bond 2674)-> 2653
+169 LYS169:  2705 --(bond 2735)-> 2716 2717 2718
+170 LYS170:  2727 --(bond 2757)-> 2738 2739 2740
+172 SER172:  2765 --(bond 2789)-> 2770
+173 LYS173:  2779 --(bond 2809)-> 2790 2791 2792
 
 
 Protein charged atom table:
@@ -43,10 +41,10 @@ Protein charged atom table:
    89   HZ1  LYS5 0
    90   HZ2  LYS5 0
    91   HZ3  LYS5 0
-  230    NZ LYS16 1
-  241   HZ1 LYS16 1
-  242   HZ2 LYS16 1
-  243   HZ3 LYS16 1
+  230    NZ LYS16 0
+  241   HZ1 LYS16 0
+  242   HZ2 LYS16 0
+  243   HZ3 LYS16 0
   462   OD1 ASP30 0
   463   OD2 ASP30 0
   475   OE1 GLU31 0
@@ -54,7 +52,7 @@ Protein charged atom table:
   510   OD1 ASP33 0
   511   OD2 ASP33 0
   570   OE1 GLU37 0
-  571   OE2 GLU37 1
+  571   OE2 GLU37 0
   584   OD1 ASP38 0
   585   OD2 ASP38 0
   629    NE ARG41 0
@@ -75,72 +73,72 @@ Protein charged atom table:
   763   OE2 GLU49 0
   839   OD1 ASP54 0
   840   OD2 ASP54 0
-  889   OD1 ASP57 1
-  890   OD2 ASP57 1
-  950   OE1 GLU62 1
-  951   OE2 GLU62 1
-  965   OE1 GLU63 1
-  966   OE2 GLU63 1
- 1039    NE ARG68 1
- 1040   NH1 ARG68 1
- 1041   NH2 ARG68 1
- 1051    HE ARG68 1
- 1052  HH11 ARG68 1
- 1053  HH12 ARG68 1
- 1054  HH21 ARG68 1
- 1055  HH22 ARG68 1
- 1062   OD1 ASP69 1
- 1063   OD2 ASP69 1
- 1130    NE ARG73 1
+  889   OD1 ASP57 0
+  890   OD2 ASP57 0
+  950   OE1 GLU62 0
+  951   OE2 GLU62 0
+  965   OE1 GLU63 0
+  966   OE2 GLU63 0
+ 1039    NE ARG68 0
+ 1040   NH1 ARG68 0
+ 1041   NH2 ARG68 0
+ 1051    HE ARG68 0
+ 1052  HH11 ARG68 0
+ 1053  HH12 ARG68 0
+ 1054  HH21 ARG68 0
+ 1055  HH22 ARG68 0
+ 1062   OD1 ASP69 0
+ 1063   OD2 ASP69 0
+ 1130    NE ARG73 0
  1131   NH1 ARG73 0
- 1132   NH2 ARG73 1
- 1142    HE ARG73 1
+ 1132   NH2 ARG73 0
+ 1142    HE ARG73 0
  1143  HH11 ARG73 0
  1144  HH12 ARG73 0
- 1145  HH21 ARG73 1
- 1146  HH22 ARG73 1
- 1175   OE1 GLU76 0
- 1176   OE2 GLU76 0
- 1355    NZ LYS88 1
- 1366   HZ1 LYS88 1
- 1367   HZ2 LYS88 1
- 1368   HZ3 LYS88 1
+ 1145  HH21 ARG73 0
+ 1146  HH22 ARG73 0
+ 1175   OE1 GLU76 1
+ 1176   OE2 GLU76 1
+ 1355    NZ LYS88 0
+ 1366   HZ1 LYS88 0
+ 1367   HZ2 LYS88 0
+ 1368   HZ3 LYS88 0
  1407   OE1 GLU91 0
- 1408   OE2 GLU91 1
- 1421   OD1 ASP92 1
- 1422   OD2 ASP92 1
+ 1408   OE2 GLU91 0
+ 1421   OD1 ASP92 0
+ 1422   OD2 ASP92 0
  1508    NE ARG97 1
  1509   NH1 ARG97 1
- 1510   NH2 ARG97 0
+ 1510   NH2 ARG97 1
  1520    HE ARG97 1
  1521  HH11 ARG97 1
  1522  HH12 ARG97 1
- 1523  HH21 ARG97 0
- 1524  HH22 ARG97 0
+ 1523  HH21 ARG97 1
+ 1524  HH22 ARG97 1
  1532   OE1 GLU98 1
  1533   OE2 GLU98 1
  1584    NZ LYS101 1
- 1595   HZ1 LYS101 0
+ 1595   HZ1 LYS101 1
  1596   HZ2 LYS101 1
  1597   HZ3 LYS101 1
- 1605    NE ARG102 1
- 1606   NH1 ARG102 1
- 1607   NH2 ARG102 1
- 1617    HE ARG102 1
- 1618  HH11 ARG102 1
- 1619  HH12 ARG102 1
- 1620  HH21 ARG102 1
- 1621  HH22 ARG102 1
- 1646    NZ LYS104 0
+ 1605    NE ARG102 0
+ 1606   NH1 ARG102 0
+ 1607   NH2 ARG102 0
+ 1617    HE ARG102 0
+ 1618  HH11 ARG102 0
+ 1619  HH12 ARG102 0
+ 1620  HH21 ARG102 0
+ 1621  HH22 ARG102 0
+ 1646    NZ LYS104 1
  1657   HZ1 LYS104 1
- 1658   HZ2 LYS104 0
- 1659   HZ3 LYS104 0
- 1666   OD1 ASP105 0
- 1667   OD2 ASP105 0
- 1690   OE1 GLU107 0
- 1691   OE2 GLU107 0
- 1704   OD1 ASP108 0
- 1705   OD2 ASP108 0
+ 1658   HZ2 LYS104 1
+ 1659   HZ3 LYS104 1
+ 1666   OD1 ASP105 1
+ 1667   OD2 ASP105 1
+ 1690   OE1 GLU107 1
+ 1691   OE2 GLU107 1
+ 1704   OD1 ASP108 1
+ 1705   OD2 ASP108 1
  1837    NZ LYS117 0
  1848   HZ1 LYS117 0
  1849   HZ2 LYS117 0
@@ -205,42 +203,42 @@ Protein charged atom table:
  2555  HH12 ARG161 0
  2556  HH21 ARG161 0
  2557  HH22 ARG161 0
- 2565   OE1 GLU162 0
- 2566   OE2 GLU162 0
- 2599    NE ARG164 0
- 2600   NH1 ARG164 0
+ 2565   OE1 GLU162 1
+ 2566   OE2 GLU162 1
+ 2599    NE ARG164 1
+ 2600   NH1 ARG164 1
  2601   NH2 ARG164 0
- 2611    HE ARG164 0
- 2612  HH11 ARG164 0
+ 2611    HE ARG164 1
+ 2612  HH11 ARG164 1
  2613  HH12 ARG164 0
  2614  HH21 ARG164 0
  2615  HH22 ARG164 0
- 2661    NE ARG167 0
- 2662   NH1 ARG167 0
- 2663   NH2 ARG167 0
- 2673    HE ARG167 0
- 2674  HH11 ARG167 0
- 2675  HH12 ARG167 0
- 2676  HH21 ARG167 0
- 2677  HH22 ARG167 0
- 2705    NZ LYS169 0
- 2716   HZ1 LYS169 0
- 2717   HZ2 LYS169 0
- 2718   HZ3 LYS169 0
- 2727    NZ LYS170 0
- 2738   HZ1 LYS170 0
- 2739   HZ2 LYS170 0
- 2740   HZ3 LYS170 0
- 2779    NZ LYS173 0
- 2790   HZ1 LYS173 0
- 2791   HZ2 LYS173 0
- 2792   HZ3 LYS173 0
- 2800   OE1 GLU174 0
- 2801   OE2 GLU174 0
+ 2661    NE ARG167 1
+ 2662   NH1 ARG167 1
+ 2663   NH2 ARG167 1
+ 2673    HE ARG167 1
+ 2674  HH11 ARG167 1
+ 2675  HH12 ARG167 1
+ 2676  HH21 ARG167 1
+ 2677  HH22 ARG167 1
+ 2705    NZ LYS169 1
+ 2716   HZ1 LYS169 1
+ 2717   HZ2 LYS169 1
+ 2718   HZ3 LYS169 1
+ 2727    NZ LYS170 1
+ 2738   HZ1 LYS170 1
+ 2739   HZ2 LYS170 1
+ 2740   HZ3 LYS170 1
+ 2779    NZ LYS173 1
+ 2790   HZ1 LYS173 1
+ 2791   HZ2 LYS173 1
+ 2792   HZ3 LYS173 1
+ 2800   OE1 GLU174 1
+ 2801   OE2 GLU174 1
  2815   OE1 GLU175 0
  2816   OE2 GLU175 0
  2831    NZ LYS176 0
- 2842   HZ1 LYS176 0
+ 2842   HZ1 LYS176 1
  2843   HZ2 LYS176 0
  2844   HZ3 LYS176 0
  2915    NZ LYS182 0
@@ -713,75 +711,64 @@ HYDROGEN(362):
 
 Surface atom type assignment for partial score term CHEM-HB:
 
-DONOR(59): 
-    N( 159, N.am, GLY10 )          N( 166, N.am, ALA11 )          N( 176, N.am, VAL12 )          N( 192, N.am, GLY13 )          N( 199, N.am, VAL14 )          N( 215, N.am, GLY15 )          N( 222, N.am, LYS16 )         NZ( 230,  N.4, LYS16 )[ch]  
-    N( 244, N.am, SER17 )          N( 530, N.am, THR35 )          N( 544, N.am, ILE36 )          N( 563, N.am, GLU37 )          N( 895, N.am, THR58 )          N( 909, N.am, ALA59 )          N( 919, N.am, GLY60 )          N( 926, N.am, GLN61 )      
-  NE2( 939, N.am, GLN61 )          N( 943, N.am, GLU62 )          N( 958, N.am, GLU63 )          N( 973, N.am, TYR64 )          N( 994, N.am, SER65 )          N(1005, N.am, ALA66 )          N(1015, N.am, MET67 )          N(1032, N.am, ARG68 )      
-   NE(1039,N.pl3, ARG68 )[ch]    NH1(1040,N.pl3, ARG68 )[ch]    NH2(1041,N.pl3, ARG68 )[ch]      N(1056, N.am, ASP69 )          N(1068, N.am, GLN70 )          N(1085, N.am, TYR71 )          N(1106, N.am, MET72 )         NE(1130,N.pl3, ARG73 )[ch]  
-  NH2(1132,N.pl3, ARG73 )[ch]      N(1147, N.am, THR74 )          N(1161, N.am, GLY75 )          N(1240, N.am, VAL81 )        ND2(1329, N.am, ASN86 )          N(1347, N.am, LYS88 )         NZ(1355,  N.4, LYS88 )[ch]      N(1369, N.am, SER89 )      
-    N(1400, N.am, GLU91 )          N(1415, N.am, ASP92 )          N(1427, N.am, ILE93 )          N(1446, N.am, HIS94 )        ND1(1457,N.pl3, HIS94 )          N(1463, N.am, HIS95 )        ND1(1474,N.pl3, HIS95 )          N(1480, N.am, TYR96 )      
-   NE(1508,N.pl3, ARG97 )[ch]    NH1(1509,N.pl3, ARG97 )[ch]      N(1540, N.am, GLN99 )        NE2(1553, N.am, GLN99 )         NZ(1584,  N.4, LYS101)[ch]      N(1598, N.am, ARG102)         NE(1605,N.pl3, ARG102)[ch]    NH1(1606,N.pl3, ARG102)[ch]  
-  NH2(1607,N.pl3, ARG102)[ch]      N(1622, N.am, VAL103)          N(1638, N.am, LYS104)      
+DONOR(48): 
+    N(  49, N.am, TYR4  )          N(  70, N.am, LYS5  )          N(  92, N.am, LEU6  )          N( 111, N.am, VAL7  )          N(1106, N.am, MET72 )          N(1147, N.am, THR74 )          N(1161, N.am, GLY75 )          N(1168, N.am, GLU76 )      
+    N(1210, N.am, LEU79 )         NE(1508,N.pl3, ARG97 )[ch]    NH1(1509,N.pl3, ARG97 )[ch]    NH2(1510,N.pl3, ARG97 )[ch]     NZ(1584,  N.4, LYS101)[ch]      N(1598, N.am, ARG102)          N(1622, N.am, VAL103)          N(1638, N.am, LYS104)      
+   NZ(1646,  N.4, LYS104)[ch]      N(1660, N.am, ASP105)          N(1672, N.am, SER106)          N(1683, N.am, GLU107)          N(1698, N.am, ASP108)          N(1710, N.am, VAL109)          N(1740, N.am, MET111)          N(1773, N.am, LEU113)      
+    N(2140, N.am, TYR137)          N(2161, N.am, GLY138)          N(2168, N.am, ILE139)          N(2485, N.am, THR158)          N(2558, N.am, GLU162)         NE(2599,N.pl3, ARG164)[ch]    NH1(2600,N.pl3, ARG164)[ch]      N(2616, N.am, GLN165)      
+  NE2(2629, N.am, GLN165)          N(2633, N.am, TYR166)          N(2654, N.am, ARG167)         NE(2661,N.pl3, ARG167)[ch]    NH1(2662,N.pl3, ARG167)[ch]    NH2(2663,N.pl3, ARG167)[ch]      N(2678, N.am, LEU168)          N(2697, N.am, LYS169)      
+   NZ(2705,  N.4, LYS169)[ch]      N(2719, N.am, LYS170)         NZ(2727,  N.4, LYS170)[ch]      N(2741, N.am, ILE171)          N(2760, N.am, SER172)          N(2771, N.am, LYS173)         NZ(2779,  N.4, LYS173)[ch]      N(2793, N.am, GLU174)      
+
 
 ACCEPTOR(55): 
-    O(  96,  O.2, LEU6  )          O( 147,  O.2, VAL9  )          O( 170,  O.2, ALA11 )          O( 180,  O.2, VAL12 )          O( 195,  O.2, GLY13 )          O( 534,  O.2, THR35 )          O( 548,  O.2, ILE36 )        OE2( 571,O.co2, GLU37 )[ch]  
-    O( 887,  O.2, ASP57 )        OD1( 889,O.co2, ASP57 )[ch]    OD2( 890,O.co2, ASP57 )[ch]      O( 899,  O.2, THR58 )          O( 913,  O.2, ALA59 )          O( 922,  O.2, GLY60 )          O( 930,  O.2, GLN61 )        OE1( 940,  O.2, GLN61 )      
-    O( 947,  O.2, GLU62 )        OE1( 950,O.co2, GLU62 )[ch]    OE2( 951,O.co2, GLU62 )[ch]      O( 962,  O.2, GLU63 )        OE1( 965,O.co2, GLU63 )[ch]    OE2( 966,O.co2, GLU63 )[ch]      O( 977,  O.2, TYR64 )          O( 998,  O.2, SER65 )      
-    O(1009,  O.2, ALA66 )          O(1019,  O.2, MET67 )          O(1036,  O.2, ARG68 )          O(1060,  O.2, ASP69 )        OD1(1062,O.co2, ASP69 )[ch]    OD2(1063,O.co2, ASP69 )[ch]      O(1072,  O.2, GLN70 )        OE1(1082,  O.2, GLN70 )      
-    O(1089,  O.2, TYR71 )          O(1244,  O.2, VAL81 )        OD1(1330,  O.2, ASN86 )          O(1337,  O.2, THR87 )          O(1351,  O.2, LYS88 )          O(1384,  O.2, PHE90 )          O(1404,  O.2, GLU91 )        OE2(1408,O.co2, GLU91 )[ch]  
-    O(1419,  O.2, ASP92 )        OD1(1421,O.co2, ASP92 )[ch]    OD2(1422,O.co2, ASP92 )[ch]      O(1431,  O.2, ILE93 )          O(1450,  O.2, HIS94 )        NE2(1459,  N.2, HIS94 )          O(1467,  O.2, HIS95 )        NE2(1476,  N.2, HIS95 )      
-    O(1529,  O.2, GLU98 )        OE1(1532,O.co2, GLU98 )[ch]    OE2(1533,O.co2, GLU98 )[ch]    OE1(1554,  O.2, GLN99 )          O(1580,  O.2, LYS101)          O(1602,  O.2, ARG102)          O(1626,  O.2, VAL103)      
+    O(  38,  O.2, GLU3  )          O(  74,  O.2, LYS5  )          O(  96,  O.2, LEU6  )          O( 115,  O.2, VAL7  )          O(1089,  O.2, TYR71 )          O(1127,  O.2, ARG73 )          O(1151,  O.2, THR74 )          O(1164,  O.2, GLY75 )      
+    O(1172,  O.2, GLU76 )        OE1(1175,O.co2, GLU76 )[ch]    OE2(1176,O.co2, GLU76 )[ch]      O(1529,  O.2, GLU98 )        OE1(1532,O.co2, GLU98 )[ch]    OE2(1533,O.co2, GLU98 )[ch]      O(1580,  O.2, LYS101)          O(1602,  O.2, ARG102)      
+    O(1626,  O.2, VAL103)          O(1642,  O.2, LYS104)          O(1664,  O.2, ASP105)        OD1(1666,O.co2, ASP105)[ch]    OD2(1667,O.co2, ASP105)[ch]      O(1676,  O.2, SER106)          O(1687,  O.2, GLU107)        OE1(1690,O.co2, GLU107)[ch]  
+  OE2(1691,O.co2, GLU107)[ch]      O(1702,  O.2, ASP108)        OD1(1704,O.co2, ASP108)[ch]    OD2(1705,O.co2, ASP108)[ch]      O(1714,  O.2, VAL109)          O(1744,  O.2, MET111)          O(2099,  O.2, ALA134)          O(2109,  O.2, ARG135)      
+    O(2133,  O.2, SER136)          O(2144,  O.2, TYR137)          O(2164,  O.2, GLY138)          O(2172,  O.2, ILE139)          O(2489,  O.2, THR158)          O(2538,  O.2, ARG161)          O(2562,  O.2, GLU162)        OE1(2565,O.co2, GLU162)[ch]  
+  OE2(2566,O.co2, GLU162)[ch]      O(2577,  O.2, ILE163)          O(2596,  O.2, ARG164)          O(2620,  O.2, GLN165)        OE1(2630,  O.2, GLN165)          O(2637,  O.2, TYR166)          O(2658,  O.2, ARG167)          O(2682,  O.2, LEU168)      
+    O(2701,  O.2, LYS169)          O(2723,  O.2, LYS170)          O(2745,  O.2, ILE171)          O(2764,  O.2, SER172)          O(2775,  O.2, LYS173)        OE1(2800,O.co2, GLU174)[ch]    OE2(2801,O.co2, GLU174)[ch]  
 
-DONACC(9): 
-   OG( 249,  O.3, SER17 )         OH( 493,  O.3, TYR32 )        OG1( 536,  O.3, THR35 )        OG1( 901,  O.3, THR58 )         OH( 983,  O.3, TYR64 )         OG( 999,  O.3, SER65 )         OH(1095,  O.3, TYR71 )         OH(1490,  O.3, TYR96 )      
-   OH(2150,  O.3, TYR137)      
+DONACC(5): 
+   OH(  59,  O.3, TYR4  )         OG(1677,  O.3, SER106)        OG1(2491,  O.3, THR158)         OH(2643,  O.3, TYR166)         OG(2765,  O.3, SER172)      
 
-NONPOLAR(250): 
-    C(  94,  C.2, LEU6  )         CB( 114,  C.3, VAL7  )        CG1( 116,  C.3, VAL7  )        CG2( 117,  C.3, VAL7  )         CB( 130,  C.3, VAL8  )        CG1( 132,  C.3, VAL8  )        CG2( 133,  C.3, VAL8  )         CA( 144,  C.3, VAL9  )      
-    C( 145,  C.2, VAL9  )         CB( 146,  C.3, VAL9  )        CG1( 148,  C.3, VAL9  )        CG2( 149,  C.3, VAL9  )         CA( 160,  C.3, GLY10 )         CA( 167,  C.3, ALA11 )          C( 168,  C.2, ALA11 )         CB( 169,  C.3, ALA11 )      
-   CA( 177,  C.3, VAL12 )          C( 178,  C.2, VAL12 )         CB( 179,  C.3, VAL12 )        CG1( 181,  C.3, VAL12 )        CG2( 182,  C.3, VAL12 )         CA( 193,  C.3, GLY13 )          C( 194,  C.2, GLY13 )         CA( 200,  C.3, VAL14 )      
-    C( 201,  C.2, VAL14 )         CB( 202,  C.3, VAL14 )        CG1( 204,  C.3, VAL14 )        CG2( 205,  C.3, VAL14 )         CA( 216,  C.3, GLY15 )          C( 217,  C.2, GLY15 )         CA( 223,  C.3, LYS16 )          C( 224,  C.2, LYS16 )      
-   CB( 225,  C.3, LYS16 )         CG( 227,  C.3, LYS16 )         CD( 228,  C.3, LYS16 )         CE( 229,  C.3, LYS16 )        CE2( 492, C.ar, TYR32 )         CZ( 494, C.ar, TYR32 )          C( 518,  C.2, PRO34 )         CA( 531,  C.3, THR35 )      
-    C( 532,  C.2, THR35 )         CB( 533,  C.3, THR35 )        CG2( 535,  C.3, THR35 )         CA( 545,  C.3, ILE36 )          C( 546,  C.2, ILE36 )         CB( 547,  C.3, ILE36 )        CG1( 549,  C.3, ILE36 )        CG2( 550,  C.3, ILE36 )      
-   CA( 564,  C.3, GLU37 )          C( 565,  C.2, GLU37 )         CB( 566,  C.3, GLU37 )         CG( 568,  C.3, GLU37 )         CD( 569,  C.2, GLU37 )         CA( 865,  C.3, LEU56 )         CB( 867,  C.3, LEU56 )         CG( 869,  C.3, LEU56 )      
-  CD1( 870,  C.3, LEU56 )        CD2( 871,  C.3, LEU56 )          C( 885,  C.2, ASP57 )         CB( 886,  C.3, ASP57 )         CG( 888,  C.2, ASP57 )         CA( 896,  C.3, THR58 )          C( 897,  C.2, THR58 )         CB( 898,  C.3, THR58 )      
-  CG2( 900,  C.3, THR58 )         CA( 910,  C.3, ALA59 )          C( 911,  C.2, ALA59 )         CB( 912,  C.3, ALA59 )         CA( 920,  C.3, GLY60 )          C( 921,  C.2, GLY60 )         CA( 927,  C.3, GLN61 )          C( 928,  C.2, GLN61 )      
-   CB( 929,  C.3, GLN61 )         CG( 931,  C.3, GLN61 )         CD( 932,  C.2, GLN61 )         CA( 944,  C.3, GLU62 )          C( 945,  C.2, GLU62 )         CB( 946,  C.3, GLU62 )         CG( 948,  C.3, GLU62 )         CD( 949,  C.2, GLU62 )      
-   CA( 959,  C.3, GLU63 )          C( 960,  C.2, GLU63 )         CB( 961,  C.3, GLU63 )         CG( 963,  C.3, GLU63 )         CD( 964,  C.2, GLU63 )         CA( 974,  C.3, TYR64 )          C( 975,  C.2, TYR64 )         CB( 976,  C.3, TYR64 )      
-   CG( 978, C.ar, TYR64 )        CD1( 979, C.ar, TYR64 )        CD2( 980, C.ar, TYR64 )        CE1( 981, C.ar, TYR64 )        CE2( 982, C.ar, TYR64 )         CZ( 984, C.ar, TYR64 )         CA( 995,  C.3, SER65 )          C( 996,  C.2, SER65 )      
-   CB( 997,  C.3, SER65 )         CA(1006,  C.3, ALA66 )          C(1007,  C.2, ALA66 )         CB(1008,  C.3, ALA66 )         CA(1016,  C.3, MET67 )          C(1017,  C.2, MET67 )         CB(1018,  C.3, MET67 )         CG(1020,  C.3, MET67 )      
-   SD(1021,  S.3, MET67 )         CE(1022,  C.3, MET67 )         CA(1033,  C.3, ARG68 )          C(1034,  C.2, ARG68 )         CB(1035,  C.3, ARG68 )         CG(1037,  C.3, ARG68 )         CD(1038,  C.3, ARG68 )         CZ(1042,C.cat, ARG68 )      
-   CA(1057,  C.3, ASP69 )          C(1058,  C.2, ASP69 )         CB(1059,  C.3, ASP69 )         CG(1061,  C.2, ASP69 )         CA(1069,  C.3, GLN70 )          C(1070,  C.2, GLN70 )         CB(1071,  C.3, GLN70 )         CG(1073,  C.3, GLN70 )      
-   CD(1074,  C.2, GLN70 )         CA(1086,  C.3, TYR71 )          C(1087,  C.2, TYR71 )         CB(1088,  C.3, TYR71 )         CG(1090, C.ar, TYR71 )        CD1(1091, C.ar, TYR71 )        CD2(1092, C.ar, TYR71 )        CE1(1093, C.ar, TYR71 )      
-  CE2(1094, C.ar, TYR71 )         CZ(1096, C.ar, TYR71 )         CG(1111,  C.3, MET72 )         SD(1112,  S.3, MET72 )         CE(1113,  C.3, MET72 )         CA(1124,  C.3, ARG73 )          C(1125,  C.2, ARG73 )         CB(1126,  C.3, ARG73 )      
-   CZ(1133,C.cat, ARG73 )         CA(1162,  C.3, GLY75 )        CE2(1199, C.ar, PHE78 )         CA(1230,  C.3, CYS80 )          C(1231,  C.2, CYS80 )         CB(1232,  C.3, CYS80 )         SG(1234,  S.3, CYS80 )         CA(1241,  C.3, VAL81 )      
-    C(1242,  C.2, VAL81 )        CG2(1246,  C.3, VAL81 )         CB(1322,  C.3, ASN86 )         CG(1324,  C.2, ASN86 )          C(1335,  C.2, THR87 )         CA(1348,  C.3, LYS88 )          C(1349,  C.2, LYS88 )         CB(1350,  C.3, LYS88 )      
-   CG(1352,  C.3, LYS88 )         CD(1353,  C.3, LYS88 )         CE(1354,  C.3, LYS88 )         CA(1370,  C.3, SER89 )         CB(1372,  C.3, SER89 )          C(1382,  C.2, PHE90 )         CG(1385, C.ar, PHE90 )        CD2(1387, C.ar, PHE90 )      
-   CA(1401,  C.3, GLU91 )          C(1402,  C.2, GLU91 )         CB(1403,  C.3, GLU91 )         CG(1405,  C.3, GLU91 )         CD(1406,  C.2, GLU91 )         CA(1416,  C.3, ASP92 )          C(1417,  C.2, ASP92 )         CB(1418,  C.3, ASP92 )      
-   CG(1420,  C.2, ASP92 )         CA(1428,  C.3, ILE93 )          C(1429,  C.2, ILE93 )         CB(1430,  C.3, ILE93 )        CG2(1433,  C.3, ILE93 )        CD1(1434,  C.3, ILE93 )         CA(1447,  C.3, HIS94 )          C(1448,  C.2, HIS94 )      
-   CB(1449,  C.3, HIS94 )         CG(1451,  C.2, HIS94 )        CD2(1456,  C.2, HIS94 )        CE1(1458,  C.2, HIS94 )         CA(1464,  C.3, HIS95 )          C(1465,  C.2, HIS95 )         CB(1466,  C.3, HIS95 )         CG(1468,  C.2, HIS95 )      
-  CD2(1473,  C.2, HIS95 )        CE1(1475,  C.2, HIS95 )         CA(1481,  C.3, TYR96 )          C(1482,  C.2, TYR96 )         CB(1483,  C.3, TYR96 )         CG(1485, C.ar, TYR96 )        CD1(1486, C.ar, TYR96 )        CD2(1487, C.ar, TYR96 )      
-  CE1(1488, C.ar, TYR96 )        CE2(1489, C.ar, TYR96 )         CZ(1491, C.ar, TYR96 )         CA(1502,  C.3, ARG97 )         CB(1504,  C.3, ARG97 )         CG(1506,  C.3, ARG97 )         CD(1507,  C.3, ARG97 )         CZ(1511,C.cat, ARG97 )      
-   CA(1526,  C.3, GLU98 )          C(1527,  C.2, GLU98 )         CB(1528,  C.3, GLU98 )         CG(1530,  C.3, GLU98 )         CD(1531,  C.2, GLU98 )         CA(1541,  C.3, GLN99 )          C(1542,  C.2, GLN99 )         CB(1543,  C.3, GLN99 )      
-   CG(1545,  C.3, GLN99 )         CD(1546,  C.2, GLN99 )         CA(1577,  C.3, LYS101)          C(1578,  C.2, LYS101)         CB(1579,  C.3, LYS101)         CG(1581,  C.3, LYS101)         CD(1582,  C.3, LYS101)         CE(1583,  C.3, LYS101)      
-   CA(1599,  C.3, ARG102)          C(1600,  C.2, ARG102)         CB(1601,  C.3, ARG102)         CG(1603,  C.3, ARG102)         CD(1604,  C.3, ARG102)         CZ(1608,C.cat, ARG102)         CA(1623,  C.3, VAL103)          C(1624,  C.2, VAL103)      
-   CB(1625,  C.3, VAL103)        CG1(1627,  C.3, VAL103)        CG2(1628,  C.3, VAL103)         CA(1639,  C.3, LYS104)         CB(1641,  C.3, LYS104)         CG(1643,  C.3, LYS104)         CD(1644,  C.3, LYS104)         CE(1645,  C.3, LYS104)      
-   CB(1713,  C.3, VAL109)        CG1(1715,  C.3, VAL109)        CG2(1716,  C.3, VAL109)         CB(1743,  C.3, MET111)         CG(1745,  C.3, MET111)         SD(1746,  S.3, MET111)         CE(1747,  C.3, MET111)         CA(1774,  C.3, LEU113)      
-   CB(1776,  C.3, LEU113)         CG(1778,  C.3, LEU113)        CD1(1779,  C.3, LEU113)        CD2(2083,  C.3, LEU133)         CG(2145, C.ar, TYR137)        CD2(2147, C.ar, TYR137)        CE1(2148, C.ar, TYR137)        CE2(2149, C.ar, TYR137)      
-   CZ(2151, C.ar, TYR137)        CD1(2175,  C.3, ILE139)      
+NONPOLAR(205): 
+  CG2(  25,  C.3, THR2  )          C(  36,  C.2, GLU3  )         CA(  50,  C.3, TYR4  )          C(  51,  C.2, TYR4  )        CE1(  57, C.ar, TYR4  )         CZ(  60, C.ar, TYR4  )         CA(  71,  C.3, LYS5  )          C(  72,  C.2, LYS5  )      
+   CB(  73,  C.3, LYS5  )         CG(  75,  C.3, LYS5  )         CD(  76,  C.3, LYS5  )         CA(  93,  C.3, LEU6  )          C(  94,  C.2, LEU6  )         CB(  95,  C.3, LEU6  )         CG(  97,  C.3, LEU6  )        CD1(  98,  C.3, LEU6  )      
+   CA( 112,  C.3, VAL7  )          C( 113,  C.2, VAL7  )         CB( 114,  C.3, VAL7  )        CG2( 117,  C.3, VAL7  )         CG(1111,  C.3, MET72 )         SD(1112,  S.3, MET72 )         CA(1124,  C.3, ARG73 )          C(1125,  C.2, ARG73 )      
+   CB(1126,  C.3, ARG73 )         CG(1128,  C.3, ARG73 )         CA(1148,  C.3, THR74 )          C(1149,  C.2, THR74 )         CA(1162,  C.3, GLY75 )          C(1163,  C.2, GLY75 )         CA(1169,  C.3, GLU76 )          C(1170,  C.2, GLU76 )      
+   CB(1171,  C.3, GLU76 )         CG(1173,  C.3, GLU76 )         CD(1174,  C.2, GLU76 )          C(1192,  C.2, PHE78 )        CE2(1199, C.ar, PHE78 )         CA(1211,  C.3, LEU79 )         CB(1213,  C.3, LEU79 )         CG(1215,  C.3, LEU79 )      
+   CA(1230,  C.3, CYS80 )         CB(1232,  C.3, CYS80 )         SG(1234,  S.3, CYS80 )         CA(1502,  C.3, ARG97 )         CB(1504,  C.3, ARG97 )         CG(1506,  C.3, ARG97 )         CD(1507,  C.3, ARG97 )         CZ(1511,C.cat, ARG97 )      
+   CA(1526,  C.3, GLU98 )          C(1527,  C.2, GLU98 )         CA(1577,  C.3, LYS101)          C(1578,  C.2, LYS101)         CB(1579,  C.3, LYS101)         CG(1581,  C.3, LYS101)         CD(1582,  C.3, LYS101)         CE(1583,  C.3, LYS101)      
+   CA(1599,  C.3, ARG102)          C(1600,  C.2, ARG102)         CA(1623,  C.3, VAL103)          C(1624,  C.2, VAL103)         CB(1625,  C.3, VAL103)        CG1(1627,  C.3, VAL103)         CA(1639,  C.3, LYS104)          C(1640,  C.2, LYS104)      
+   CB(1641,  C.3, LYS104)         CG(1643,  C.3, LYS104)         CD(1644,  C.3, LYS104)         CE(1645,  C.3, LYS104)         CA(1661,  C.3, ASP105)          C(1662,  C.2, ASP105)         CB(1663,  C.3, ASP105)         CG(1665,  C.2, ASP105)      
+   CA(1673,  C.3, SER106)          C(1674,  C.2, SER106)         CB(1675,  C.3, SER106)         CA(1684,  C.3, GLU107)          C(1685,  C.2, GLU107)         CB(1686,  C.3, GLU107)         CG(1688,  C.3, GLU107)         CD(1689,  C.2, GLU107)      
+   CA(1699,  C.3, ASP108)          C(1700,  C.2, ASP108)         CB(1701,  C.3, ASP108)         CG(1703,  C.2, ASP108)         CA(1711,  C.3, VAL109)          C(1712,  C.2, VAL109)         CB(1713,  C.3, VAL109)        CG1(1715,  C.3, VAL109)      
+  CG2(1716,  C.3, VAL109)          N(1726, N.am, PRO110)         CA(1727,  C.3, PRO110)          C(1728,  C.2, PRO110)         CB(1729,  C.3, PRO110)         CG(1731,  C.3, PRO110)         CD(1732,  C.3, PRO110)         CA(1741,  C.3, MET111)      
+   CB(1743,  C.3, MET111)         CG(1745,  C.3, MET111)         SD(1746,  S.3, MET111)         CE(1747,  C.3, MET111)         CA(1774,  C.3, LEU113)          C(2097,  C.2, ALA134)          C(2131,  C.2, SER136)         CA(2141,  C.3, TYR137)      
+    C(2142,  C.2, TYR137)         CB(2143,  C.3, TYR137)         CG(2145, C.ar, TYR137)        CD1(2146, C.ar, TYR137)        CD2(2147, C.ar, TYR137)         CA(2162,  C.3, GLY138)          C(2163,  C.2, GLY138)         CA(2169,  C.3, ILE139)      
+    C(2170,  C.2, ILE139)         CB(2171,  C.3, ILE139)        CG1(2173,  C.3, ILE139)        CG2(2174,  C.3, ILE139)        CD1(2175,  C.3, ILE139)          N(2187, N.am, PRO140)         CA(2188,  C.3, PRO140)          C(2189,  C.2, PRO140)      
+   CB(2190,  C.3, PRO140)         CG(2192,  C.3, PRO140)         CD(2193,  C.3, PRO140)         CA(2486,  C.3, THR158)          C(2487,  C.2, THR158)         CB(2488,  C.3, THR158)        CG2(2490,  C.3, THR158)        CD2(2506,  C.3, LEU159)      
+   CA(2535,  C.3, ARG161)          C(2536,  C.2, ARG161)         CB(2537,  C.3, ARG161)         CG(2539,  C.3, ARG161)         CD(2540,  C.3, ARG161)         CA(2559,  C.3, GLU162)          C(2560,  C.2, GLU162)         CB(2561,  C.3, GLU162)      
+   CG(2563,  C.3, GLU162)         CD(2564,  C.2, GLU162)         CA(2574,  C.3, ILE163)         CB(2576,  C.3, ILE163)        CG1(2578,  C.3, ILE163)        CG2(2579,  C.3, ILE163)         CA(2593,  C.3, ARG164)          C(2594,  C.2, ARG164)      
+   CB(2595,  C.3, ARG164)         CG(2597,  C.3, ARG164)         CD(2598,  C.3, ARG164)         CZ(2602,C.cat, ARG164)         CA(2617,  C.3, GLN165)          C(2618,  C.2, GLN165)         CB(2619,  C.3, GLN165)         CG(2621,  C.3, GLN165)      
+   CD(2622,  C.2, GLN165)         CA(2634,  C.3, TYR166)          C(2635,  C.2, TYR166)         CB(2636,  C.3, TYR166)         CG(2638, C.ar, TYR166)        CD1(2639, C.ar, TYR166)        CD2(2640, C.ar, TYR166)        CE1(2641, C.ar, TYR166)      
+  CE2(2642, C.ar, TYR166)         CZ(2644, C.ar, TYR166)         CA(2655,  C.3, ARG167)          C(2656,  C.2, ARG167)         CB(2657,  C.3, ARG167)         CG(2659,  C.3, ARG167)         CD(2660,  C.3, ARG167)         CZ(2664,C.cat, ARG167)      
+   CA(2679,  C.3, LEU168)          C(2680,  C.2, LEU168)         CB(2681,  C.3, LEU168)         CG(2683,  C.3, LEU168)        CD1(2684,  C.3, LEU168)        CD2(2685,  C.3, LEU168)         CA(2698,  C.3, LYS169)          C(2699,  C.2, LYS169)      
+   CB(2700,  C.3, LYS169)         CG(2702,  C.3, LYS169)         CD(2703,  C.3, LYS169)         CE(2704,  C.3, LYS169)         CA(2720,  C.3, LYS170)          C(2721,  C.2, LYS170)         CB(2722,  C.3, LYS170)         CG(2724,  C.3, LYS170)      
+   CD(2725,  C.3, LYS170)         CE(2726,  C.3, LYS170)         CA(2742,  C.3, ILE171)          C(2743,  C.2, ILE171)         CB(2744,  C.3, ILE171)        CG1(2746,  C.3, ILE171)        CG2(2747,  C.3, ILE171)        CD1(2748,  C.3, ILE171)      
+   CA(2761,  C.3, SER172)          C(2762,  C.2, SER172)         CB(2763,  C.3, SER172)         CA(2772,  C.3, LYS173)          C(2773,  C.2, LYS173)         CB(2774,  C.3, LYS173)         CG(2776,  C.3, LYS173)         CD(2777,  C.3, LYS173)      
+   CE(2778,  C.3, LYS173)         CA(2794,  C.3, GLU174)         CB(2796,  C.3, GLU174)         CG(2798,  C.3, GLU174)         CD(2799,  C.2, GLU174)      
 
-HYDROGEN(82): 
-    H( 163,    H, GLY10 )          H( 171,    H, ALA11 )          H( 183,    H, VAL12 )          H( 196,    H, GLY13 )          H( 206,    H, VAL14 )          H( 219,    H, GLY15 )          H( 231,    H, LYS16 )        HZ1( 241,    H, LYS16 )[ch]  
-  HZ2( 242,    H, LYS16 )[ch]    HZ3( 243,    H, LYS16 )[ch]      H( 250,    H, SER17 )         HG( 254,    H, SER17 )         HH( 503,    H, TYR32 )          H( 537,    H, THR35 )        HG1( 543,    H, THR35 )          H( 552,    H, ILE36 )      
-    H( 572,    H, GLU37 )          H( 586,    H, ASP38 )        HG1( 908,    H, THR58 )          H( 914,    H, ALA59 )          H( 923,    H, GLY60 )       HE21( 941,    H, GLN61 )       HE22( 942,    H, GLN61 )          H( 952,    H, GLU62 )      
-    H( 967,    H, GLU63 )         HH( 993,    H, TYR64 )          H(1000,    H, SER65 )         HG(1004,    H, SER65 )          H(1010,    H, ALA66 )          H(1023,    H, MET67 )          H(1043,    H, ARG68 )         HE(1051,    H, ARG68 )[ch]  
- HH11(1052,    H, ARG68 )[ch]   HH12(1053,    H, ARG68 )[ch]   HH21(1054,    H, ARG68 )[ch]   HH22(1055,    H, ARG68 )[ch]      H(1075,    H, GLN70 )         HH(1105,    H, TYR71 )          H(1114,    H, MET72 )         HE(1142,    H, ARG73 )[ch]  
- HH21(1145,    H, ARG73 )[ch]   HH22(1146,    H, ARG73 )[ch]    HG1(1160,    H, THR74 )          H(1165,    H, GLY75 )          H(1247,    H, VAL81 )       HD22(1331,    H, ASN86 )       HD21(1332,    H, ASN86 )          H(1356,    H, LYS88 )      
-  HZ1(1366,    H, LYS88 )[ch]    HZ2(1367,    H, LYS88 )[ch]    HZ3(1368,    H, LYS88 )[ch]      H(1375,    H, SER89 )          H(1409,    H, GLU91 )          H(1423,    H, ASP92 )          H(1452,    H, HIS94 )        HD1(1460,    H, HIS94 )      
-  HD2(1461,    H, HIS94 )[CHO]   HE1(1462,    H, HIS94 )[CHO]     H(1469,    H, HIS95 )        HD1(1477,    H, HIS95 )        HD2(1478,    H, HIS95 )[CHO]   HE1(1479,    H, HIS95 )[CHO]     H(1492,    H, TYR96 )         HH(1500,    H, TYR96 )      
-   HE(1520,    H, ARG97 )[ch]   HH11(1521,    H, ARG97 )[ch]   HH12(1522,    H, ARG97 )[ch]      H(1547,    H, GLN99 )       HE21(1555,    H, GLN99 )       HE22(1556,    H, GLN99 )        HZ2(1596,    H, LYS101)[ch]    HZ3(1597,    H, LYS101)[ch]  
-    H(1609,    H, ARG102)         HE(1617,    H, ARG102)[ch]   HH11(1618,    H, ARG102)[ch]   HH12(1619,    H, ARG102)[ch]   HH21(1620,    H, ARG102)[ch]   HH22(1621,    H, ARG102)[ch]      H(1629,    H, VAL103)        HZ1(1657,    H, LYS104)[ch]  
-    H(1668,    H, ASP105)         HH(2160,    H, TYR137)      
+HYDROGEN(61): 
+   HH(  69,    H, TYR4  )          H(  79,    H, LYS5  )          H( 100,    H, LEU6  )          H( 118,    H, VAL7  )          H(1165,    H, GLY75 )          H(1218,    H, LEU79 )         HE(1520,    H, ARG97 )[ch]   HH11(1521,    H, ARG97 )[ch]  
+ HH12(1522,    H, ARG97 )[ch]   HH21(1523,    H, ARG97 )[ch]   HH22(1524,    H, ARG97 )[ch]    HZ1(1595,    H, LYS101)[ch]    HZ2(1596,    H, LYS101)[ch]    HZ3(1597,    H, LYS101)[ch]      H(1609,    H, ARG102)          H(1629,    H, VAL103)      
+  HZ1(1657,    H, LYS104)[ch]    HZ2(1658,    H, LYS104)[ch]    HZ3(1659,    H, LYS104)[ch]      H(1668,    H, ASP105)          H(1678,    H, SER106)         HG(1682,    H, SER106)          H(1692,    H, GLU107)          H(1706,    H, ASP108)      
+    H(1717,    H, VAL109)          H(1748,    H, MET111)          H(2165,    H, GLY138)          H(2176,    H, ILE139)          H(2492,    H, THR158)          H(2567,    H, GLU162)         HE(2611,    H, ARG164)[ch]   HH11(2612,    H, ARG164)[ch]  
+    H(2623,    H, GLN165)       HE21(2631,    H, GLN165)       HE22(2632,    H, GLN165)          H(2645,    H, TYR166)         HH(2653,    H, TYR166)         HE(2673,    H, ARG167)[ch]   HH11(2674,    H, ARG167)[ch]   HH12(2675,    H, ARG167)[ch]  
+ HH21(2676,    H, ARG167)[ch]   HH22(2677,    H, ARG167)[ch]      H(2686,    H, LEU168)          H(2706,    H, LYS169)        HZ1(2716,    H, LYS169)[ch]    HZ2(2717,    H, LYS169)[ch]    HZ3(2718,    H, LYS169)[ch]      H(2728,    H, LYS170)      
+  HZ1(2738,    H, LYS170)[ch]    HZ2(2739,    H, LYS170)[ch]    HZ3(2740,    H, LYS170)[ch]      H(2749,    H, ILE171)          H(2766,    H, SER172)         HG(2770,    H, SER172)          H(2780,    H, LYS173)        HZ1(2790,    H, LYS173)[ch]  
+  HZ2(2791,    H, LYS173)[ch]    HZ3(2792,    H, LYS173)[ch]      H(2802,    H, GLU174)          H(2817,    H, GLU175)        HZ1(2842,    H, LYS176)[ch]  
 
-Protein setup time: 0.58s
+Protein setup time: 0.66s
 

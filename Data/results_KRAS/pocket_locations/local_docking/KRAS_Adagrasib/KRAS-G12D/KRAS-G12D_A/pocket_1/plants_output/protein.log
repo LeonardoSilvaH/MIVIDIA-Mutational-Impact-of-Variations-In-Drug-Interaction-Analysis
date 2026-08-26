@@ -810,5 +810,5 @@ HYDROGEN(99):
   HZ3(2307,    H, LYS147)[ch]    HG1(2321,    H, THR148)          H(2333,    H, ARG149)         HE(2341,    H, ARG149)[ch]   HH11(2342,    H, ARG149)[ch]   HH21(2344,    H, ARG149)[ch]      H(2353,    H, GLN150)          H(2374,    H, ARG151)      
     H(2394,    H, VAL152)          H(2412,    H, GLU153)          H(2426,    H, ASP154)      
 
-Protein setup time: 0.82s
+Protein setup time: 1.1s
 

@@ -10,7 +10,7 @@ from tqdm import tqdm
 # ==========================================================
 
 MATCHED_POCKETS_FILE = "Analysis/02_matched_pockets/matched_pockets.csv"
-POSE_DATA_FILE = "Data/results_merged/pocket_locations/pose_data.json"
+POSE_DATA_FILE = "Data/results_KRAS/pocket_locations/pose_data.json"
 
 OUTPUT_FULL = "Analysis/03_compute_delta_scores/matched_pockets_scored.csv"
 OUTPUT_SUMMARY = "Analysis/03_compute_delta_scores/docking_summary.csv"

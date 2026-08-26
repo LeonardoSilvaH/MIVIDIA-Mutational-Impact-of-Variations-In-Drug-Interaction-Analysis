@@ -921,5 +921,5 @@ HYDROGEN(245):
  HE22(2628,    H, GLN165)          H(2641,    H, TYR166)         HH(2649,    H, TYR166)         HE(2669,    H, ARG167)[ch]   HH11(2670,    H, ARG167)[ch]   HH12(2671,    H, ARG167)[ch]   HH21(2672,    H, ARG167)[ch]   HH22(2673,    H, ARG167)[ch]  
     H(2682,    H, LEU168)        HZ2(2713,    H, LYS169)[ch]    HZ3(2714,    H, LYS169)[ch]    HZ1(2734,    H, LYS170)[ch]    HZ3(2736,    H, LYS170)[ch]  
 
-Protein setup time: 1.9s
+Protein setup time: 2.5s
 
