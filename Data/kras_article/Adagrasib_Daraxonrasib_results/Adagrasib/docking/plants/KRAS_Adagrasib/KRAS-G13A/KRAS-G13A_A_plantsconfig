@@ -1,0 +1,22 @@
+
+# scoring function and search settings
+scoring_function chemplp
+search_speed speed1
+
+# input
+protein_file KRAS-G13A_A_SPORES.mol2
+ligand_file KRAS_Adagrasib_SPORES.mol2
+
+# output
+output_dir KRAS-G13A_A
+
+# write single mol2 files (e.g. for RMSD calculation)
+write_multi_mol2 0
+
+# binding site definition
+bindingsite_center -7.1519999504089355 1.2599999904632568 1.49399995803833
+bindingsite_radius 80.0
+
+# cluster algorithm
+cluster_structures 100
+cluster_rmsd 2.0

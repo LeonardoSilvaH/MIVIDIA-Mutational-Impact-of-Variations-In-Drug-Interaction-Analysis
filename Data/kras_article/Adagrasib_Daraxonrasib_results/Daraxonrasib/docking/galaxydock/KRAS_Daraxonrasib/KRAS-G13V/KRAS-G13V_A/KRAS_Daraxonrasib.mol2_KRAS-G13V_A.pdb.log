@@ -1,0 +1,12 @@
+ERROR: failed in getting bnd parm for LN.amtLN.3n
+ERROR: failed in getting bnd parm for LN.3r4LC.3n
+ERROR: failed in getting bnd parm for LC.3r3LC.2r5
+ERROR: failed in getting bnd parm for LC.3r5LC.3r4
+============================================================
+Initializing LigDock CSA...
+Done.
+Warning: ring file not found.
+Warning: first alternative ring file not found.
+Warning: second alternative ring file not found.
+Considering ring structure as rigid
+Generating first bank...

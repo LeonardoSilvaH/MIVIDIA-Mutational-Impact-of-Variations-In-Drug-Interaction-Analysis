@@ -1,0 +1,702 @@
+{
+    "1": {
+        "rmsd": 21.819,
+        "score": -41.713,
+        "autodock": -46.737,
+        "drug_score": -17.287,
+        "internal_energy": 40.858
+    },
+    "2": {
+        "rmsd": 25.317,
+        "score": -41.505,
+        "autodock": -58.983,
+        "drug_score": -22.177,
+        "internal_energy": 43.933
+    },
+    "3": {
+        "rmsd": 23.855,
+        "score": -40.87,
+        "autodock": -55.339,
+        "drug_score": -22.004,
+        "internal_energy": 45.71
+    },
+    "4": {
+        "rmsd": 42.855,
+        "score": -38.459,
+        "autodock": -37.506,
+        "drug_score": -20.577,
+        "internal_energy": 42.655
+    },
+    "5": {
+        "rmsd": 19.44,
+        "score": -37.367,
+        "autodock": -49.043,
+        "drug_score": -18.856,
+        "internal_energy": 42.316
+    },
+    "6": {
+        "rmsd": 23.297,
+        "score": -37.236,
+        "autodock": -49.947,
+        "drug_score": -14.965,
+        "internal_energy": 43.223
+    },
+    "7": {
+        "rmsd": 21.901,
+        "score": -36.829,
+        "autodock": -43.287,
+        "drug_score": -16.809,
+        "internal_energy": 42.284
+    },
+    "8": {
+        "rmsd": 19.688,
+        "score": -36.132,
+        "autodock": -48.235,
+        "drug_score": -16.8,
+        "internal_energy": 40.687
+    },
+    "9": {
+        "rmsd": 36.5,
+        "score": -35.808,
+        "autodock": -39.596,
+        "drug_score": -19.252,
+        "internal_energy": 40.339
+    },
+    "10": {
+        "rmsd": 24.677,
+        "score": -34.459,
+        "autodock": -50.864,
+        "drug_score": -19.266,
+        "internal_energy": 42.954
+    },
+    "11": {
+        "rmsd": 41.632,
+        "score": -32.807,
+        "autodock": -34.32,
+        "drug_score": -17.676,
+        "internal_energy": 39.845
+    },
+    "12": {
+        "rmsd": 20.507,
+        "score": -32.157,
+        "autodock": -44.576,
+        "drug_score": -15.281,
+        "internal_energy": 41.143
+    },
+    "13": {
+        "rmsd": 21.961,
+        "score": -31.718,
+        "autodock": -42.975,
+        "drug_score": -18.494,
+        "internal_energy": 43.105
+    },
+    "14": {
+        "rmsd": 35.227,
+        "score": -31.431,
+        "autodock": -40.548,
+        "drug_score": -19.358,
+        "internal_energy": 41.213
+    },
+    "15": {
+        "rmsd": 40.867,
+        "score": -31.113,
+        "autodock": -34.246,
+        "drug_score": -18.404,
+        "internal_energy": 40.681
+    },
+    "16": {
+        "rmsd": 40.778,
+        "score": -30.848,
+        "autodock": -34.075,
+        "drug_score": -18.62,
+        "internal_energy": 40.99
+    },
+    "17": {
+        "rmsd": 40.674,
+        "score": -30.461,
+        "autodock": -34.329,
+        "drug_score": -18.861,
+        "internal_energy": 40.925
+    },
+    "18": {
+        "rmsd": 35.981,
+        "score": -30.425,
+        "autodock": -36.143,
+        "drug_score": -16.2,
+        "internal_energy": 41.885
+    },
+    "19": {
+        "rmsd": 23.864,
+        "score": -30.172,
+        "autodock": -40.359,
+        "drug_score": -13.332,
+        "internal_energy": 41.153
+    },
+    "20": {
+        "rmsd": 38.894,
+        "score": -30.044,
+        "autodock": -33.446,
+        "drug_score": -15.396,
+        "internal_energy": 39.089
+    },
+    "21": {
+        "rmsd": 23.889,
+        "score": -29.685,
+        "autodock": -47.447,
+        "drug_score": -14.988,
+        "internal_energy": 42.093
+    },
+    "22": {
+        "rmsd": 33.784,
+        "score": -29.613,
+        "autodock": -44.912,
+        "drug_score": -16.412,
+        "internal_energy": 41.296
+    },
+    "23": {
+        "rmsd": 39.629,
+        "score": -29.331,
+        "autodock": -32.446,
+        "drug_score": -15.144,
+        "internal_energy": 40.011
+    },
+    "24": {
+        "rmsd": 21.082,
+        "score": -28.514,
+        "autodock": -38.883,
+        "drug_score": -12.392,
+        "internal_energy": 40.775
+    },
+    "25": {
+        "rmsd": 29.305,
+        "score": -28.278,
+        "autodock": -39.908,
+        "drug_score": -15.755,
+        "internal_energy": 41.756
+    },
+    "26": {
+        "rmsd": 21.164,
+        "score": -28.206,
+        "autodock": -35.662,
+        "drug_score": -12.144,
+        "internal_energy": 40.408
+    },
+    "27": {
+        "rmsd": 28.266,
+        "score": -27.392,
+        "autodock": -40.891,
+        "drug_score": -15.836,
+        "internal_energy": 39.812
+    },
+    "28": {
+        "rmsd": 43.027,
+        "score": -27.368,
+        "autodock": -31.828,
+        "drug_score": -16.122,
+        "internal_energy": 42.756
+    },
+    "29": {
+        "rmsd": 38.675,
+        "score": -26.286,
+        "autodock": -34.512,
+        "drug_score": -19.886,
+        "internal_energy": 40.695
+    },
+    "30": {
+        "rmsd": 21.496,
+        "score": -26.037,
+        "autodock": -38.179,
+        "drug_score": -11.798,
+        "internal_energy": 41.615
+    },
+    "31": {
+        "rmsd": 28.425,
+        "score": -26.004,
+        "autodock": -45.124,
+        "drug_score": -18.852,
+        "internal_energy": 42.601
+    },
+    "32": {
+        "rmsd": 39.692,
+        "score": -25.68,
+        "autodock": -29.101,
+        "drug_score": -14.762,
+        "internal_energy": 41.672
+    },
+    "33": {
+        "rmsd": 31.475,
+        "score": -25.251,
+        "autodock": -39.139,
+        "drug_score": -8.921,
+        "internal_energy": 40.077
+    },
+    "34": {
+        "rmsd": 27.45,
+        "score": -25.244,
+        "autodock": -39.278,
+        "drug_score": -19.134,
+        "internal_energy": 41.025
+    },
+    "35": {
+        "rmsd": 10.31,
+        "score": -24.69,
+        "autodock": -37.703,
+        "drug_score": -16.061,
+        "internal_energy": 41.751
+    },
+    "36": {
+        "rmsd": 18.554,
+        "score": -24.28,
+        "autodock": -38.205,
+        "drug_score": -13.744,
+        "internal_energy": 42.611
+    },
+    "37": {
+        "rmsd": 38.555,
+        "score": -23.788,
+        "autodock": -30.541,
+        "drug_score": -14.427,
+        "internal_energy": 39.572
+    },
+    "38": {
+        "rmsd": 22.389,
+        "score": -23.481,
+        "autodock": -32.035,
+        "drug_score": -12.97,
+        "internal_energy": 39.096
+    },
+    "39": {
+        "rmsd": 24.355,
+        "score": -22.648,
+        "autodock": -37.426,
+        "drug_score": -17.343,
+        "internal_energy": 40.813
+    },
+    "40": {
+        "rmsd": 28.341,
+        "score": -22.619,
+        "autodock": -34.587,
+        "drug_score": -13.04,
+        "internal_energy": 38.837
+    },
+    "41": {
+        "rmsd": 21.891,
+        "score": -22.372,
+        "autodock": -33.833,
+        "drug_score": -13.904,
+        "internal_energy": 43.544
+    },
+    "42": {
+        "rmsd": 20.405,
+        "score": -21.758,
+        "autodock": -41.293,
+        "drug_score": -15.059,
+        "internal_energy": 43.499
+    },
+    "43": {
+        "rmsd": 33.116,
+        "score": -21.35,
+        "autodock": -32.562,
+        "drug_score": -9.712,
+        "internal_energy": 41.123
+    },
+    "44": {
+        "rmsd": 43.124,
+        "score": -21.31,
+        "autodock": -22.183,
+        "drug_score": -14.883,
+        "internal_energy": 39.632
+    },
+    "45": {
+        "rmsd": 33.026,
+        "score": -21.157,
+        "autodock": -30.009,
+        "drug_score": -14.403,
+        "internal_energy": 39.773
+    },
+    "46": {
+        "rmsd": 40.103,
+        "score": -21.005,
+        "autodock": -25.64,
+        "drug_score": -14.963,
+        "internal_energy": 42.203
+    },
+    "47": {
+        "rmsd": 36.687,
+        "score": -20.993,
+        "autodock": -26.747,
+        "drug_score": -14.271,
+        "internal_energy": 41.213
+    },
+    "48": {
+        "rmsd": 29.386,
+        "score": -20.931,
+        "autodock": -43.382,
+        "drug_score": -12.182,
+        "internal_energy": 43.559
+    },
+    "49": {
+        "rmsd": 9.95,
+        "score": -20.749,
+        "autodock": -38.321,
+        "drug_score": -16.071,
+        "internal_energy": 41.275
+    },
+    "50": {
+        "rmsd": 17.955,
+        "score": -20.709,
+        "autodock": -25.546,
+        "drug_score": -13.251,
+        "internal_energy": 40.965
+    },
+    "51": {
+        "rmsd": 35.57,
+        "score": -20.483,
+        "autodock": -26.906,
+        "drug_score": -16.03,
+        "internal_energy": 42.059
+    },
+    "52": {
+        "rmsd": 36.322,
+        "score": -20.315,
+        "autodock": -39.235,
+        "drug_score": -18.518,
+        "internal_energy": 42.044
+    },
+    "53": {
+        "rmsd": 11.753,
+        "score": -20.248,
+        "autodock": -38.947,
+        "drug_score": -9.827,
+        "internal_energy": 41.55
+    },
+    "54": {
+        "rmsd": 27.374,
+        "score": -19.527,
+        "autodock": -28.364,
+        "drug_score": -13.432,
+        "internal_energy": 42.763
+    },
+    "55": {
+        "rmsd": 27.4,
+        "score": -19.43,
+        "autodock": -27.388,
+        "drug_score": -10.58,
+        "internal_energy": 39.741
+    },
+    "56": {
+        "rmsd": 35.465,
+        "score": -19.336,
+        "autodock": -34.528,
+        "drug_score": -15.614,
+        "internal_energy": 39.956
+    },
+    "57": {
+        "rmsd": 13.995,
+        "score": -19.254,
+        "autodock": -31.468,
+        "drug_score": -13.177,
+        "internal_energy": 39.765
+    },
+    "58": {
+        "rmsd": 39.216,
+        "score": -19.248,
+        "autodock": -24.412,
+        "drug_score": -13.524,
+        "internal_energy": 39.518
+    },
+    "59": {
+        "rmsd": 32.569,
+        "score": -18.913,
+        "autodock": -34.356,
+        "drug_score": -18.402,
+        "internal_energy": 42.723
+    },
+    "60": {
+        "rmsd": 10.546,
+        "score": -18.885,
+        "autodock": -33.197,
+        "drug_score": -14.97,
+        "internal_energy": 40.305
+    },
+    "61": {
+        "rmsd": 32.46,
+        "score": -18.334,
+        "autodock": -31.809,
+        "drug_score": -12.758,
+        "internal_energy": 40.325
+    },
+    "62": {
+        "rmsd": 24.019,
+        "score": -18.329,
+        "autodock": -37.759,
+        "drug_score": -12.351,
+        "internal_energy": 40.402
+    },
+    "63": {
+        "rmsd": 18.24,
+        "score": -18.313,
+        "autodock": -38.753,
+        "drug_score": -10.215,
+        "internal_energy": 42.45
+    },
+    "64": {
+        "rmsd": 33.736,
+        "score": -18.211,
+        "autodock": -33.065,
+        "drug_score": -12.903,
+        "internal_energy": 39.078
+    },
+    "65": {
+        "rmsd": 31.45,
+        "score": -18.026,
+        "autodock": -28.101,
+        "drug_score": -14.492,
+        "internal_energy": 40.254
+    },
+    "66": {
+        "rmsd": 23.887,
+        "score": -17.834,
+        "autodock": -40.182,
+        "drug_score": -13.845,
+        "internal_energy": 50.053
+    },
+    "67": {
+        "rmsd": 28.311,
+        "score": -17.732,
+        "autodock": -30.467,
+        "drug_score": -11.733,
+        "internal_energy": 39.782
+    },
+    "68": {
+        "rmsd": 11.015,
+        "score": -17.127,
+        "autodock": -36.064,
+        "drug_score": -12.331,
+        "internal_energy": 41.014
+    },
+    "69": {
+        "rmsd": 19.745,
+        "score": -17.093,
+        "autodock": -37.108,
+        "drug_score": -10.79,
+        "internal_energy": 41.359
+    },
+    "70": {
+        "rmsd": 33.907,
+        "score": -17.056,
+        "autodock": -30.478,
+        "drug_score": -12.462,
+        "internal_energy": 40.34
+    },
+    "71": {
+        "rmsd": 33.661,
+        "score": -17.041,
+        "autodock": -30.526,
+        "drug_score": -8.756,
+        "internal_energy": 40.591
+    },
+    "72": {
+        "rmsd": 26.244,
+        "score": -17.012,
+        "autodock": -26.666,
+        "drug_score": -14.064,
+        "internal_energy": 40.221
+    },
+    "73": {
+        "rmsd": 26.398,
+        "score": -16.337,
+        "autodock": -33.035,
+        "drug_score": -10.335,
+        "internal_energy": 39.77
+    },
+    "74": {
+        "rmsd": 30.607,
+        "score": -16.21,
+        "autodock": -26.064,
+        "drug_score": -9.79,
+        "internal_energy": 40.272
+    },
+    "75": {
+        "rmsd": 13.761,
+        "score": -16.102,
+        "autodock": -38.474,
+        "drug_score": -14.591,
+        "internal_energy": 39.598
+    },
+    "76": {
+        "rmsd": 33.628,
+        "score": -16.1,
+        "autodock": -28.698,
+        "drug_score": -16.258,
+        "internal_energy": 43.247
+    },
+    "77": {
+        "rmsd": 24.38,
+        "score": -15.867,
+        "autodock": -35.865,
+        "drug_score": -11.329,
+        "internal_energy": 38.922
+    },
+    "78": {
+        "rmsd": 20.801,
+        "score": -15.811,
+        "autodock": -23.779,
+        "drug_score": -10.222,
+        "internal_energy": 39.825
+    },
+    "79": {
+        "rmsd": 31.967,
+        "score": -15.376,
+        "autodock": -27.798,
+        "drug_score": -12.145,
+        "internal_energy": 39.248
+    },
+    "80": {
+        "rmsd": 31.036,
+        "score": -15.185,
+        "autodock": -27.452,
+        "drug_score": -10.045,
+        "internal_energy": 40.251
+    },
+    "81": {
+        "rmsd": 34.573,
+        "score": -15.129,
+        "autodock": -41.466,
+        "drug_score": -12.662,
+        "internal_energy": 40.515
+    },
+    "82": {
+        "rmsd": 33.336,
+        "score": -15.008,
+        "autodock": -33.261,
+        "drug_score": -10.39,
+        "internal_energy": 40.353
+    },
+    "83": {
+        "rmsd": 33.102,
+        "score": -14.895,
+        "autodock": -32.373,
+        "drug_score": -12.501,
+        "internal_energy": 40.174
+    },
+    "84": {
+        "rmsd": 28.724,
+        "score": -14.625,
+        "autodock": -29.384,
+        "drug_score": -13.381,
+        "internal_energy": 40.539
+    },
+    "85": {
+        "rmsd": 23.425,
+        "score": -14.565,
+        "autodock": -28.534,
+        "drug_score": -11.02,
+        "internal_energy": 39.284
+    },
+    "86": {
+        "rmsd": 27.982,
+        "score": -14.083,
+        "autodock": -31.182,
+        "drug_score": -11.682,
+        "internal_energy": 40.178
+    },
+    "87": {
+        "rmsd": 31.016,
+        "score": -14.014,
+        "autodock": -30.826,
+        "drug_score": -10.574,
+        "internal_energy": 41.701
+    },
+    "88": {
+        "rmsd": 29.992,
+        "score": -13.671,
+        "autodock": -36.895,
+        "drug_score": -11.644,
+        "internal_energy": 41.524
+    },
+    "89": {
+        "rmsd": 41.225,
+        "score": -13.332,
+        "autodock": -21.616,
+        "drug_score": -10.622,
+        "internal_energy": 38.805
+    },
+    "90": {
+        "rmsd": 32.103,
+        "score": -13.3,
+        "autodock": -29.245,
+        "drug_score": -10.653,
+        "internal_energy": 39.792
+    },
+    "91": {
+        "rmsd": 32.834,
+        "score": -13.24,
+        "autodock": -21.241,
+        "drug_score": -8.696,
+        "internal_energy": 38.486
+    },
+    "92": {
+        "rmsd": 30.986,
+        "score": -13.155,
+        "autodock": -21.785,
+        "drug_score": -9.302,
+        "internal_energy": 39.016
+    },
+    "93": {
+        "rmsd": 46.307,
+        "score": -12.986,
+        "autodock": -24.453,
+        "drug_score": -12.55,
+        "internal_energy": 47.982
+    },
+    "94": {
+        "rmsd": 28.239,
+        "score": -12.339,
+        "autodock": -35.038,
+        "drug_score": -9.11,
+        "internal_energy": 40.118
+    },
+    "95": {
+        "rmsd": 35.412,
+        "score": -12.206,
+        "autodock": -22.275,
+        "drug_score": -10.319,
+        "internal_energy": 39.75
+    },
+    "96": {
+        "rmsd": 34.572,
+        "score": -12.148,
+        "autodock": -27.659,
+        "drug_score": -7.247,
+        "internal_energy": 41.338
+    },
+    "97": {
+        "rmsd": 26.293,
+        "score": -11.829,
+        "autodock": -33.9,
+        "drug_score": -13.241,
+        "internal_energy": 40.607
+    },
+    "98": {
+        "rmsd": 30.712,
+        "score": -11.631,
+        "autodock": -22.154,
+        "drug_score": -9.437,
+        "internal_energy": 39.809
+    },
+    "99": {
+        "rmsd": 29.789,
+        "score": -11.514,
+        "autodock": -36.641,
+        "drug_score": -10.377,
+        "internal_energy": 40.133
+    },
+    "100": {
+        "rmsd": 30.565,
+        "score": -11.495,
+        "autodock": -33.044,
+        "drug_score": -13.539,
+        "internal_energy": 39.552
+    }
+}

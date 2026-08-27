@@ -1,0 +1,26 @@
+!==============================================
+! I/O Parameters
+!==============================================
+data_directory    /hd/leo/cobdock/bin/docking/GalaxyDock3/data/
+infile_pdb        KRAS-G12R_A.pdb
+infile_ligand     KRAS_Adagrasib.mol2
+top_type          polarh
+fix_type          all
+ligdock_prefix    GD3
+!==============================================
+! Grid Options
+!==============================================
+grid_box_cntr     -2.328 -2.273 2.439
+grid_n_elem       238 118 115
+grid_width        0.375
+!==============================================
+! Energy Parameters
+!==============================================
+weight_type              GalaxyDock3
+!==============================================
+! Initial Bank Parameters
+!==============================================
+first_bank               rand
+max_trial                50000
+e0max                    1000.0
+e1max                    1000000.0

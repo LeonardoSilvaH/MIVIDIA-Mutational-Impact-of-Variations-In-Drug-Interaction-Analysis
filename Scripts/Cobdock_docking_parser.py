@@ -3,78 +3,41 @@
 """
 merge_vina_jsons.py
 
-Recursively finds AutoDock Vina *.log.json files and converts them into
-standardized JSON files while preserving docking-mode information and
-source provenance.
+Recursively finds all AutoDock Vina *.log.json files and merges them
+into ONE standardized JSON file while preserving provenance.
 
-Expected input structure (approximately):
+Example input:
 
-    ROOT/
-    ├── Adagrasib/
-    │   └── docking/
-    │       └── vina/
-    │           └── KRAS_Adagrasib/
-    │               └── KRAS-G12A/
-    │                   └── KRAS-G12A_A/
-    │                       └── KRAS_Adagrasib_KRAS-G12A_A.log.json
+ROOT/
+├── Adagrasib/
+│   └── docking/
+│       └── vina/
+│           └── KRAS_Adagrasib/
+│               ├── KRAS-G12A/
+│               │   └── KRAS-G12A_A/
+│               │       └── KRAS_Adagrasib_KRAS-G12A_A.log.json
+│               ├── KRAS-G12C/
+│               │   └── ...
+│               └── ...
+│
+└── Daraxonrasib/
+    └── docking/
+        └── vina/
+            └── ...
 
-The resulting output will be:
+Output:
 
-    OUTPUT/
-    ├── KRAS_Adagrasib_KRAS-G12A_A.json
-    ├── KRAS_Adagrasib_KRAS-G12C_A.json
-    └── ...
+ROOT/
+└── merged_vina_results.json
 
-    OUTPUT/
-    └── vina_merge_summary.csv
-
-
-Usage:
-
-    python merge_vina_jsons.py /path/to/results
-
-Optional:
-
-    python merge_vina_jsons.py /path/to/results \
-        --output merged_vina
-
-    python merge_vina_jsons.py /path/to/results \
-        --output merged_vina \
-        --overwrite
+The resulting JSON contains ALL docking runs and ALL docking modes.
 """
 
 import argparse
-import csv
 import json
-import re
 import sys
 from pathlib import Path
 from datetime import datetime
-
-
-# -------------------------------------------------------------------------
-# Filename parsing
-# -------------------------------------------------------------------------
-
-# Expected filename:
-#
-# KRAS_Adagrasib_KRAS-G12A_A.log.json
-#
-# We deliberately use the final components rather than assuming that
-# protein/drug names contain no underscores.
-#
-# Pattern:
-#   <protein>_<drug>_<mutation>_<chain>.log.json
-#
-# Mutation examples:
-#   KRAS-G12A
-#   BRAF-V600E
-#   RAF1-S257L
-#   MYC-P74A
-#
-FILENAME_PATTERN = re.compile(
-    r"^(?P<prefix>.+)_(?P<mutation>[A-Za-z0-9]+-[A-Za-z0-9]+)_(?P<chain>[A-Za-z0-9]+)\.log\.json$"
-)
 
 
 # -------------------------------------------------------------------------
@@ -83,109 +46,100 @@ FILENAME_PATTERN = re.compile(
 
 def extract_metadata(json_path: Path):
     """
-    Extract protein, drug, mutation, and chain from the filename/path.
+    Extract protein, drug, mutation, and chain from the directory structure.
+
+    Expected structure:
+
+        <protein>_<drug>/
+            <mutation>/
+                <mutation>_<chain>/
+                    file.log.json
 
     Example:
 
-        KRAS_Adagrasib_KRAS-G12A_A.log.json
+        KRAS_Adagrasib/
+            KRAS-G12A/
+                KRAS-G12A_A/
+                    KRAS_Adagrasib_KRAS-G12A_A.log.json
 
-    becomes:
+    Also handles:
 
-        protein  = KRAS
-        drug     = Adagrasib
-        mutation = KRAS-G12A
-        chain    = A
-
-    The prefix before the mutation is split using the expected protein/drug
-    directory structure when possible.
+        KRAS-WILD-TYE/
+            KRAS-WILD-TYE_A/
+                KRAS_Daraxonrasib_KRAS-WILD-TYE_A.log.json
     """
 
     filename = json_path.name
 
-    match = FILENAME_PATTERN.match(filename)
-
-    if not match:
+    if not filename.endswith(".log.json"):
         raise ValueError(
-            f"Filename does not match expected pattern: {filename}"
+            f"File does not end with .log.json: {filename}"
         )
 
-    prefix = match.group("prefix")
-    mutation = match.group("mutation")
-    chain = match.group("chain")
-
     # -------------------------------------------------------------
-    # Prefer information from the directory structure.
-    #
+    # Mutation
+    # -------------------------------------------------------------
+
     # Example:
     #
-    # .../vina/KRAS_Adagrasib/
-    #     KRAS-G12A/
-    #     KRAS-G12A_A/
+    # parent:
+    #     KRAS-G12A_A
     #
-    # -------------------------------------------------------------
+    # parent.parent:
+    #     KRAS-G12A
 
-    parts = json_path.parts
+    mutation_dir = json_path.parent.parent
 
-    protein = None
-    drug = None
+    mutation = mutation_dir.name
 
-    # Find the directory immediately containing the mutation directory.
-    #
-    # We search backwards because the structure is expected to contain:
-    #
-    #   <protein>_<drug>/<mutation>/<mutation>_<chain>/
-    #
-    mutation_dir = None
-
-    for part in reversed(parts):
-        if part == mutation:
-            mutation_dir = part
-            break
-
-    if mutation_dir is not None:
-        try:
-            mutation_index = parts.index(mutation_dir)
-
-            if mutation_index >= 1:
-                protein_drug_dir = parts[mutation_index - 1]
-
-                # Expected:
-                # KRAS_Adagrasib
-                #
-                # Use the first underscore as separator.
-                if "_" in protein_drug_dir:
-                    protein, drug = protein_drug_dir.split("_", 1)
-
-        except (ValueError, IndexError):
-            pass
+    if not mutation:
+        raise ValueError(
+            f"Could not determine mutation from: {json_path}"
+        )
 
     # -------------------------------------------------------------
-    # Fallback: derive protein/drug from filename prefix.
+    # Protein + drug
     # -------------------------------------------------------------
 
-    if protein is None or drug is None:
+    # Example:
+    #
+    # KRAS-G12A/
+    #     ↑
+    # mutation_dir
+    #
+    # KRAS_Adagrasib/
+    # ↑
+    # mutation_dir.parent
 
-        # Try to identify the protein from the mutation.
-        mutation_protein = mutation.split("-", 1)[0]
+    protein_drug_dir = mutation_dir.parent.name
 
-        if prefix.startswith(mutation_protein + "_"):
-            remainder = prefix[len(mutation_protein) + 1:]
+    if "_" not in protein_drug_dir:
+        raise ValueError(
+            f"Could not determine protein/drug from directory: "
+            f"{protein_drug_dir}"
+        )
 
-            protein = mutation_protein
-            drug = remainder
+    protein, drug = protein_drug_dir.split("_", 1)
 
-        else:
-            # Last-resort interpretation:
-            # first underscore-separated component = protein
-            # remaining components = drug
-            prefix_parts = prefix.split("_")
+    # -------------------------------------------------------------
+    # Chain
+    # -------------------------------------------------------------
 
-            if len(prefix_parts) >= 2:
-                protein = prefix_parts[0]
-                drug = "_".join(prefix_parts[1:])
-            else:
-                protein = prefix
-                drug = "UNKNOWN"
+    # Example:
+    #
+    # KRAS-G12A_A
+    #
+    # Split from the final underscore.
+
+    pose_directory = json_path.parent.name
+
+    if "_" not in pose_directory:
+        raise ValueError(
+            f"Could not determine chain from directory: "
+            f"{pose_directory}"
+        )
+
+    chain = pose_directory.rsplit("_", 1)[1]
 
     return {
         "protein": protein,
@@ -196,35 +150,39 @@ def extract_metadata(json_path: Path):
 
 
 # -------------------------------------------------------------------------
-# JSON validation
+# Load Vina JSON
 # -------------------------------------------------------------------------
 
 def load_vina_json(json_path: Path):
     """
-    Load and validate a Vina log JSON.
+    Load the original Vina JSON and preserve all docking modes.
 
-    Expected structure:
+    Expected format:
 
-    {
-        "1": {
-            "mode": 1,
-            "energy": -11.8,
-            "rmsd_lb": 0.0,
-            "rmsd_ub": 0.0,
-            "pKd": 8.65
-        },
-        ...
-    }
+        {
+            "1": {
+                "mode": 1,
+                "energy": -11.8,
+                "rmsd_lb": 0.0,
+                "rmsd_ub": 0.0,
+                "pKd": 8.65
+            },
+            ...
+        }
     """
 
-    with open(json_path, "r", encoding="utf-8") as f:
+    with open(
+        json_path,
+        "r",
+        encoding="utf-8"
+    ) as f:
+
         data = json.load(f)
 
     if not isinstance(data, dict):
-        raise ValueError("Top-level JSON object is not a dictionary.")
-
-    if not data:
-        raise ValueError("JSON contains no docking modes.")
+        raise ValueError(
+            "JSON top-level object is not a dictionary."
+        )
 
     valid_modes = {}
 
@@ -233,30 +191,26 @@ def load_vina_json(json_path: Path):
         if not isinstance(value, dict):
             continue
 
-        # Require at least energy and mode.
-        if "energy" not in value:
-            continue
-
         if "mode" not in value:
             continue
 
-        try:
-            energy = float(value["energy"])
-        except (TypeError, ValueError):
+        if "energy" not in value:
             continue
 
         try:
             mode = int(value["mode"])
+            energy = float(value["energy"])
+
         except (TypeError, ValueError):
             continue
 
-        # Preserve all available information.
         mode_data = {
             "mode": mode,
-            "energy": energy,
+            "energy": energy
         }
 
-        # Optional fields.
+        # Preserve optional values.
+
         if "rmsd_lb" in value:
             mode_data["rmsd_lb"] = value["rmsd_lb"]
 
@@ -270,51 +224,35 @@ def load_vina_json(json_path: Path):
 
     if not valid_modes:
         raise ValueError(
-            "No valid docking modes containing 'mode' and 'energy' were found."
+            "No valid docking modes found."
         )
 
     return valid_modes
 
 
 # -------------------------------------------------------------------------
-# Find input JSON files
-# -------------------------------------------------------------------------
-
-def find_vina_jsons(root_dir: Path):
-    """
-    Recursively find all *.log.json files.
-    """
-
-    files = sorted(root_dir.rglob("*.log.json"))
-
-    return files
-
-
-# -------------------------------------------------------------------------
-# Determine best docking mode
+# Find best docking mode
 # -------------------------------------------------------------------------
 
 def find_best_mode(modes):
     """
-    Return the mode with the lowest (most negative) Vina energy.
+    Select the mode with the lowest (most negative) Vina energy.
     """
 
-    best_mode = min(
+    return min(
         modes.values(),
-        key=lambda x: x["energy"]
+        key=lambda mode: mode["energy"]
     )
 
-    return best_mode
-
 
 # -------------------------------------------------------------------------
-# Create standardized record
+# Build docking-run record
 # -------------------------------------------------------------------------
 
-def build_record(json_path: Path, root_dir: Path):
-    """
-    Build the standardized output representation.
-    """
+def build_record(
+    json_path: Path,
+    root_dir: Path
+):
 
     metadata = extract_metadata(json_path)
 
@@ -323,67 +261,60 @@ def build_record(json_path: Path, root_dir: Path):
     best_mode = find_best_mode(modes)
 
     try:
-        relative_path = json_path.relative_to(root_dir)
+        relative_path = str(
+            json_path.relative_to(root_dir)
+        )
+
     except ValueError:
-        relative_path = json_path
+        relative_path = str(json_path)
+
+    # Unique identifier for this docking run.
+
+    run_id = (
+        f"{metadata['protein']}_"
+        f"{metadata['drug']}_"
+        f"{metadata['mutation']}_"
+        f"{metadata['chain']}"
+    )
 
     record = {
-        "schema_version": "1.0",
 
         "metadata": {
             "protein": metadata["protein"],
             "drug": metadata["drug"],
             "mutation": metadata["mutation"],
-            "chain": metadata["chain"],
+            "chain": metadata["chain"]
         },
 
         "source": {
-            "file": str(relative_path),
-            "absolute_path": str(json_path.resolve()),
-            "merged_at": datetime.now().isoformat(timespec="seconds"),
+            "file": relative_path,
+            "absolute_path": str(
+                json_path.resolve()
+            )
         },
 
         "docking": {
-            "engine": "AutoDock Vina",
+
             "number_of_modes": len(modes),
 
             "best_mode": {
                 "mode": best_mode["mode"],
-                "energy": best_mode["energy"],
+                "energy": best_mode["energy"]
             },
 
-            "modes": modes,
+            "modes": modes
         }
     }
 
-    # Preserve pKd of best mode when available.
+    # Preserve pKd for best mode.
+
     if "pKd" in best_mode:
-        record["docking"]["best_mode"]["pKd"] = best_mode["pKd"]
 
-    return record
+        record["docking"]["best_mode"]["pKd"] = (
+            best_mode["pKd"]
+        )
 
-
-# -------------------------------------------------------------------------
-# Output filename
-# -------------------------------------------------------------------------
-
-def output_filename(record):
-    """
-    Generate standardized output filename.
-
-    Example:
-
-        KRAS_Adagrasib_KRAS-G12A_A.json
-    """
-
-    metadata = record["metadata"]
-
-    return (
-        f"{metadata['protein']}_"
-        f"{metadata['drug']}_"
-        f"{metadata['mutation']}_"
-        f"{metadata['chain']}.json"
-    )
+    return run_id, record
 
 
 # -------------------------------------------------------------------------
@@ -394,15 +325,15 @@ def main():
 
     parser = argparse.ArgumentParser(
         description=(
-            "Recursively find AutoDock Vina *.log.json files and "
-            "create standardized provenance-preserving JSON files."
+            "Merge all AutoDock Vina *.log.json files "
+            "into one standardized JSON."
         )
     )
 
     parser.add_argument(
         "root",
         type=Path,
-        help="Root directory containing the docking results."
+        help="Root directory containing docking results."
     )
 
     parser.add_argument(
@@ -410,77 +341,150 @@ def main():
         type=Path,
         default=None,
         help=(
-            "Output directory. Default: <root>/merged_vina"
+            "Output JSON filename. "
+            "Default: <root>/merged_vina_results.json"
         )
     )
 
     parser.add_argument(
         "--overwrite",
         action="store_true",
-        help="Overwrite existing merged JSON files."
+        help="Overwrite an existing output JSON."
     )
 
     args = parser.parse_args()
 
+    # -------------------------------------------------------------
+    # Validate root
+    # -------------------------------------------------------------
+
     root_dir = args.root.resolve()
 
     if not root_dir.exists():
-        print(f"ERROR: Root directory does not exist: {root_dir}")
+
+        print(
+            f"ERROR: Directory does not exist:\n"
+            f"{root_dir}"
+        )
+
         sys.exit(1)
 
     if not root_dir.is_dir():
-        print(f"ERROR: Root path is not a directory: {root_dir}")
+
+        print(
+            f"ERROR: Path is not a directory:\n"
+            f"{root_dir}"
+        )
+
         sys.exit(1)
 
-    if args.output is None:
-        output_dir = root_dir / "merged_vina"
-    else:
-        output_dir = args.output.resolve()
+    # -------------------------------------------------------------
+    # Output
+    # -------------------------------------------------------------
 
-    output_dir.mkdir(
-        parents=True,
-        exist_ok=True
+    if args.output is None:
+
+        output_path = (
+            root_dir /
+            "merged_vina_results.json"
+        )
+
+    else:
+
+        output_path = args.output.resolve()
+
+    # -------------------------------------------------------------
+    # Find JSON files
+    # -------------------------------------------------------------
+
+    json_files = sorted(
+        root_dir.rglob("*.log.json")
     )
 
-    print("=" * 70)
-    print("Vina JSON Merge")
-    print("=" * 70)
+    # Do not accidentally include JSONs inside an output directory
+    # if the user places the output somewhere below root.
 
-    print(f"Input directory : {root_dir}")
-    print(f"Output directory: {output_dir}")
-    print()
-
-    # -------------------------------------------------------------
-    # Find files
-    # -------------------------------------------------------------
-
-    json_files = find_vina_jsons(root_dir)
-
-    # Don't accidentally process files we previously generated.
     json_files = [
         path
         for path in json_files
-        if output_dir not in path.parents
+        if path.resolve() != output_path.resolve()
     ]
 
-    print(f"Found {len(json_files)} *.log.json files.")
+    print("=" * 70)
+    print("AutoDock Vina JSON Merger")
+    print("=" * 70)
+
+    print(f"Root directory : {root_dir}")
+    print(f"Output file    : {output_path}")
+    print()
+
+    print(
+        f"Found {len(json_files)} .log.json files."
+    )
+
     print()
 
     if not json_files:
-        print("No Vina JSON files found.")
-        sys.exit(0)
+
+        print(
+            "ERROR: No *.log.json files were found."
+        )
+
+        sys.exit(1)
+
+    # -------------------------------------------------------------
+    # Check existing output
+    # -------------------------------------------------------------
+
+    if output_path.exists() and not args.overwrite:
+
+        print(
+            f"ERROR: Output file already exists:\n"
+            f"{output_path}\n\n"
+            f"Use --overwrite if you want to replace it."
+        )
+
+        sys.exit(1)
+
+    # -------------------------------------------------------------
+    # Initialize merged structure
+    # -------------------------------------------------------------
+
+    merged = {
+
+        "schema_version": "1.0",
+
+        "docking_engine": "AutoDock Vina",
+
+        "created_at": datetime.now().isoformat(
+            timespec="seconds"
+        ),
+
+        "source_directory": str(root_dir),
+
+        "number_of_docking_runs": 0,
+
+        "docking_runs": {}
+
+    }
+
+    # -------------------------------------------------------------
+    # Statistics
+    # -------------------------------------------------------------
+
+    successful = 0
+    errors = 0
+
+    total_modes = 0
 
     # -------------------------------------------------------------
     # Process files
     # -------------------------------------------------------------
 
-    summary = []
-
-    successful = 0
-    failed = 0
-    skipped = 0
-
-    for index, json_path in enumerate(json_files, start=1):
+    for index, json_path in enumerate(
+        json_files,
+        start=1
+    ):
 
         print(
             f"[{index}/{len(json_files)}] "
@@ -489,54 +493,49 @@ def main():
 
         try:
 
-            record = build_record(
+            run_id, record = build_record(
                 json_path=json_path,
                 root_dir=root_dir
             )
 
-            output_name = output_filename(record)
-            output_path = output_dir / output_name
+            # -----------------------------------------------------
+            # Detect duplicate run IDs
+            # -----------------------------------------------------
 
-            if output_path.exists() and not args.overwrite:
+            if run_id in merged["docking_runs"]:
+
+                existing = merged["docking_runs"][run_id]
 
                 print(
-                    f"    SKIPPED: output already exists: "
-                    f"{output_path.name}"
+                    f"    ERROR: Duplicate docking run ID:\n"
+                    f"    {run_id}\n"
+                    f"    Existing:\n"
+                    f"    {existing['source']['file']}\n"
+                    f"    New:\n"
+                    f"    {json_path}"
                 )
 
-                skipped += 1
-
-                summary.append({
-                    "status": "skipped",
-                    "protein": record["metadata"]["protein"],
-                    "drug": record["metadata"]["drug"],
-                    "mutation": record["metadata"]["mutation"],
-                    "chain": record["metadata"]["chain"],
-                    "source_file": record["source"]["file"],
-                    "output_file": output_name,
-                    "number_of_modes": record["docking"]["number_of_modes"],
-                    "best_mode": record["docking"]["best_mode"]["mode"],
-                    "best_energy": record["docking"]["best_mode"]["energy"],
-                })
+                errors += 1
 
                 continue
 
-            # Write JSON.
-            with open(
-                output_path,
-                "w",
-                encoding="utf-8"
-            ) as f:
+            # -----------------------------------------------------
+            # Store record
+            # -----------------------------------------------------
 
-                json.dump(
-                    record,
-                    f,
-                    indent=4
-                )
+            merged["docking_runs"][run_id] = record
 
-                f.write("\n")
+            number_modes = (
+                record["docking"]["number_of_modes"]
+            )
 
-            best = record["docking"]["best_mode"]
+            best_energy = (
+                record["docking"]["best_mode"]["energy"]
+            )
+
+            total_modes += number_modes
+
+            successful += 1
 
             print(
                 f"    OK"
@@ -547,80 +546,55 @@ def main():
             )
 
             print(
-                f"    Modes: {record['docking']['number_of_modes']}"
-                f" | Best mode: {best['mode']}"
-                f" | Energy: {best['energy']}"
+                f"    Modes: {number_modes}"
+                f" | Best mode: "
+                f"{record['docking']['best_mode']['mode']}"
+                f" | Energy: {best_energy}"
             )
 
-            successful += 1
-
-            summary.append({
-                "status": "merged",
-                "protein": record["metadata"]["protein"],
-                "drug": record["metadata"]["drug"],
-                "mutation": record["metadata"]["mutation"],
-                "chain": record["metadata"]["chain"],
-                "source_file": record["source"]["file"],
-                "output_file": output_name,
-                "number_of_modes": record["docking"]["number_of_modes"],
-                "best_mode": best["mode"],
-                "best_energy": best["energy"],
-            })
-
         except Exception as e:
+
+            errors += 1
 
             print(
                 f"    ERROR: {e}"
             )
 
-            failed += 1
-
-            summary.append({
-                "status": "error",
-                "protein": "",
-                "drug": "",
-                "mutation": "",
-                "chain": "",
-                "source_file": str(json_path.relative_to(root_dir)),
-                "output_file": "",
-                "number_of_modes": "",
-                "best_mode": "",
-                "best_energy": "",
-            })
-
     # -------------------------------------------------------------
-    # Summary CSV
+    # Update summary
     # -------------------------------------------------------------
 
-    summary_path = output_dir / "vina_merge_summary.csv"
+    merged["number_of_docking_runs"] = successful
 
-    fieldnames = [
-        "status",
-        "protein",
-        "drug",
-        "mutation",
-        "chain",
-        "source_file",
-        "output_file",
-        "number_of_modes",
-        "best_mode",
-        "best_energy",
-    ]
+    merged["summary"] = {
+
+        "files_found": len(json_files),
+
+        "files_merged": successful,
+
+        "files_with_errors": errors,
+
+        "total_docking_modes": total_modes
+
+    }
+
+    # -------------------------------------------------------------
+    # Write single merged JSON
+    # -------------------------------------------------------------
 
     with open(
-        summary_path,
+        output_path,
         "w",
-        newline="",
         encoding="utf-8"
     ) as f:
 
-        writer = csv.DictWriter(
+        json.dump(
+            merged,
             f,
-            fieldnames=fieldnames
+            indent=4
         )
 
-        writer.writeheader()
-        writer.writerows(summary)
+        f.write("\n")
 
     # -------------------------------------------------------------
     # Final report
@@ -631,20 +605,38 @@ def main():
     print("MERGE COMPLETE")
     print("=" * 70)
 
-    print(f"Found      : {len(json_files)}")
-    print(f"Merged     : {successful}")
-    print(f"Skipped    : {skipped}")
-    print(f"Errors     : {failed}")
+    print(
+        f"Files found       : {len(json_files)}"
+    )
+
+    print(
+        f"Files merged      : {successful}"
+    )
+
+    print(
+        f"Files with errors : {errors}"
+    )
+
+    print(
+        f"Total Vina modes  : {total_modes}"
+    )
+
     print()
-    print(f"Output     : {output_dir}")
-    print(f"Summary CSV: {summary_path}")
+    print(
+        f"Merged JSON:"
+    )
+
+    print(
+        f"    {output_path}"
+    )
+
     print("=" * 70)
 
-    if failed > 0:
+    if errors > 0:
+
         print()
         print(
-            "WARNING: Some files could not be processed. "
-            "Check vina_merge_summary.csv."
+            "WARNING: Some files could not be merged."
         )
 
 

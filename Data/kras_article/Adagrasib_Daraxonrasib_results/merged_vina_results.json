@@ -1,0 +1,4164 @@
+{
+    "schema_version": "1.0",
+    "docking_engine": "AutoDock Vina",
+    "created_at": "2026-08-27T15:08:58",
+    "source_directory": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results",
+    "number_of_docking_runs": 26,
+    "docking_runs": {
+        "KRAS_Adagrasib_KRAS-G12A_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G12A",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12A/KRAS-G12A_A/KRAS_Adagrasib_KRAS-G12A_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12A/KRAS-G12A_A/KRAS_Adagrasib_KRAS-G12A_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -8.4,
+                    "pKd": 6.1609752788888095
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -8.4,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 6.1609752788888095
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -8.2,
+                        "rmsd_lb": 1.55,
+                        "rmsd_ub": 2.527,
+                        "pKd": 6.014285391296218
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -7.9,
+                        "rmsd_lb": 1.713,
+                        "rmsd_ub": 2.789,
+                        "pKd": 5.794250559907333
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -7.8,
+                        "rmsd_lb": 2.242,
+                        "rmsd_ub": 3.525,
+                        "pKd": 5.720905616111037
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -7.2,
+                        "rmsd_lb": 31.841,
+                        "rmsd_ub": 35.376,
+                        "pKd": 5.2808359533332645
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -7.2,
+                        "rmsd_lb": 11.776,
+                        "rmsd_ub": 14.726,
+                        "pKd": 5.2808359533332645
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.9,
+                        "rmsd_lb": 31.952,
+                        "rmsd_ub": 35.619,
+                        "pKd": 5.06080112194438
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.8,
+                        "rmsd_lb": 10.441,
+                        "rmsd_ub": 14.587,
+                        "pKd": 4.987456178148084
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.5,
+                        "rmsd_lb": 3.265,
+                        "rmsd_ub": 7.471,
+                        "pKd": 4.767421346759198
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.3,
+                        "rmsd_lb": 4.384,
+                        "rmsd_ub": 5.374,
+                        "pKd": 4.620731459166607
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -6.2,
+                        "rmsd_lb": 32.377,
+                        "rmsd_ub": 34.871,
+                        "pKd": 4.547386515370312
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -6.2,
+                        "rmsd_lb": 23.126,
+                        "rmsd_ub": 27.446,
+                        "pKd": 4.547386515370312
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -6.2,
+                        "rmsd_lb": 6.455,
+                        "rmsd_ub": 9.323,
+                        "pKd": 4.547386515370312
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -6.1,
+                        "rmsd_lb": 26.732,
+                        "rmsd_ub": 30.434,
+                        "pKd": 4.474041571574015
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -6.1,
+                        "rmsd_lb": 32.661,
+                        "rmsd_ub": 35.746,
+                        "pKd": 4.474041571574015
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -6.1,
+                        "rmsd_lb": 26.397,
+                        "rmsd_ub": 28.983,
+                        "pKd": 4.474041571574015
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -6.1,
+                        "rmsd_lb": 31.922,
+                        "rmsd_ub": 35.142,
+                        "pKd": 4.474041571574015
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -6.0,
+                        "rmsd_lb": 26.395,
+                        "rmsd_ub": 29.838,
+                        "pKd": 4.40069662777772
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.9,
+                        "rmsd_lb": 26.26,
+                        "rmsd_ub": 29.686,
+                        "pKd": 4.3273516839814254
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.9,
+                        "rmsd_lb": 24.227,
+                        "rmsd_ub": 27.805,
+                        "pKd": 4.3273516839814254
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G12C_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G12C",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12C/KRAS-G12C_A/KRAS_Adagrasib_KRAS-G12C_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12C/KRAS-G12C_A/KRAS_Adagrasib_KRAS-G12C_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -8.4,
+                    "pKd": 6.1609752788888095
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -8.4,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 6.1609752788888095
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -8.2,
+                        "rmsd_lb": 1.613,
+                        "rmsd_ub": 2.16,
+                        "pKd": 6.014285391296218
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -8.0,
+                        "rmsd_lb": 1.429,
+                        "rmsd_ub": 2.408,
+                        "pKd": 5.867595503703628
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -7.5,
+                        "rmsd_lb": 20.304,
+                        "rmsd_ub": 24.314,
+                        "pKd": 5.500870784722151
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -7.1,
+                        "rmsd_lb": 3.308,
+                        "rmsd_ub": 7.148,
+                        "pKd": 5.2074910095369695
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.9,
+                        "rmsd_lb": 19.847,
+                        "rmsd_ub": 24.748,
+                        "pKd": 5.06080112194438
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.9,
+                        "rmsd_lb": 20.46,
+                        "rmsd_ub": 24.453,
+                        "pKd": 5.06080112194438
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.9,
+                        "rmsd_lb": 19.564,
+                        "rmsd_ub": 23.532,
+                        "pKd": 5.06080112194438
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.9,
+                        "rmsd_lb": 3.282,
+                        "rmsd_ub": 7.757,
+                        "pKd": 5.06080112194438
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.7,
+                        "rmsd_lb": 3.178,
+                        "rmsd_ub": 7.251,
+                        "pKd": 4.914111234351789
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -6.6,
+                        "rmsd_lb": 21.603,
+                        "rmsd_ub": 26.118,
+                        "pKd": 4.840766290555492
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -6.6,
+                        "rmsd_lb": 31.974,
+                        "rmsd_ub": 35.546,
+                        "pKd": 4.840766290555492
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -6.3,
+                        "rmsd_lb": 4.336,
+                        "rmsd_ub": 7.859,
+                        "pKd": 4.620731459166607
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -6.2,
+                        "rmsd_lb": 32.492,
+                        "rmsd_ub": 35.587,
+                        "pKd": 4.547386515370312
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -6.1,
+                        "rmsd_lb": 31.273,
+                        "rmsd_ub": 34.249,
+                        "pKd": 4.474041571574015
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -6.0,
+                        "rmsd_lb": 31.277,
+                        "rmsd_ub": 34.771,
+                        "pKd": 4.40069662777772
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -6.0,
+                        "rmsd_lb": 31.837,
+                        "rmsd_ub": 35.466,
+                        "pKd": 4.40069662777772
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -5.9,
+                        "rmsd_lb": 3.525,
+                        "rmsd_ub": 6.986,
+                        "pKd": 4.3273516839814254
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.9,
+                        "rmsd_lb": 32.055,
+                        "rmsd_ub": 34.328,
+                        "pKd": 4.3273516839814254
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.7,
+                        "rmsd_lb": 23.436,
+                        "rmsd_ub": 27.935,
+                        "pKd": 4.1806617963888355
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G12D_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G12D",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12D/KRAS-G12D_A/KRAS_Adagrasib_KRAS-G12D_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12D/KRAS-G12D_A/KRAS_Adagrasib_KRAS-G12D_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -8.5,
+                    "pKd": 6.234320222685104
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -8.5,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 6.234320222685104
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -8.2,
+                        "rmsd_lb": 1.599,
+                        "rmsd_ub": 2.143,
+                        "pKd": 6.014285391296218
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -7.2,
+                        "rmsd_lb": 31.744,
+                        "rmsd_ub": 35.33,
+                        "pKd": 5.2808359533332645
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -7.1,
+                        "rmsd_lb": 3.246,
+                        "rmsd_ub": 7.276,
+                        "pKd": 5.2074910095369695
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -7.0,
+                        "rmsd_lb": 2.946,
+                        "rmsd_ub": 3.566,
+                        "pKd": 5.134146065740675
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.5,
+                        "rmsd_lb": 3.1,
+                        "rmsd_ub": 7.842,
+                        "pKd": 4.767421346759198
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.4,
+                        "rmsd_lb": 3.411,
+                        "rmsd_ub": 7.158,
+                        "pKd": 4.694076402962903
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.3,
+                        "rmsd_lb": 32.54,
+                        "rmsd_ub": 35.642,
+                        "pKd": 4.620731459166607
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.3,
+                        "rmsd_lb": 3.302,
+                        "rmsd_ub": 8.105,
+                        "pKd": 4.620731459166607
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.3,
+                        "rmsd_lb": 32.229,
+                        "rmsd_ub": 34.776,
+                        "pKd": 4.620731459166607
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -6.3,
+                        "rmsd_lb": 33.458,
+                        "rmsd_ub": 36.18,
+                        "pKd": 4.620731459166607
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -6.1,
+                        "rmsd_lb": 6.334,
+                        "rmsd_ub": 10.228,
+                        "pKd": 4.474041571574015
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -6.1,
+                        "rmsd_lb": 32.316,
+                        "rmsd_ub": 34.668,
+                        "pKd": 4.474041571574015
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -6.0,
+                        "rmsd_lb": 32.035,
+                        "rmsd_ub": 34.307,
+                        "pKd": 4.40069662777772
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -6.0,
+                        "rmsd_lb": 31.565,
+                        "rmsd_ub": 35.354,
+                        "pKd": 4.40069662777772
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -6.0,
+                        "rmsd_lb": 4.104,
+                        "rmsd_ub": 8.012,
+                        "pKd": 4.40069662777772
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -6.0,
+                        "rmsd_lb": 5.814,
+                        "rmsd_ub": 9.572,
+                        "pKd": 4.40069662777772
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -5.9,
+                        "rmsd_lb": 26.507,
+                        "rmsd_ub": 29.818,
+                        "pKd": 4.3273516839814254
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.9,
+                        "rmsd_lb": 5.614,
+                        "rmsd_ub": 9.333,
+                        "pKd": 4.3273516839814254
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.8,
+                        "rmsd_lb": 31.273,
+                        "rmsd_ub": 33.375,
+                        "pKd": 4.2540067401851305
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G12R_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G12R",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12R/KRAS-G12R_A/KRAS_Adagrasib_KRAS-G12R_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12R/KRAS-G12R_A/KRAS_Adagrasib_KRAS-G12R_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 15,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -8.6,
+                    "pKd": 6.307665166481399
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -8.6,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 6.307665166481399
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -8.2,
+                        "rmsd_lb": 1.564,
+                        "rmsd_ub": 2.333,
+                        "pKd": 6.014285391296218
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -8.2,
+                        "rmsd_lb": 1.44,
+                        "rmsd_ub": 2.039,
+                        "pKd": 6.014285391296218
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -6.6,
+                        "rmsd_lb": 4.234,
+                        "rmsd_ub": 7.773,
+                        "pKd": 4.840766290555492
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -6.3,
+                        "rmsd_lb": 33.032,
+                        "rmsd_ub": 35.734,
+                        "pKd": 4.620731459166607
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.3,
+                        "rmsd_lb": 26.75,
+                        "rmsd_ub": 30.351,
+                        "pKd": 4.620731459166607
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.3,
+                        "rmsd_lb": 32.531,
+                        "rmsd_ub": 35.692,
+                        "pKd": 4.620731459166607
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.2,
+                        "rmsd_lb": 32.189,
+                        "rmsd_ub": 34.781,
+                        "pKd": 4.547386515370312
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.1,
+                        "rmsd_lb": 32.428,
+                        "rmsd_ub": 36.116,
+                        "pKd": 4.474041571574015
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.1,
+                        "rmsd_lb": 32.264,
+                        "rmsd_ub": 34.655,
+                        "pKd": 4.474041571574015
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.9,
+                        "rmsd_lb": 36.263,
+                        "rmsd_ub": 39.177,
+                        "pKd": 4.3273516839814254
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.8,
+                        "rmsd_lb": 3.458,
+                        "rmsd_ub": 8.46,
+                        "pKd": 4.2540067401851305
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.7,
+                        "rmsd_lb": 23.886,
+                        "rmsd_ub": 29.164,
+                        "pKd": 4.1806617963888355
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.7,
+                        "rmsd_lb": 25.991,
+                        "rmsd_ub": 28.452,
+                        "pKd": 4.1806617963888355
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.6,
+                        "rmsd_lb": 26.541,
+                        "rmsd_ub": 29.68,
+                        "pKd": 4.10731685259254
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G12S_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G12S",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12S/KRAS-G12S_A/KRAS_Adagrasib_KRAS-G12S_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12S/KRAS-G12S_A/KRAS_Adagrasib_KRAS-G12S_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.0,
+                    "pKd": 5.134146065740675
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.0,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.134146065740675
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -6.9,
+                        "rmsd_lb": 1.388,
+                        "rmsd_ub": 1.807,
+                        "pKd": 5.06080112194438
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -6.2,
+                        "rmsd_lb": 6.816,
+                        "rmsd_ub": 10.936,
+                        "pKd": 4.547386515370312
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -6.0,
+                        "rmsd_lb": 3.382,
+                        "rmsd_ub": 7.915,
+                        "pKd": 4.40069662777772
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -5.9,
+                        "rmsd_lb": 5.338,
+                        "rmsd_ub": 9.382,
+                        "pKd": 4.3273516839814254
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -5.8,
+                        "rmsd_lb": 22.574,
+                        "rmsd_ub": 24.307,
+                        "pKd": 4.2540067401851305
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -5.8,
+                        "rmsd_lb": 22.255,
+                        "rmsd_ub": 26.091,
+                        "pKd": 4.2540067401851305
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -5.7,
+                        "rmsd_lb": 7.381,
+                        "rmsd_ub": 10.29,
+                        "pKd": 4.1806617963888355
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -5.6,
+                        "rmsd_lb": 22.194,
+                        "rmsd_ub": 23.882,
+                        "pKd": 4.10731685259254
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -5.5,
+                        "rmsd_lb": 22.883,
+                        "rmsd_ub": 24.737,
+                        "pKd": 4.033971908796244
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.2,
+                        "rmsd_lb": 20.454,
+                        "rmsd_ub": 23.8,
+                        "pKd": 3.8139370774073584
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.2,
+                        "rmsd_lb": 6.873,
+                        "rmsd_ub": 10.392,
+                        "pKd": 3.8139370774073584
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.1,
+                        "rmsd_lb": 3.855,
+                        "rmsd_ub": 7.47,
+                        "pKd": 3.740592133611063
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.1,
+                        "rmsd_lb": 13.508,
+                        "rmsd_ub": 18.163,
+                        "pKd": 3.740592133611063
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.1,
+                        "rmsd_lb": 21.164,
+                        "rmsd_ub": 23.94,
+                        "pKd": 3.740592133611063
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -5.1,
+                        "rmsd_lb": 24.149,
+                        "rmsd_ub": 27.426,
+                        "pKd": 3.740592133611063
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -5.0,
+                        "rmsd_lb": 21.828,
+                        "rmsd_ub": 25.323,
+                        "pKd": 3.667247189814767
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -4.9,
+                        "rmsd_lb": 23.828,
+                        "rmsd_ub": 25.743,
+                        "pKd": 3.593902246018472
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -4.9,
+                        "rmsd_lb": 19.632,
+                        "rmsd_ub": 21.692,
+                        "pKd": 3.593902246018472
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -4.9,
+                        "rmsd_lb": 23.582,
+                        "rmsd_ub": 25.604,
+                        "pKd": 3.593902246018472
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G12V_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G12V",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12V/KRAS-G12V_A/KRAS_Adagrasib_KRAS-G12V_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G12V/KRAS-G12V_A/KRAS_Adagrasib_KRAS-G12V_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -8.4,
+                    "pKd": 6.1609752788888095
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -8.4,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 6.1609752788888095
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -8.1,
+                        "rmsd_lb": 1.406,
+                        "rmsd_ub": 2.381,
+                        "pKd": 5.940940447499923
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -7.5,
+                        "rmsd_lb": 31.886,
+                        "rmsd_ub": 35.243,
+                        "pKd": 5.500870784722151
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -7.5,
+                        "rmsd_lb": 2.135,
+                        "rmsd_ub": 3.011,
+                        "pKd": 5.500870784722151
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -7.4,
+                        "rmsd_lb": 31.591,
+                        "rmsd_ub": 35.037,
+                        "pKd": 5.427525840925856
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -7.3,
+                        "rmsd_lb": 3.138,
+                        "rmsd_ub": 7.573,
+                        "pKd": 5.35418089712956
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.9,
+                        "rmsd_lb": 2.165,
+                        "rmsd_ub": 3.368,
+                        "pKd": 5.06080112194438
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.4,
+                        "rmsd_lb": 3.16,
+                        "rmsd_ub": 6.956,
+                        "pKd": 4.694076402962903
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.3,
+                        "rmsd_lb": 33.076,
+                        "rmsd_ub": 35.636,
+                        "pKd": 4.620731459166607
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.2,
+                        "rmsd_lb": 32.313,
+                        "rmsd_ub": 35.404,
+                        "pKd": 4.547386515370312
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -6.1,
+                        "rmsd_lb": 32.367,
+                        "rmsd_ub": 35.434,
+                        "pKd": 4.474041571574015
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -6.1,
+                        "rmsd_lb": 31.782,
+                        "rmsd_ub": 35.521,
+                        "pKd": 4.474041571574015
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -6.1,
+                        "rmsd_lb": 23.328,
+                        "rmsd_ub": 28.167,
+                        "pKd": 4.474041571574015
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -6.0,
+                        "rmsd_lb": 32.301,
+                        "rmsd_ub": 34.795,
+                        "pKd": 4.40069662777772
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -6.0,
+                        "rmsd_lb": 31.974,
+                        "rmsd_ub": 35.454,
+                        "pKd": 4.40069662777772
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -6.0,
+                        "rmsd_lb": 33.154,
+                        "rmsd_ub": 35.712,
+                        "pKd": 4.40069662777772
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -6.0,
+                        "rmsd_lb": 26.485,
+                        "rmsd_ub": 29.756,
+                        "pKd": 4.40069662777772
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -6.0,
+                        "rmsd_lb": 32.33,
+                        "rmsd_ub": 35.147,
+                        "pKd": 4.40069662777772
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.9,
+                        "rmsd_lb": 32.361,
+                        "rmsd_ub": 35.313,
+                        "pKd": 4.3273516839814254
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.8,
+                        "rmsd_lb": 33.472,
+                        "rmsd_ub": 35.883,
+                        "pKd": 4.2540067401851305
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G13A_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G13A",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13A/KRAS-G13A_A/KRAS_Adagrasib_KRAS-G13A_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13A/KRAS-G13A_A/KRAS_Adagrasib_KRAS-G13A_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.0,
+                    "pKd": 5.134146065740675
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.0,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.134146065740675
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -6.3,
+                        "rmsd_lb": 1.716,
+                        "rmsd_ub": 2.604,
+                        "pKd": 4.620731459166607
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -5.8,
+                        "rmsd_lb": 21.912,
+                        "rmsd_ub": 24.181,
+                        "pKd": 4.2540067401851305
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -5.8,
+                        "rmsd_lb": 3.481,
+                        "rmsd_ub": 7.296,
+                        "pKd": 4.2540067401851305
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -5.8,
+                        "rmsd_lb": 4.275,
+                        "rmsd_ub": 8.139,
+                        "pKd": 4.2540067401851305
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -5.8,
+                        "rmsd_lb": 4.35,
+                        "rmsd_ub": 8.311,
+                        "pKd": 4.2540067401851305
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -5.6,
+                        "rmsd_lb": 1.634,
+                        "rmsd_ub": 2.163,
+                        "pKd": 4.10731685259254
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -5.5,
+                        "rmsd_lb": 21.054,
+                        "rmsd_ub": 24.55,
+                        "pKd": 4.033971908796244
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -5.5,
+                        "rmsd_lb": 22.388,
+                        "rmsd_ub": 26.115,
+                        "pKd": 4.033971908796244
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -5.4,
+                        "rmsd_lb": 5.182,
+                        "rmsd_ub": 9.317,
+                        "pKd": 3.9606269649999493
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.3,
+                        "rmsd_lb": 22.406,
+                        "rmsd_ub": 25.893,
+                        "pKd": 3.8872820212036534
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.3,
+                        "rmsd_lb": 22.05,
+                        "rmsd_ub": 25.555,
+                        "pKd": 3.8872820212036534
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.2,
+                        "rmsd_lb": 3.226,
+                        "rmsd_ub": 8.2,
+                        "pKd": 3.8139370774073584
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.1,
+                        "rmsd_lb": 17.845,
+                        "rmsd_ub": 21.696,
+                        "pKd": 3.740592133611063
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.0,
+                        "rmsd_lb": 3.032,
+                        "rmsd_ub": 3.837,
+                        "pKd": 3.667247189814767
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -5.0,
+                        "rmsd_lb": 6.847,
+                        "rmsd_ub": 9.57,
+                        "pKd": 3.667247189814767
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -4.9,
+                        "rmsd_lb": 19.605,
+                        "rmsd_ub": 22.121,
+                        "pKd": 3.593902246018472
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -4.9,
+                        "rmsd_lb": 3.848,
+                        "rmsd_ub": 8.089,
+                        "pKd": 3.593902246018472
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -4.8,
+                        "rmsd_lb": 23.389,
+                        "rmsd_ub": 27.1,
+                        "pKd": 3.5205573022221768
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -4.8,
+                        "rmsd_lb": 18.499,
+                        "rmsd_ub": 21.582,
+                        "pKd": 3.5205573022221768
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G13C_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G13C",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13C/KRAS-G13C_A/KRAS_Adagrasib_KRAS-G13C_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13C/KRAS-G13C_A/KRAS_Adagrasib_KRAS-G13C_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -5.9,
+                    "pKd": 4.3273516839814254
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -5.9,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 4.3273516839814254
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -5.8,
+                        "rmsd_lb": 24.332,
+                        "rmsd_ub": 27.13,
+                        "pKd": 4.2540067401851305
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -5.8,
+                        "rmsd_lb": 3.338,
+                        "rmsd_ub": 4.805,
+                        "pKd": 4.2540067401851305
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -5.8,
+                        "rmsd_lb": 24.392,
+                        "rmsd_ub": 28.479,
+                        "pKd": 4.2540067401851305
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -5.8,
+                        "rmsd_lb": 4.718,
+                        "rmsd_ub": 7.334,
+                        "pKd": 4.2540067401851305
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -5.7,
+                        "rmsd_lb": 28.75,
+                        "rmsd_ub": 31.679,
+                        "pKd": 4.1806617963888355
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -5.5,
+                        "rmsd_lb": 4.46,
+                        "rmsd_ub": 6.654,
+                        "pKd": 4.033971908796244
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -5.5,
+                        "rmsd_lb": 4.728,
+                        "rmsd_ub": 8.045,
+                        "pKd": 4.033971908796244
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -5.5,
+                        "rmsd_lb": 24.139,
+                        "rmsd_ub": 27.477,
+                        "pKd": 4.033971908796244
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -5.5,
+                        "rmsd_lb": 4.561,
+                        "rmsd_ub": 7.622,
+                        "pKd": 4.033971908796244
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.4,
+                        "rmsd_lb": 2.004,
+                        "rmsd_ub": 2.718,
+                        "pKd": 3.9606269649999493
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.4,
+                        "rmsd_lb": 24.445,
+                        "rmsd_ub": 29.074,
+                        "pKd": 3.9606269649999493
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.4,
+                        "rmsd_lb": 20.307,
+                        "rmsd_ub": 23.108,
+                        "pKd": 3.9606269649999493
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.2,
+                        "rmsd_lb": 4.64,
+                        "rmsd_ub": 9.418,
+                        "pKd": 3.8139370774073584
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.1,
+                        "rmsd_lb": 25.232,
+                        "rmsd_ub": 28.941,
+                        "pKd": 3.740592133611063
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -5.1,
+                        "rmsd_lb": 24.334,
+                        "rmsd_ub": 27.179,
+                        "pKd": 3.740592133611063
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -5.0,
+                        "rmsd_lb": 29.035,
+                        "rmsd_ub": 32.67,
+                        "pKd": 3.667247189814767
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -4.9,
+                        "rmsd_lb": 4.454,
+                        "rmsd_ub": 6.687,
+                        "pKd": 3.593902246018472
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -4.9,
+                        "rmsd_lb": 9.204,
+                        "rmsd_ub": 13.372,
+                        "pKd": 3.593902246018472
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -4.9,
+                        "rmsd_lb": 5.116,
+                        "rmsd_ub": 7.909,
+                        "pKd": 3.593902246018472
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G13D_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G13D",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13D/KRAS-G13D_A/KRAS_Adagrasib_KRAS-G13D_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13D/KRAS-G13D_A/KRAS_Adagrasib_KRAS-G13D_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.1,
+                    "pKd": 5.2074910095369695
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.1,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.2074910095369695
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -6.7,
+                        "rmsd_lb": 6.435,
+                        "rmsd_ub": 9.32,
+                        "pKd": 4.914111234351789
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -6.1,
+                        "rmsd_lb": 8.162,
+                        "rmsd_ub": 10.765,
+                        "pKd": 4.474041571574015
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -6.1,
+                        "rmsd_lb": 22.486,
+                        "rmsd_ub": 24.782,
+                        "pKd": 4.474041571574015
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -6.0,
+                        "rmsd_lb": 22.639,
+                        "rmsd_ub": 26.092,
+                        "pKd": 4.40069662777772
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -5.9,
+                        "rmsd_lb": 2.218,
+                        "rmsd_ub": 3.36,
+                        "pKd": 4.3273516839814254
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -5.8,
+                        "rmsd_lb": 3.557,
+                        "rmsd_ub": 7.241,
+                        "pKd": 4.2540067401851305
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -5.8,
+                        "rmsd_lb": 3.897,
+                        "rmsd_ub": 5.975,
+                        "pKd": 4.2540067401851305
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -5.8,
+                        "rmsd_lb": 6.755,
+                        "rmsd_ub": 9.527,
+                        "pKd": 4.2540067401851305
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -5.6,
+                        "rmsd_lb": 21.069,
+                        "rmsd_ub": 24.477,
+                        "pKd": 4.10731685259254
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.6,
+                        "rmsd_lb": 5.235,
+                        "rmsd_ub": 9.403,
+                        "pKd": 4.10731685259254
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.6,
+                        "rmsd_lb": 4.808,
+                        "rmsd_ub": 6.866,
+                        "pKd": 4.10731685259254
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.5,
+                        "rmsd_lb": 5.588,
+                        "rmsd_ub": 10.311,
+                        "pKd": 4.033971908796244
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.5,
+                        "rmsd_lb": 6.615,
+                        "rmsd_ub": 9.296,
+                        "pKd": 4.033971908796244
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.4,
+                        "rmsd_lb": 28.66,
+                        "rmsd_ub": 31.589,
+                        "pKd": 3.9606269649999493
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -5.3,
+                        "rmsd_lb": 19.7,
+                        "rmsd_ub": 22.254,
+                        "pKd": 3.8872820212036534
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -5.3,
+                        "rmsd_lb": 22.916,
+                        "rmsd_ub": 25.241,
+                        "pKd": 3.8872820212036534
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -5.2,
+                        "rmsd_lb": 21.085,
+                        "rmsd_ub": 24.943,
+                        "pKd": 3.8139370774073584
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.2,
+                        "rmsd_lb": 26.375,
+                        "rmsd_ub": 30.698,
+                        "pKd": 3.8139370774073584
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.1,
+                        "rmsd_lb": 22.069,
+                        "rmsd_ub": 25.978,
+                        "pKd": 3.740592133611063
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G13R_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G13R",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13R/KRAS-G13R_A/KRAS_Adagrasib_KRAS-G13R_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13R/KRAS-G13R_A/KRAS_Adagrasib_KRAS-G13R_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.3,
+                    "pKd": 5.35418089712956
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.3,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.35418089712956
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -7.1,
+                        "rmsd_lb": 1.551,
+                        "rmsd_ub": 2.321,
+                        "pKd": 5.2074910095369695
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -6.4,
+                        "rmsd_lb": 1.956,
+                        "rmsd_ub": 2.306,
+                        "pKd": 4.694076402962903
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -6.1,
+                        "rmsd_lb": 6.877,
+                        "rmsd_ub": 9.925,
+                        "pKd": 4.474041571574015
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -6.1,
+                        "rmsd_lb": 3.713,
+                        "rmsd_ub": 7.378,
+                        "pKd": 4.474041571574015
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.0,
+                        "rmsd_lb": 4.48,
+                        "rmsd_ub": 8.596,
+                        "pKd": 4.40069662777772
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.0,
+                        "rmsd_lb": 4.652,
+                        "rmsd_ub": 8.438,
+                        "pKd": 4.40069662777772
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -5.8,
+                        "rmsd_lb": 21.662,
+                        "rmsd_ub": 25.411,
+                        "pKd": 4.2540067401851305
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -5.8,
+                        "rmsd_lb": 21.152,
+                        "rmsd_ub": 24.666,
+                        "pKd": 4.2540067401851305
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -5.8,
+                        "rmsd_lb": 4.686,
+                        "rmsd_ub": 9.189,
+                        "pKd": 4.2540067401851305
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.8,
+                        "rmsd_lb": 24.38,
+                        "rmsd_ub": 28.734,
+                        "pKd": 4.2540067401851305
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.5,
+                        "rmsd_lb": 7.345,
+                        "rmsd_ub": 10.391,
+                        "pKd": 4.033971908796244
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.3,
+                        "rmsd_lb": 7.466,
+                        "rmsd_ub": 12.037,
+                        "pKd": 3.8872820212036534
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.3,
+                        "rmsd_lb": 11.205,
+                        "rmsd_ub": 15.039,
+                        "pKd": 3.8872820212036534
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.2,
+                        "rmsd_lb": 4.733,
+                        "rmsd_ub": 9.209,
+                        "pKd": 3.8139370774073584
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -5.2,
+                        "rmsd_lb": 7.653,
+                        "rmsd_ub": 10.608,
+                        "pKd": 3.8139370774073584
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -5.1,
+                        "rmsd_lb": 25.319,
+                        "rmsd_ub": 28.875,
+                        "pKd": 3.740592133611063
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -5.1,
+                        "rmsd_lb": 22.234,
+                        "rmsd_ub": 25.994,
+                        "pKd": 3.740592133611063
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.0,
+                        "rmsd_lb": 20.517,
+                        "rmsd_ub": 24.309,
+                        "pKd": 3.667247189814767
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -4.9,
+                        "rmsd_lb": 7.129,
+                        "rmsd_ub": 9.708,
+                        "pKd": 3.593902246018472
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G13S_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G13S",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13S/KRAS-G13S_A/KRAS_Adagrasib_KRAS-G13S_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13S/KRAS-G13S_A/KRAS_Adagrasib_KRAS-G13S_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.6,
+                    "pKd": 5.574215728518446
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.6,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.574215728518446
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -7.6,
+                        "rmsd_lb": 1.999,
+                        "rmsd_ub": 3.121,
+                        "pKd": 5.574215728518446
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -7.3,
+                        "rmsd_lb": 2.108,
+                        "rmsd_ub": 3.247,
+                        "pKd": 5.35418089712956
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -7.2,
+                        "rmsd_lb": 1.626,
+                        "rmsd_ub": 2.683,
+                        "pKd": 5.2808359533332645
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -7.0,
+                        "rmsd_lb": 1.678,
+                        "rmsd_ub": 2.188,
+                        "pKd": 5.134146065740675
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.8,
+                        "rmsd_lb": 2.468,
+                        "rmsd_ub": 3.03,
+                        "pKd": 4.987456178148084
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.8,
+                        "rmsd_lb": 5.406,
+                        "rmsd_ub": 7.986,
+                        "pKd": 4.987456178148084
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.7,
+                        "rmsd_lb": 4.622,
+                        "rmsd_ub": 8.931,
+                        "pKd": 4.914111234351789
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.7,
+                        "rmsd_lb": 3.015,
+                        "rmsd_ub": 6.606,
+                        "pKd": 4.914111234351789
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.6,
+                        "rmsd_lb": 2.884,
+                        "rmsd_ub": 7.424,
+                        "pKd": 4.840766290555492
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -6.6,
+                        "rmsd_lb": 32.181,
+                        "rmsd_ub": 35.999,
+                        "pKd": 4.840766290555492
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -6.5,
+                        "rmsd_lb": 32.07,
+                        "rmsd_ub": 35.902,
+                        "pKd": 4.767421346759198
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -6.5,
+                        "rmsd_lb": 32.158,
+                        "rmsd_ub": 34.994,
+                        "pKd": 4.767421346759198
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -6.3,
+                        "rmsd_lb": 33.331,
+                        "rmsd_ub": 36.487,
+                        "pKd": 4.620731459166607
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -6.3,
+                        "rmsd_lb": 21.803,
+                        "rmsd_ub": 25.653,
+                        "pKd": 4.620731459166607
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -6.2,
+                        "rmsd_lb": 35.975,
+                        "rmsd_ub": 39.451,
+                        "pKd": 4.547386515370312
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -6.1,
+                        "rmsd_lb": 33.048,
+                        "rmsd_ub": 36.48,
+                        "pKd": 4.474041571574015
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -6.1,
+                        "rmsd_lb": 3.176,
+                        "rmsd_ub": 7.762,
+                        "pKd": 4.474041571574015
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -6.0,
+                        "rmsd_lb": 33.747,
+                        "rmsd_ub": 36.693,
+                        "pKd": 4.40069662777772
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.9,
+                        "rmsd_lb": 23.2,
+                        "rmsd_ub": 28.139,
+                        "pKd": 4.3273516839814254
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-G13V_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-G13V",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13V/KRAS-G13V_A/KRAS_Adagrasib_KRAS-G13V_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-G13V/KRAS-G13V_A/KRAS_Adagrasib_KRAS-G13V_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.3,
+                    "pKd": 5.35418089712956
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.3,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.35418089712956
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -6.8,
+                        "rmsd_lb": 3.146,
+                        "rmsd_ub": 7.918,
+                        "pKd": 4.987456178148084
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -6.2,
+                        "rmsd_lb": 6.707,
+                        "rmsd_ub": 10.022,
+                        "pKd": 4.547386515370312
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -6.2,
+                        "rmsd_lb": 3.697,
+                        "rmsd_ub": 7.635,
+                        "pKd": 4.547386515370312
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -6.1,
+                        "rmsd_lb": 1.549,
+                        "rmsd_ub": 1.942,
+                        "pKd": 4.474041571574015
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.0,
+                        "rmsd_lb": 4.627,
+                        "rmsd_ub": 8.754,
+                        "pKd": 4.40069662777772
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -5.9,
+                        "rmsd_lb": 2.992,
+                        "rmsd_ub": 7.351,
+                        "pKd": 4.3273516839814254
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -5.9,
+                        "rmsd_lb": 22.237,
+                        "rmsd_ub": 26.12,
+                        "pKd": 4.3273516839814254
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -5.7,
+                        "rmsd_lb": 3.33,
+                        "rmsd_ub": 8.788,
+                        "pKd": 4.1806617963888355
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -5.7,
+                        "rmsd_lb": 1.945,
+                        "rmsd_ub": 2.551,
+                        "pKd": 4.1806617963888355
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -5.7,
+                        "rmsd_lb": 5.605,
+                        "rmsd_ub": 10.104,
+                        "pKd": 4.1806617963888355
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -5.7,
+                        "rmsd_lb": 2.894,
+                        "rmsd_ub": 4.16,
+                        "pKd": 4.1806617963888355
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -5.7,
+                        "rmsd_lb": 3.386,
+                        "rmsd_ub": 7.599,
+                        "pKd": 4.1806617963888355
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -5.6,
+                        "rmsd_lb": 8.462,
+                        "rmsd_ub": 11.297,
+                        "pKd": 4.10731685259254
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -5.6,
+                        "rmsd_lb": 22.589,
+                        "rmsd_ub": 24.631,
+                        "pKd": 4.10731685259254
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -5.5,
+                        "rmsd_lb": 4.408,
+                        "rmsd_ub": 8.811,
+                        "pKd": 4.033971908796244
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -5.5,
+                        "rmsd_lb": 4.234,
+                        "rmsd_ub": 6.329,
+                        "pKd": 4.033971908796244
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -5.4,
+                        "rmsd_lb": 5.227,
+                        "rmsd_ub": 8.59,
+                        "pKd": 3.9606269649999493
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.4,
+                        "rmsd_lb": 24.348,
+                        "rmsd_ub": 26.647,
+                        "pKd": 3.9606269649999493
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.3,
+                        "rmsd_lb": 24.101,
+                        "rmsd_ub": 26.644,
+                        "pKd": 3.8872820212036534
+                    }
+                }
+            }
+        },
+        "KRAS_Adagrasib_KRAS-WILD-TYE_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Adagrasib",
+                "mutation": "KRAS-WILD-TYE",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-WILD-TYE/KRAS-WILD-TYE_A/KRAS_Adagrasib_KRAS-WILD-TYE_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Adagrasib/docking/vina/KRAS_Adagrasib/KRAS-WILD-TYE/KRAS-WILD-TYE_A/KRAS_Adagrasib_KRAS-WILD-TYE_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -7.1,
+                    "pKd": 5.2074910095369695
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -7.1,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 5.2074910095369695
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -6.9,
+                        "rmsd_lb": 6.805,
+                        "rmsd_ub": 10.082,
+                        "pKd": 5.06080112194438
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -6.9,
+                        "rmsd_lb": 24.569,
+                        "rmsd_ub": 28.49,
+                        "pKd": 5.06080112194438
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -6.8,
+                        "rmsd_lb": 6.441,
+                        "rmsd_ub": 9.209,
+                        "pKd": 4.987456178148084
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -6.7,
+                        "rmsd_lb": 1.844,
+                        "rmsd_ub": 2.249,
+                        "pKd": 4.914111234351789
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -6.4,
+                        "rmsd_lb": 7.177,
+                        "rmsd_ub": 11.187,
+                        "pKd": 4.694076402962903
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -6.4,
+                        "rmsd_lb": 16.085,
+                        "rmsd_ub": 19.97,
+                        "pKd": 4.694076402962903
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -6.4,
+                        "rmsd_lb": 6.882,
+                        "rmsd_ub": 10.151,
+                        "pKd": 4.694076402962903
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -6.3,
+                        "rmsd_lb": 6.376,
+                        "rmsd_ub": 11.117,
+                        "pKd": 4.620731459166607
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -6.3,
+                        "rmsd_lb": 25.525,
+                        "rmsd_ub": 30.008,
+                        "pKd": 4.620731459166607
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -6.2,
+                        "rmsd_lb": 7.311,
+                        "rmsd_ub": 11.102,
+                        "pKd": 4.547386515370312
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -6.2,
+                        "rmsd_lb": 25.367,
+                        "rmsd_ub": 28.142,
+                        "pKd": 4.547386515370312
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -6.2,
+                        "rmsd_lb": 5.282,
+                        "rmsd_ub": 9.157,
+                        "pKd": 4.547386515370312
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -6.1,
+                        "rmsd_lb": 14.43,
+                        "rmsd_ub": 17.659,
+                        "pKd": 4.474041571574015
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -6.1,
+                        "rmsd_lb": 24.113,
+                        "rmsd_ub": 27.679,
+                        "pKd": 4.474041571574015
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -6.0,
+                        "rmsd_lb": 2.622,
+                        "rmsd_ub": 3.907,
+                        "pKd": 4.40069662777772
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -5.8,
+                        "rmsd_lb": 20.484,
+                        "rmsd_ub": 25.271,
+                        "pKd": 4.2540067401851305
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -5.7,
+                        "rmsd_lb": 13.215,
+                        "rmsd_ub": 17.388,
+                        "pKd": 4.1806617963888355
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -5.7,
+                        "rmsd_lb": 23.377,
+                        "rmsd_ub": 26.493,
+                        "pKd": 4.1806617963888355
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -5.6,
+                        "rmsd_lb": 2.631,
+                        "rmsd_ub": 3.819,
+                        "pKd": 4.10731685259254
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G12A_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G12A",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12A/KRAS-G12A_A/KRAS_Daraxonrasib_KRAS-G12A_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12A/KRAS-G12A_A/KRAS_Daraxonrasib_KRAS-G12A_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 18,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.8,
+                    "pKd": 8.654703367962851
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.8,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.654703367962851
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.5,
+                        "rmsd_lb": 30.737,
+                        "rmsd_ub": 33.026,
+                        "pKd": 8.434668536573966
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.4,
+                        "rmsd_lb": 7.746,
+                        "rmsd_ub": 12.108,
+                        "pKd": 8.361323592777671
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.3,
+                        "rmsd_lb": 14.59,
+                        "rmsd_ub": 18.687,
+                        "pKd": 8.287978648981376
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.3,
+                        "rmsd_lb": 9.189,
+                        "rmsd_ub": 11.84,
+                        "pKd": 8.287978648981376
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -11.2,
+                        "rmsd_lb": 12.682,
+                        "rmsd_ub": 15.732,
+                        "pKd": 8.21463370518508
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.7,
+                        "rmsd_lb": 14.783,
+                        "rmsd_ub": 19.684,
+                        "pKd": 7.847908986203602
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.5,
+                        "rmsd_lb": 9.731,
+                        "rmsd_ub": 12.211,
+                        "pKd": 7.701219098611012
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.4,
+                        "rmsd_lb": 24.33,
+                        "rmsd_ub": 26.921,
+                        "pKd": 7.627874154814717
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.4,
+                        "rmsd_lb": 23.938,
+                        "rmsd_ub": 26.995,
+                        "pKd": 7.627874154814717
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.3,
+                        "rmsd_lb": 24.597,
+                        "rmsd_ub": 27.332,
+                        "pKd": 7.554529211018422
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.2,
+                        "rmsd_lb": 7.693,
+                        "rmsd_ub": 10.37,
+                        "pKd": 7.481184267222126
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.2,
+                        "rmsd_lb": 8.136,
+                        "rmsd_ub": 12.352,
+                        "pKd": 7.481184267222126
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.2,
+                        "rmsd_lb": 14.8,
+                        "rmsd_ub": 19.437,
+                        "pKd": 7.481184267222126
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.1,
+                        "rmsd_lb": 14.942,
+                        "rmsd_ub": 19.572,
+                        "pKd": 7.407839323425829
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.1,
+                        "rmsd_lb": 30.639,
+                        "rmsd_ub": 33.35,
+                        "pKd": 7.407839323425829
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.0,
+                        "rmsd_lb": 9.839,
+                        "rmsd_ub": 13.881,
+                        "pKd": 7.334494379629534
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.0,
+                        "rmsd_lb": 29.83,
+                        "rmsd_ub": 32.061,
+                        "pKd": 7.334494379629534
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G12C_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G12C",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12C/KRAS-G12C_A/KRAS_Daraxonrasib_KRAS-G12C_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12C/KRAS-G12C_A/KRAS_Daraxonrasib_KRAS-G12C_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.6,
+                    "pKd": 8.508013480370261
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.6,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.508013480370261
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.5,
+                        "rmsd_lb": 32.913,
+                        "rmsd_ub": 34.489,
+                        "pKd": 8.434668536573966
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.3,
+                        "rmsd_lb": 19.59,
+                        "rmsd_ub": 22.878,
+                        "pKd": 8.287978648981376
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.2,
+                        "rmsd_lb": 25.358,
+                        "rmsd_ub": 28.972,
+                        "pKd": 8.21463370518508
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.2,
+                        "rmsd_lb": 24.93,
+                        "rmsd_ub": 28.136,
+                        "pKd": 8.21463370518508
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.8,
+                        "rmsd_lb": 20.742,
+                        "rmsd_ub": 24.944,
+                        "pKd": 7.9212539299998985
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.7,
+                        "rmsd_lb": 22.055,
+                        "rmsd_ub": 25.576,
+                        "pKd": 7.847908986203602
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.6,
+                        "rmsd_lb": 32.646,
+                        "rmsd_ub": 35.182,
+                        "pKd": 7.774564042407307
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.6,
+                        "rmsd_lb": 24.058,
+                        "rmsd_ub": 28.273,
+                        "pKd": 7.774564042407307
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.6,
+                        "rmsd_lb": 11.474,
+                        "rmsd_ub": 16.127,
+                        "pKd": 7.774564042407307
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.6,
+                        "rmsd_lb": 2.319,
+                        "rmsd_ub": 2.572,
+                        "pKd": 7.774564042407307
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.6,
+                        "rmsd_lb": 18.88,
+                        "rmsd_ub": 23.024,
+                        "pKd": 7.774564042407307
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.4,
+                        "rmsd_lb": 24.488,
+                        "rmsd_ub": 28.604,
+                        "pKd": 7.627874154814717
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.3,
+                        "rmsd_lb": 16.771,
+                        "rmsd_ub": 19.661,
+                        "pKd": 7.554529211018422
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.3,
+                        "rmsd_lb": 32.713,
+                        "rmsd_ub": 35.474,
+                        "pKd": 7.554529211018422
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.2,
+                        "rmsd_lb": 25.166,
+                        "rmsd_ub": 27.831,
+                        "pKd": 7.481184267222126
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.2,
+                        "rmsd_lb": 32.369,
+                        "rmsd_ub": 35.517,
+                        "pKd": 7.481184267222126
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.2,
+                        "rmsd_lb": 17.238,
+                        "rmsd_ub": 21.137,
+                        "pKd": 7.481184267222126
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.1,
+                        "rmsd_lb": 4.441,
+                        "rmsd_ub": 5.695,
+                        "pKd": 7.407839323425829
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -10.1,
+                        "rmsd_lb": 25.09,
+                        "rmsd_ub": 29.104,
+                        "pKd": 7.407839323425829
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G12D_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G12D",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12D/KRAS-G12D_A/KRAS_Daraxonrasib_KRAS-G12D_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12D/KRAS-G12D_A/KRAS_Daraxonrasib_KRAS-G12D_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 19,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.6,
+                    "pKd": 8.508013480370261
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.6,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.508013480370261
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.4,
+                        "rmsd_lb": 20.954,
+                        "rmsd_ub": 23.372,
+                        "pKd": 8.361323592777671
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.3,
+                        "rmsd_lb": 33.03,
+                        "rmsd_ub": 34.638,
+                        "pKd": 8.287978648981376
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.2,
+                        "rmsd_lb": 20.222,
+                        "rmsd_ub": 23.103,
+                        "pKd": 8.21463370518508
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.2,
+                        "rmsd_lb": 25.015,
+                        "rmsd_ub": 28.245,
+                        "pKd": 8.21463370518508
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -11.1,
+                        "rmsd_lb": 20.819,
+                        "rmsd_ub": 23.502,
+                        "pKd": 8.141288761388783
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.9,
+                        "rmsd_lb": 24.424,
+                        "rmsd_ub": 26.634,
+                        "pKd": 7.994598873796193
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.9,
+                        "rmsd_lb": 27.789,
+                        "rmsd_ub": 29.189,
+                        "pKd": 7.994598873796193
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.6,
+                        "rmsd_lb": 2.338,
+                        "rmsd_ub": 4.68,
+                        "pKd": 7.774564042407307
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.4,
+                        "rmsd_lb": 28.528,
+                        "rmsd_ub": 29.659,
+                        "pKd": 7.627874154814717
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.3,
+                        "rmsd_lb": 20.545,
+                        "rmsd_ub": 23.482,
+                        "pKd": 7.554529211018422
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.3,
+                        "rmsd_lb": 2.374,
+                        "rmsd_ub": 6.742,
+                        "pKd": 7.554529211018422
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.2,
+                        "rmsd_lb": 2.003,
+                        "rmsd_ub": 8.029,
+                        "pKd": 7.481184267222126
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.2,
+                        "rmsd_lb": 1.789,
+                        "rmsd_ub": 4.896,
+                        "pKd": 7.481184267222126
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.2,
+                        "rmsd_lb": 33.656,
+                        "rmsd_ub": 36.438,
+                        "pKd": 7.481184267222126
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.2,
+                        "rmsd_lb": 28.703,
+                        "rmsd_ub": 29.719,
+                        "pKd": 7.481184267222126
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.1,
+                        "rmsd_lb": 2.24,
+                        "rmsd_ub": 7.877,
+                        "pKd": 7.407839323425829
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.0,
+                        "rmsd_lb": 31.991,
+                        "rmsd_ub": 33.251,
+                        "pKd": 7.334494379629534
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.0,
+                        "rmsd_lb": 21.07,
+                        "rmsd_ub": 24.622,
+                        "pKd": 7.334494379629534
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G12R_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G12R",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12R/KRAS-G12R_A/KRAS_Daraxonrasib_KRAS-G12R_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12R/KRAS-G12R_A/KRAS_Daraxonrasib_KRAS-G12R_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.5,
+                    "pKd": 8.434668536573966
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.5,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.434668536573966
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.5,
+                        "rmsd_lb": 32.874,
+                        "rmsd_ub": 34.453,
+                        "pKd": 8.434668536573966
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.3,
+                        "rmsd_lb": 25.001,
+                        "rmsd_ub": 28.1,
+                        "pKd": 8.287978648981376
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.3,
+                        "rmsd_lb": 24.816,
+                        "rmsd_ub": 27.556,
+                        "pKd": 8.287978648981376
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -10.9,
+                        "rmsd_lb": 24.983,
+                        "rmsd_ub": 29.114,
+                        "pKd": 7.994598873796193
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.7,
+                        "rmsd_lb": 32.698,
+                        "rmsd_ub": 35.216,
+                        "pKd": 7.847908986203602
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.7,
+                        "rmsd_lb": 25.546,
+                        "rmsd_ub": 29.127,
+                        "pKd": 7.847908986203602
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.6,
+                        "rmsd_lb": 11.604,
+                        "rmsd_ub": 16.247,
+                        "pKd": 7.774564042407307
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.4,
+                        "rmsd_lb": 2.34,
+                        "rmsd_ub": 2.581,
+                        "pKd": 7.627874154814717
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.4,
+                        "rmsd_lb": 32.369,
+                        "rmsd_ub": 35.423,
+                        "pKd": 7.627874154814717
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.4,
+                        "rmsd_lb": 3.432,
+                        "rmsd_ub": 6.139,
+                        "pKd": 7.627874154814717
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.4,
+                        "rmsd_lb": 24.311,
+                        "rmsd_ub": 28.183,
+                        "pKd": 7.627874154814717
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.4,
+                        "rmsd_lb": 24.441,
+                        "rmsd_ub": 27.935,
+                        "pKd": 7.627874154814717
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.3,
+                        "rmsd_lb": 1.851,
+                        "rmsd_ub": 5.101,
+                        "pKd": 7.554529211018422
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.3,
+                        "rmsd_lb": 32.574,
+                        "rmsd_ub": 35.369,
+                        "pKd": 7.554529211018422
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.2,
+                        "rmsd_lb": 4.244,
+                        "rmsd_ub": 5.479,
+                        "pKd": 7.481184267222126
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.2,
+                        "rmsd_lb": 20.935,
+                        "rmsd_ub": 25.764,
+                        "pKd": 7.481184267222126
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.1,
+                        "rmsd_lb": 3.379,
+                        "rmsd_ub": 6.52,
+                        "pKd": 7.407839323425829
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.0,
+                        "rmsd_lb": 32.392,
+                        "rmsd_ub": 34.784,
+                        "pKd": 7.334494379629534
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -10.0,
+                        "rmsd_lb": 25.101,
+                        "rmsd_ub": 27.908,
+                        "pKd": 7.334494379629534
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G12S_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G12S",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12S/KRAS-G12S_A/KRAS_Daraxonrasib_KRAS-G12S_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12S/KRAS-G12S_A/KRAS_Daraxonrasib_KRAS-G12S_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.5,
+                    "pKd": 8.434668536573966
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.5,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.434668536573966
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.1,
+                        "rmsd_lb": 20.311,
+                        "rmsd_ub": 23.101,
+                        "pKd": 8.141288761388783
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -10.9,
+                        "rmsd_lb": 20.806,
+                        "rmsd_ub": 23.491,
+                        "pKd": 7.994598873796193
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -10.8,
+                        "rmsd_lb": 25.118,
+                        "rmsd_ub": 28.463,
+                        "pKd": 7.9212539299998985
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -10.5,
+                        "rmsd_lb": 2.386,
+                        "rmsd_ub": 4.918,
+                        "pKd": 7.701219098611012
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.5,
+                        "rmsd_lb": 21.224,
+                        "rmsd_ub": 23.457,
+                        "pKd": 7.701219098611012
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.3,
+                        "rmsd_lb": 2.18,
+                        "rmsd_ub": 7.829,
+                        "pKd": 7.554529211018422
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.3,
+                        "rmsd_lb": 20.6,
+                        "rmsd_ub": 23.528,
+                        "pKd": 7.554529211018422
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.1,
+                        "rmsd_lb": 33.747,
+                        "rmsd_ub": 36.546,
+                        "pKd": 7.407839323425829
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.0,
+                        "rmsd_lb": 34.494,
+                        "rmsd_ub": 37.626,
+                        "pKd": 7.334494379629534
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.0,
+                        "rmsd_lb": 2.006,
+                        "rmsd_ub": 8.047,
+                        "pKd": 7.334494379629534
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.0,
+                        "rmsd_lb": 4.901,
+                        "rmsd_ub": 8.755,
+                        "pKd": 7.334494379629534
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -9.9,
+                        "rmsd_lb": 24.412,
+                        "rmsd_ub": 27.142,
+                        "pKd": 7.261149435833239
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -9.9,
+                        "rmsd_lb": 4.909,
+                        "rmsd_ub": 8.104,
+                        "pKd": 7.261149435833239
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -9.8,
+                        "rmsd_lb": 19.498,
+                        "rmsd_ub": 23.156,
+                        "pKd": 7.187804492036944
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -9.7,
+                        "rmsd_lb": 25.883,
+                        "rmsd_ub": 29.587,
+                        "pKd": 7.1144595482406485
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -9.7,
+                        "rmsd_lb": 19.968,
+                        "rmsd_ub": 23.446,
+                        "pKd": 7.1144595482406485
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -9.7,
+                        "rmsd_lb": 1.83,
+                        "rmsd_ub": 4.865,
+                        "pKd": 7.1144595482406485
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -9.7,
+                        "rmsd_lb": 33.499,
+                        "rmsd_ub": 36.102,
+                        "pKd": 7.1144595482406485
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -9.5,
+                        "rmsd_lb": 2.716,
+                        "rmsd_ub": 6.79,
+                        "pKd": 6.967769660648059
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G12V_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G12V",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12V/KRAS-G12V_A/KRAS_Daraxonrasib_KRAS-G12V_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G12V/KRAS-G12V_A/KRAS_Daraxonrasib_KRAS-G12V_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.5,
+                    "pKd": 8.434668536573966
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.5,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.434668536573966
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.5,
+                        "rmsd_lb": 32.906,
+                        "rmsd_ub": 34.44,
+                        "pKd": 8.434668536573966
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.3,
+                        "rmsd_lb": 25.121,
+                        "rmsd_ub": 28.351,
+                        "pKd": 8.287978648981376
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.3,
+                        "rmsd_lb": 21.006,
+                        "rmsd_ub": 23.385,
+                        "pKd": 8.287978648981376
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.2,
+                        "rmsd_lb": 21.086,
+                        "rmsd_ub": 23.558,
+                        "pKd": 8.21463370518508
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.9,
+                        "rmsd_lb": 20.611,
+                        "rmsd_ub": 23.107,
+                        "pKd": 7.994598873796193
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.7,
+                        "rmsd_lb": 24.346,
+                        "rmsd_ub": 26.639,
+                        "pKd": 7.847908986203602
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.6,
+                        "rmsd_lb": 20.459,
+                        "rmsd_ub": 24.159,
+                        "pKd": 7.774564042407307
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.5,
+                        "rmsd_lb": 2.239,
+                        "rmsd_ub": 7.8,
+                        "pKd": 7.701219098611012
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.4,
+                        "rmsd_lb": 2.316,
+                        "rmsd_ub": 4.826,
+                        "pKd": 7.627874154814717
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.4,
+                        "rmsd_lb": 32.142,
+                        "rmsd_ub": 33.715,
+                        "pKd": 7.627874154814717
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.4,
+                        "rmsd_lb": 2.405,
+                        "rmsd_ub": 6.765,
+                        "pKd": 7.627874154814717
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.3,
+                        "rmsd_lb": 31.819,
+                        "rmsd_ub": 33.056,
+                        "pKd": 7.554529211018422
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.3,
+                        "rmsd_lb": 20.005,
+                        "rmsd_ub": 23.336,
+                        "pKd": 7.554529211018422
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.2,
+                        "rmsd_lb": 25.44,
+                        "rmsd_ub": 28.18,
+                        "pKd": 7.481184267222126
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.1,
+                        "rmsd_lb": 20.978,
+                        "rmsd_ub": 23.109,
+                        "pKd": 7.407839323425829
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.1,
+                        "rmsd_lb": 27.795,
+                        "rmsd_ub": 29.244,
+                        "pKd": 7.407839323425829
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.1,
+                        "rmsd_lb": 34.501,
+                        "rmsd_ub": 37.69,
+                        "pKd": 7.407839323425829
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.0,
+                        "rmsd_lb": 21.154,
+                        "rmsd_ub": 24.805,
+                        "pKd": 7.334494379629534
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -10.0,
+                        "rmsd_lb": 28.39,
+                        "rmsd_ub": 29.571,
+                        "pKd": 7.334494379629534
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G13A_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G13A",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13A/KRAS-G13A_A/KRAS_Daraxonrasib_KRAS-G13A_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13A/KRAS-G13A_A/KRAS_Daraxonrasib_KRAS-G13A_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 19,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.5,
+                    "pKd": 8.434668536573966
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.5,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.434668536573966
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.3,
+                        "rmsd_lb": 20.86,
+                        "rmsd_ub": 23.334,
+                        "pKd": 8.287978648981376
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.3,
+                        "rmsd_lb": 20.79,
+                        "rmsd_ub": 23.549,
+                        "pKd": 8.287978648981376
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.1,
+                        "rmsd_lb": 32.108,
+                        "rmsd_ub": 33.773,
+                        "pKd": 8.141288761388783
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -10.7,
+                        "rmsd_lb": 19.948,
+                        "rmsd_ub": 23.609,
+                        "pKd": 7.847908986203602
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.5,
+                        "rmsd_lb": 2.42,
+                        "rmsd_ub": 4.895,
+                        "pKd": 7.701219098611012
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.3,
+                        "rmsd_lb": 2.25,
+                        "rmsd_ub": 7.851,
+                        "pKd": 7.554529211018422
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.2,
+                        "rmsd_lb": 21.156,
+                        "rmsd_ub": 24.616,
+                        "pKd": 7.481184267222126
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.2,
+                        "rmsd_lb": 20.551,
+                        "rmsd_ub": 23.289,
+                        "pKd": 7.481184267222126
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.2,
+                        "rmsd_lb": 33.83,
+                        "rmsd_ub": 36.557,
+                        "pKd": 7.481184267222126
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.2,
+                        "rmsd_lb": 34.375,
+                        "rmsd_ub": 37.535,
+                        "pKd": 7.481184267222126
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.0,
+                        "rmsd_lb": 2.426,
+                        "rmsd_ub": 6.768,
+                        "pKd": 7.334494379629534
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.0,
+                        "rmsd_lb": 2.021,
+                        "rmsd_ub": 8.061,
+                        "pKd": 7.334494379629534
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.0,
+                        "rmsd_lb": 20.525,
+                        "rmsd_ub": 23.486,
+                        "pKd": 7.334494379629534
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -9.9,
+                        "rmsd_lb": 4.793,
+                        "rmsd_ub": 8.608,
+                        "pKd": 7.261149435833239
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -9.9,
+                        "rmsd_lb": 29.536,
+                        "rmsd_ub": 32.422,
+                        "pKd": 7.261149435833239
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -9.8,
+                        "rmsd_lb": 7.557,
+                        "rmsd_ub": 9.976,
+                        "pKd": 7.187804492036944
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -9.8,
+                        "rmsd_lb": 28.874,
+                        "rmsd_ub": 32.624,
+                        "pKd": 7.187804492036944
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -9.7,
+                        "rmsd_lb": 1.872,
+                        "rmsd_ub": 4.947,
+                        "pKd": 7.1144595482406485
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G13C_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G13C",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13C/KRAS-G13C_A/KRAS_Daraxonrasib_KRAS-G13C_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13C/KRAS-G13C_A/KRAS_Daraxonrasib_KRAS-G13C_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.5,
+                    "pKd": 8.434668536573966
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.5,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.434668536573966
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.1,
+                        "rmsd_lb": 20.842,
+                        "rmsd_ub": 23.371,
+                        "pKd": 8.141288761388783
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.0,
+                        "rmsd_lb": 20.283,
+                        "rmsd_ub": 23.042,
+                        "pKd": 8.067943817592488
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.0,
+                        "rmsd_lb": 20.918,
+                        "rmsd_ub": 23.533,
+                        "pKd": 8.067943817592488
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -10.7,
+                        "rmsd_lb": 25.013,
+                        "rmsd_ub": 28.374,
+                        "pKd": 7.847908986203602
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.5,
+                        "rmsd_lb": 2.448,
+                        "rmsd_ub": 4.929,
+                        "pKd": 7.701219098611012
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.3,
+                        "rmsd_lb": 2.229,
+                        "rmsd_ub": 7.847,
+                        "pKd": 7.554529211018422
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.3,
+                        "rmsd_lb": 19.888,
+                        "rmsd_ub": 23.232,
+                        "pKd": 7.554529211018422
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.2,
+                        "rmsd_lb": 33.763,
+                        "rmsd_ub": 36.564,
+                        "pKd": 7.481184267222126
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.1,
+                        "rmsd_lb": 34.432,
+                        "rmsd_ub": 37.555,
+                        "pKd": 7.407839323425829
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.0,
+                        "rmsd_lb": 21.212,
+                        "rmsd_ub": 24.823,
+                        "pKd": 7.334494379629534
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.0,
+                        "rmsd_lb": 2.45,
+                        "rmsd_ub": 6.784,
+                        "pKd": 7.334494379629534
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -9.9,
+                        "rmsd_lb": 26.043,
+                        "rmsd_ub": 27.632,
+                        "pKd": 7.261149435833239
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -9.9,
+                        "rmsd_lb": 7.67,
+                        "rmsd_ub": 10.12,
+                        "pKd": 7.261149435833239
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -9.8,
+                        "rmsd_lb": 24.453,
+                        "rmsd_ub": 26.938,
+                        "pKd": 7.187804492036944
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -9.8,
+                        "rmsd_lb": 25.833,
+                        "rmsd_ub": 29.464,
+                        "pKd": 7.187804492036944
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -9.8,
+                        "rmsd_lb": 33.481,
+                        "rmsd_ub": 36.076,
+                        "pKd": 7.187804492036944
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -9.7,
+                        "rmsd_lb": 25.956,
+                        "rmsd_ub": 27.642,
+                        "pKd": 7.1144595482406485
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -9.7,
+                        "rmsd_lb": 20.599,
+                        "rmsd_ub": 23.661,
+                        "pKd": 7.1144595482406485
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -9.7,
+                        "rmsd_lb": 21.316,
+                        "rmsd_ub": 23.501,
+                        "pKd": 7.1144595482406485
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G13D_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G13D",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13D/KRAS-G13D_A/KRAS_Daraxonrasib_KRAS-G13D_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13D/KRAS-G13D_A/KRAS_Daraxonrasib_KRAS-G13D_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.6,
+                    "pKd": 8.508013480370261
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.6,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.508013480370261
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.5,
+                        "rmsd_lb": 20.941,
+                        "rmsd_ub": 23.617,
+                        "pKd": 8.434668536573966
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.4,
+                        "rmsd_lb": 20.977,
+                        "rmsd_ub": 23.439,
+                        "pKd": 8.361323592777671
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.4,
+                        "rmsd_lb": 20.339,
+                        "rmsd_ub": 23.114,
+                        "pKd": 8.361323592777671
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.1,
+                        "rmsd_lb": 25.114,
+                        "rmsd_ub": 28.428,
+                        "pKd": 8.141288761388783
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -11.0,
+                        "rmsd_lb": 32.855,
+                        "rmsd_ub": 34.432,
+                        "pKd": 8.067943817592488
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.9,
+                        "rmsd_lb": 2.423,
+                        "rmsd_ub": 4.937,
+                        "pKd": 7.994598873796193
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.5,
+                        "rmsd_lb": 20.053,
+                        "rmsd_ub": 23.238,
+                        "pKd": 7.701219098611012
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.4,
+                        "rmsd_lb": 2.213,
+                        "rmsd_ub": 7.863,
+                        "pKd": 7.627874154814717
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.4,
+                        "rmsd_lb": 33.867,
+                        "rmsd_ub": 36.636,
+                        "pKd": 7.627874154814717
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.3,
+                        "rmsd_lb": 21.222,
+                        "rmsd_ub": 24.604,
+                        "pKd": 7.554529211018422
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.3,
+                        "rmsd_lb": 2.4,
+                        "rmsd_ub": 6.754,
+                        "pKd": 7.554529211018422
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.3,
+                        "rmsd_lb": 34.447,
+                        "rmsd_ub": 37.553,
+                        "pKd": 7.554529211018422
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.3,
+                        "rmsd_lb": 1.998,
+                        "rmsd_ub": 8.029,
+                        "pKd": 7.554529211018422
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.2,
+                        "rmsd_lb": 4.826,
+                        "rmsd_ub": 8.673,
+                        "pKd": 7.481184267222126
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.2,
+                        "rmsd_lb": 25.314,
+                        "rmsd_ub": 28.187,
+                        "pKd": 7.481184267222126
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.2,
+                        "rmsd_lb": 26.14,
+                        "rmsd_ub": 27.698,
+                        "pKd": 7.481184267222126
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.1,
+                        "rmsd_lb": 20.267,
+                        "rmsd_ub": 23.975,
+                        "pKd": 7.407839323425829
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.1,
+                        "rmsd_lb": 28.944,
+                        "rmsd_ub": 32.477,
+                        "pKd": 7.407839323425829
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -10.1,
+                        "rmsd_lb": 24.625,
+                        "rmsd_ub": 27.196,
+                        "pKd": 7.407839323425829
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G13R_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G13R",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13R/KRAS-G13R_A/KRAS_Daraxonrasib_KRAS-G13R_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13R/KRAS-G13R_A/KRAS_Daraxonrasib_KRAS-G13R_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.3,
+                    "pKd": 8.287978648981376
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.3,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.287978648981376
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.1,
+                        "rmsd_lb": 20.345,
+                        "rmsd_ub": 23.147,
+                        "pKd": 8.141288761388783
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.1,
+                        "rmsd_lb": 20.956,
+                        "rmsd_ub": 23.441,
+                        "pKd": 8.141288761388783
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.1,
+                        "rmsd_lb": 20.889,
+                        "rmsd_ub": 23.591,
+                        "pKd": 8.141288761388783
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.0,
+                        "rmsd_lb": 32.163,
+                        "rmsd_ub": 33.887,
+                        "pKd": 8.067943817592488
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.7,
+                        "rmsd_lb": 25.083,
+                        "rmsd_ub": 28.485,
+                        "pKd": 7.847908986203602
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.6,
+                        "rmsd_lb": 2.329,
+                        "rmsd_ub": 6.765,
+                        "pKd": 7.774564042407307
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.5,
+                        "rmsd_lb": 2.422,
+                        "rmsd_ub": 4.699,
+                        "pKd": 7.701219098611012
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.3,
+                        "rmsd_lb": 19.949,
+                        "rmsd_ub": 23.312,
+                        "pKd": 7.554529211018422
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.2,
+                        "rmsd_lb": 21.195,
+                        "rmsd_ub": 24.774,
+                        "pKd": 7.481184267222126
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.2,
+                        "rmsd_lb": 2.239,
+                        "rmsd_ub": 7.855,
+                        "pKd": 7.481184267222126
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.1,
+                        "rmsd_lb": 33.732,
+                        "rmsd_ub": 36.499,
+                        "pKd": 7.407839323425829
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.1,
+                        "rmsd_lb": 34.514,
+                        "rmsd_ub": 37.616,
+                        "pKd": 7.407839323425829
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.0,
+                        "rmsd_lb": 1.982,
+                        "rmsd_ub": 8.019,
+                        "pKd": 7.334494379629534
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -9.9,
+                        "rmsd_lb": 20.694,
+                        "rmsd_ub": 23.855,
+                        "pKd": 7.261149435833239
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -9.9,
+                        "rmsd_lb": 32.67,
+                        "rmsd_ub": 33.848,
+                        "pKd": 7.261149435833239
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -9.9,
+                        "rmsd_lb": 29.645,
+                        "rmsd_ub": 32.512,
+                        "pKd": 7.261149435833239
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -9.9,
+                        "rmsd_lb": 4.997,
+                        "rmsd_ub": 8.085,
+                        "pKd": 7.261149435833239
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -9.8,
+                        "rmsd_lb": 4.594,
+                        "rmsd_ub": 8.315,
+                        "pKd": 7.187804492036944
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -9.8,
+                        "rmsd_lb": 33.506,
+                        "rmsd_ub": 36.111,
+                        "pKd": 7.187804492036944
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G13S_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G13S",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13S/KRAS-G13S_A/KRAS_Daraxonrasib_KRAS-G13S_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13S/KRAS-G13S_A/KRAS_Daraxonrasib_KRAS-G13S_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.3,
+                    "pKd": 8.287978648981376
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.3,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.287978648981376
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.2,
+                        "rmsd_lb": 15.609,
+                        "rmsd_ub": 17.856,
+                        "pKd": 8.21463370518508
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.2,
+                        "rmsd_lb": 20.902,
+                        "rmsd_ub": 23.336,
+                        "pKd": 8.21463370518508
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.1,
+                        "rmsd_lb": 25.555,
+                        "rmsd_ub": 29.125,
+                        "pKd": 8.141288761388783
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.1,
+                        "rmsd_lb": 7.632,
+                        "rmsd_ub": 11.904,
+                        "pKd": 8.141288761388783
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -11.1,
+                        "rmsd_lb": 2.057,
+                        "rmsd_ub": 6.997,
+                        "pKd": 8.141288761388783
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.6,
+                        "rmsd_lb": 0.976,
+                        "rmsd_ub": 1.444,
+                        "pKd": 7.774564042407307
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.5,
+                        "rmsd_lb": 21.505,
+                        "rmsd_ub": 23.361,
+                        "pKd": 7.701219098611012
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.5,
+                        "rmsd_lb": 1.958,
+                        "rmsd_ub": 6.401,
+                        "pKd": 7.701219098611012
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.5,
+                        "rmsd_lb": 1.913,
+                        "rmsd_ub": 5.476,
+                        "pKd": 7.701219098611012
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.4,
+                        "rmsd_lb": 1.551,
+                        "rmsd_ub": 4.487,
+                        "pKd": 7.627874154814717
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.4,
+                        "rmsd_lb": 1.942,
+                        "rmsd_ub": 5.931,
+                        "pKd": 7.627874154814717
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.3,
+                        "rmsd_lb": 1.988,
+                        "rmsd_ub": 6.307,
+                        "pKd": 7.554529211018422
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.3,
+                        "rmsd_lb": 2.318,
+                        "rmsd_ub": 8.168,
+                        "pKd": 7.554529211018422
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.2,
+                        "rmsd_lb": 1.617,
+                        "rmsd_ub": 4.796,
+                        "pKd": 7.481184267222126
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.2,
+                        "rmsd_lb": 25.241,
+                        "rmsd_ub": 28.792,
+                        "pKd": 7.481184267222126
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.2,
+                        "rmsd_lb": 15.925,
+                        "rmsd_ub": 19.428,
+                        "pKd": 7.481184267222126
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.2,
+                        "rmsd_lb": 2.201,
+                        "rmsd_ub": 6.366,
+                        "pKd": 7.481184267222126
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.1,
+                        "rmsd_lb": 21.659,
+                        "rmsd_ub": 23.956,
+                        "pKd": 7.407839323425829
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -10.0,
+                        "rmsd_lb": 29.344,
+                        "rmsd_ub": 31.165,
+                        "pKd": 7.334494379629534
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-G13V_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-G13V",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13V/KRAS-G13V_A/KRAS_Daraxonrasib_KRAS-G13V_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-G13V/KRAS-G13V_A/KRAS_Daraxonrasib_KRAS-G13V_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -11.2,
+                    "pKd": 8.21463370518508
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -11.2,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.21463370518508
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.1,
+                        "rmsd_lb": 1.466,
+                        "rmsd_ub": 6.621,
+                        "pKd": 8.141288761388783
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.1,
+                        "rmsd_lb": 1.6,
+                        "rmsd_ub": 2.648,
+                        "pKd": 8.141288761388783
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -10.8,
+                        "rmsd_lb": 20.344,
+                        "rmsd_ub": 23.096,
+                        "pKd": 7.9212539299998985
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -10.6,
+                        "rmsd_lb": 1.735,
+                        "rmsd_ub": 6.747,
+                        "pKd": 7.774564042407307
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -10.5,
+                        "rmsd_lb": 20.911,
+                        "rmsd_ub": 24.203,
+                        "pKd": 7.701219098611012
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -10.4,
+                        "rmsd_lb": 21.019,
+                        "rmsd_ub": 24.013,
+                        "pKd": 7.627874154814717
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -10.4,
+                        "rmsd_lb": 1.96,
+                        "rmsd_ub": 8.133,
+                        "pKd": 7.627874154814717
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -10.2,
+                        "rmsd_lb": 18.339,
+                        "rmsd_ub": 23.142,
+                        "pKd": 7.481184267222126
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -10.1,
+                        "rmsd_lb": 24.71,
+                        "rmsd_ub": 27.546,
+                        "pKd": 7.407839323425829
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -10.1,
+                        "rmsd_lb": 21.395,
+                        "rmsd_ub": 24.401,
+                        "pKd": 7.407839323425829
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -10.0,
+                        "rmsd_lb": 2.744,
+                        "rmsd_ub": 7.674,
+                        "pKd": 7.334494379629534
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.0,
+                        "rmsd_lb": 20.911,
+                        "rmsd_ub": 23.671,
+                        "pKd": 7.334494379629534
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -9.9,
+                        "rmsd_lb": 1.946,
+                        "rmsd_ub": 8.055,
+                        "pKd": 7.261149435833239
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -9.9,
+                        "rmsd_lb": 18.058,
+                        "rmsd_ub": 21.78,
+                        "pKd": 7.261149435833239
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -9.9,
+                        "rmsd_lb": 18.235,
+                        "rmsd_ub": 22.011,
+                        "pKd": 7.261149435833239
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -9.9,
+                        "rmsd_lb": 15.227,
+                        "rmsd_ub": 18.66,
+                        "pKd": 7.261149435833239
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -9.8,
+                        "rmsd_lb": 2.157,
+                        "rmsd_ub": 7.593,
+                        "pKd": 7.187804492036944
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -9.8,
+                        "rmsd_lb": 15.985,
+                        "rmsd_ub": 19.174,
+                        "pKd": 7.187804492036944
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -9.8,
+                        "rmsd_lb": 20.805,
+                        "rmsd_ub": 23.426,
+                        "pKd": 7.187804492036944
+                    }
+                }
+            }
+        },
+        "KRAS_Daraxonrasib_KRAS-WILD-TYE_A": {
+            "metadata": {
+                "protein": "KRAS",
+                "drug": "Daraxonrasib",
+                "mutation": "KRAS-WILD-TYE",
+                "chain": "A"
+            },
+            "source": {
+                "file": "Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-WILD-TYE/KRAS-WILD-TYE_A/KRAS_Daraxonrasib_KRAS-WILD-TYE_A.log.json",
+                "absolute_path": "/home/leo/Documents/GitHub/MIVIDIA-Mutational-Impact-of-Variations-In-Drug-Interaction-Analysis/Data/kras_article/Adagrasib_Daraxonrasib_results/Daraxonrasib/docking/vina/KRAS_Daraxonrasib/KRAS-WILD-TYE/KRAS-WILD-TYE_A/KRAS_Daraxonrasib_KRAS-WILD-TYE_A.log.json"
+            },
+            "docking": {
+                "number_of_modes": 20,
+                "best_mode": {
+                    "mode": 1,
+                    "energy": -12.2,
+                    "pKd": 8.94808314314803
+                },
+                "modes": {
+                    "1": {
+                        "mode": 1,
+                        "energy": -12.2,
+                        "rmsd_lb": 0.0,
+                        "rmsd_ub": 0.0,
+                        "pKd": 8.94808314314803
+                    },
+                    "2": {
+                        "mode": 2,
+                        "energy": -11.8,
+                        "rmsd_lb": 2.299,
+                        "rmsd_ub": 7.939,
+                        "pKd": 8.654703367962851
+                    },
+                    "3": {
+                        "mode": 3,
+                        "energy": -11.7,
+                        "rmsd_lb": 2.159,
+                        "rmsd_ub": 7.147,
+                        "pKd": 8.581358424166556
+                    },
+                    "4": {
+                        "mode": 4,
+                        "energy": -11.6,
+                        "rmsd_lb": 1.829,
+                        "rmsd_ub": 6.922,
+                        "pKd": 8.508013480370261
+                    },
+                    "5": {
+                        "mode": 5,
+                        "energy": -11.6,
+                        "rmsd_lb": 1.407,
+                        "rmsd_ub": 2.106,
+                        "pKd": 8.508013480370261
+                    },
+                    "6": {
+                        "mode": 6,
+                        "energy": -11.4,
+                        "rmsd_lb": 15.06,
+                        "rmsd_ub": 16.791,
+                        "pKd": 8.361323592777671
+                    },
+                    "7": {
+                        "mode": 7,
+                        "energy": -11.4,
+                        "rmsd_lb": 1.133,
+                        "rmsd_ub": 1.44,
+                        "pKd": 8.361323592777671
+                    },
+                    "8": {
+                        "mode": 8,
+                        "energy": -11.3,
+                        "rmsd_lb": 1.981,
+                        "rmsd_ub": 6.476,
+                        "pKd": 8.287978648981376
+                    },
+                    "9": {
+                        "mode": 9,
+                        "energy": -11.2,
+                        "rmsd_lb": 1.75,
+                        "rmsd_ub": 4.897,
+                        "pKd": 8.21463370518508
+                    },
+                    "10": {
+                        "mode": 10,
+                        "energy": -11.2,
+                        "rmsd_lb": 1.58,
+                        "rmsd_ub": 4.643,
+                        "pKd": 8.21463370518508
+                    },
+                    "11": {
+                        "mode": 11,
+                        "energy": -11.1,
+                        "rmsd_lb": 2.139,
+                        "rmsd_ub": 6.576,
+                        "pKd": 8.141288761388783
+                    },
+                    "12": {
+                        "mode": 12,
+                        "energy": -11.1,
+                        "rmsd_lb": 1.647,
+                        "rmsd_ub": 4.534,
+                        "pKd": 8.141288761388783
+                    },
+                    "13": {
+                        "mode": 13,
+                        "energy": -10.9,
+                        "rmsd_lb": 21.776,
+                        "rmsd_ub": 24.286,
+                        "pKd": 7.994598873796193
+                    },
+                    "14": {
+                        "mode": 14,
+                        "energy": -10.9,
+                        "rmsd_lb": 2.159,
+                        "rmsd_ub": 7.01,
+                        "pKd": 7.994598873796193
+                    },
+                    "15": {
+                        "mode": 15,
+                        "energy": -10.8,
+                        "rmsd_lb": 1.928,
+                        "rmsd_ub": 8.104,
+                        "pKd": 7.9212539299998985
+                    },
+                    "16": {
+                        "mode": 16,
+                        "energy": -10.6,
+                        "rmsd_lb": 2.165,
+                        "rmsd_ub": 7.547,
+                        "pKd": 7.774564042407307
+                    },
+                    "17": {
+                        "mode": 17,
+                        "energy": -10.6,
+                        "rmsd_lb": 2.288,
+                        "rmsd_ub": 4.379,
+                        "pKd": 7.774564042407307
+                    },
+                    "18": {
+                        "mode": 18,
+                        "energy": -10.6,
+                        "rmsd_lb": 2.284,
+                        "rmsd_ub": 6.098,
+                        "pKd": 7.774564042407307
+                    },
+                    "19": {
+                        "mode": 19,
+                        "energy": -10.6,
+                        "rmsd_lb": 1.724,
+                        "rmsd_ub": 3.191,
+                        "pKd": 7.774564042407307
+                    },
+                    "20": {
+                        "mode": 20,
+                        "energy": -10.5,
+                        "rmsd_lb": 2.113,
+                        "rmsd_ub": 5.592,
+                        "pKd": 7.701219098611012
+                    }
+                }
+            }
+        }
+    },
+    "summary": {
+        "files_found": 26,
+        "files_merged": 26,
+        "files_with_errors": 0,
+        "total_docking_modes": 511
+    }
+}
