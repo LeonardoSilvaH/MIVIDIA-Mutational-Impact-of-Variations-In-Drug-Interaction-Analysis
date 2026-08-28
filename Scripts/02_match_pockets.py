@@ -1507,3 +1507,20 @@ print(
 )
 
 print("=" * 70)
+
+dist = matched_df["Distance"]
+
+print("\nPocket Matching Statistics")
+print("---------------------------")
+print(f"Number of matches: {len(dist)}")
+print(f"Mean distance:     {dist.mean():.2f} Å")
+print(f"Median distance:   {dist.median():.2f} Å")
+print(f"Std distance:      {dist.std():.2f} Å")
+print(f"Min distance:      {dist.min():.2f} Å")
+print(f"Max distance:      {dist.max():.2f} Å")
+
+print(f"≤1 Å : {(dist <= 1).mean()*100:.2f}%")
+print(f"≤2 Å : {(dist <= 2).mean()*100:.2f}%")
+print(f"≤3 Å : {(dist <= 3).mean()*100:.2f}%")
+print(f"≤5 Å : {(dist <= 5).mean()*100:.2f}%")
+print(f"≤5 Å : {(dist <= 6).mean()*100:.2f}%")

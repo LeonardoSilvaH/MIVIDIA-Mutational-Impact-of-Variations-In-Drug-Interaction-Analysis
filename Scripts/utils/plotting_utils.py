@@ -206,59 +206,79 @@ def plot_mutation_barplot(
 # Pocket transition heatmap
 # ==========================================================
 
-def plot_transition_heatmap(
-    matrix,
-    output_dir
-):
+def plot_transition_heatmap(matrix, output_dir):
 
-    plt.figure(
-        figsize=(5, 5)
+    plt.figure(figsize=(6, 5))
+
+    # ------------------------------------------------------
+    # Heatmap
+    # ------------------------------------------------------
+
+    im = plt.imshow(
+        matrix.values,
+        cmap="Blues",
+        aspect="auto",
     )
 
-    plt.imshow(
-        matrix.values
-    )
+    # ------------------------------------------------------
+    # Axes
+    # ------------------------------------------------------
 
     plt.xticks(
-        range(
-            len(matrix.columns)
-        ),
+        range(len(matrix.columns)),
         matrix.columns,
     )
 
     plt.yticks(
-        range(
-            len(matrix.index)
-        ),
+        range(len(matrix.index)),
         matrix.index,
     )
 
-    plt.xlabel(
-        "Mutant Pocket"
-    )
+    plt.xlabel("Mutant Pocket")
+    plt.ylabel("WT Pocket")
 
-    plt.ylabel(
-        "WT Pocket"
-    )
+    # ------------------------------------------------------
+    # Cell annotations
+    # ------------------------------------------------------
 
-    for i in range(
-        matrix.shape[0]
-    ):
+    max_value = matrix.values.max()
 
-        for j in range(
-            matrix.shape[1]
-        ):
+    for i in range(matrix.shape[0]):
+
+        for j in range(matrix.shape[1]):
+
+            value = matrix.iloc[i, j]
+
+            # Choose text color according to cell intensity
+            if value > max_value * 0.5:
+                text_color = "white"
+            else:
+                text_color = "black"
 
             plt.text(
                 j,
                 i,
-                matrix.iloc[i, j],
+                f"{value:.0f}",
                 ha="center",
                 va="center",
                 fontsize=12,
+                fontweight="bold",
+                color=text_color,
             )
 
-    plt.colorbar()
+    # ------------------------------------------------------
+    # Colorbar
+    # ------------------------------------------------------
+
+    cbar = plt.colorbar(im)
+
+    cbar.set_label(
+        "Number of Pocket Transitions"
+    )
+
+    # ------------------------------------------------------
+    # Layout
+    # ------------------------------------------------------
 
     plt.tight_layout()
 
@@ -268,6 +288,7 @@ def plot_transition_heatmap(
             "pocket_transition_heatmap.png"
         ),
         dpi=300,
+        bbox_inches="tight",
     )
 
     plt.close()
