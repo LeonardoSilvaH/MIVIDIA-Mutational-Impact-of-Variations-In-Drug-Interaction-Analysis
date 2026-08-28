@@ -12,62 +12,200 @@ from matplotlib.colors import TwoSlopeNorm
 # INPUT / OUTPUT
 # ==========================================================
 
-INPUT_CSV = "Analysis/03_compute_delta_scores/docking_summary.csv"
+INPUT_CSV = (
+    "Analysis/03_compute_delta_scores/docking_summary.csv"
+)
 
-OUTPUT_DIR = "Results/Heatmaps"
+OUTPUT_DIR = (
+    "Results/Heatmaps"
+)
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs(
+    OUTPUT_DIR,
+    exist_ok=True
+)
 
 
 # ==========================================================
 # LOAD DATA
 # ==========================================================
 
-df = pd.read_csv(INPUT_CSV)
+print("Loading data...")
+
+df = pd.read_csv(
+    INPUT_CSV
+)
+
+print(
+    f"Loaded {len(df)} rows."
+)
+
+
+# ==========================================================
+# DETECT SCORE TYPE
+# ==========================================================
+
+if "DeltaDockingScore" in df.columns:
+
+    SCORE_COLUMN = "DeltaDockingScore"
+
+    SCORE_LABEL = (
+        "Δ Docking Score (Mutant − WT)"
+    )
+
+    SCORE_TYPE = "PLANTS"
+
+elif "DeltaGlobalVinaScore" in df.columns:
+
+    SCORE_COLUMN = "DeltaGlobalVinaScore"
+
+    SCORE_LABEL = (
+        "Δ Global Vina Score (Mutant − WT)"
+    )
+
+    SCORE_TYPE = "Vina"
+
+else:
+
+    raise KeyError(
+        "\nCould not identify a valid delta-score column.\n\n"
+        "Expected one of:\n"
+        "  DeltaDockingScore\n"
+        "  DeltaGlobalVinaScore\n\n"
+        f"Available columns:\n{list(df.columns)}"
+    )
+
+
+print(
+    f"Score type: {SCORE_TYPE}"
+)
+
+print(
+    f"Score column: {SCORE_COLUMN}"
+)
 
 
 # ==========================================================
 # GLOBAL COLOR SCALE
 # ==========================================================
 
-delta_min = df["DeltaDockingScore"].min()
-delta_max = df["DeltaDockingScore"].max()
+delta_min = df[
+    SCORE_COLUMN
+].min()
 
-print(f"Global range: {delta_min:.2f} to {delta_max:.2f}")
+delta_max = df[
+    SCORE_COLUMN
+].max()
 
-norm = TwoSlopeNorm(
-    vmin=delta_min,
-    vcenter=0,
-    vmax=delta_max,
+print(
+    f"Global range: "
+    f"{delta_min:.2f} to "
+    f"{delta_max:.2f}"
 )
+
+
+# ----------------------------------------------------------
+# Handle case where all values are on one side of zero
+# ----------------------------------------------------------
+
+if delta_min < 0 and delta_max > 0:
+
+    norm = TwoSlopeNorm(
+        vmin=delta_min,
+        vcenter=0,
+        vmax=delta_max,
+    )
+
+else:
+
+    print(
+        "WARNING: Score range does not cross zero."
+    )
+
+    # Expand the range slightly so that the heatmap
+    # can still be generated.
+
+    maximum = max(
+        abs(delta_min),
+        abs(delta_max),
+        1
+    )
+
+    norm = TwoSlopeNorm(
+        vmin=-maximum,
+        vcenter=0,
+        vmax=maximum,
+    )
 
 
 # ==========================================================
 # ONE HEATMAP PER PROTEIN
 # ==========================================================
 
-for protein in sorted(df["Protein"].unique()):
+for protein in sorted(
+    df["Protein"].dropna().unique()
+):
 
-    protein_df = df[df["Protein"] == protein]
+    print(
+        f"\nGenerating heatmap for {protein}..."
+    )
 
-    matrix = protein_df.pivot(
+    protein_df = df[
+        df["Protein"] == protein
+    ].copy()
+
+
+    # ======================================================
+    # CREATE MUTATION × DRUG MATRIX
+    # ======================================================
+
+    matrix = protein_df.pivot_table(
         index="Mutation",
         columns="Drug",
-        values="DeltaDockingScore",
+        values=SCORE_COLUMN,
+        aggfunc="mean",
     )
+
+
+    # ------------------------------------------------------
+    # Sort rows and columns
+    # ------------------------------------------------------
 
     matrix = matrix.sort_index()
 
     matrix = matrix[
-        sorted(matrix.columns)
+        sorted(
+            matrix.columns
+        )
     ]
 
-    fig_width = max(8, len(matrix.columns) * 0.5)
-    fig_height = max(5, len(matrix.index) * 0.45)
+
+    # ======================================================
+    # FIGURE SIZE
+    # ======================================================
+
+    fig_width = max(
+        8,
+        len(matrix.columns) * 0.5
+    )
+
+    fig_height = max(
+        5,
+        len(matrix.index) * 0.45
+    )
+
 
     fig, ax = plt.subplots(
-        figsize=(fig_width, fig_height)
+        figsize=(
+            fig_width,
+            fig_height
+        )
     )
+
+
+    # ======================================================
+    # HEATMAP
+    # ======================================================
 
     im = ax.imshow(
         matrix.values,
@@ -76,35 +214,75 @@ for protein in sorted(df["Protein"].unique()):
         aspect="auto",
     )
 
-    ax.set_xticks(range(len(matrix.columns)))
+
+    # ======================================================
+    # X AXIS
+    # ======================================================
+
+    ax.set_xticks(
+        range(
+            len(
+                matrix.columns
+            )
+        )
+    )
+
     ax.set_xticklabels(
         matrix.columns,
         rotation=90,
         fontsize=8,
     )
 
-    ax.set_yticks(range(len(matrix.index)))
+
+    # ======================================================
+    # Y AXIS
+    # ======================================================
+
+    ax.set_yticks(
+        range(
+            len(
+                matrix.index
+            )
+        )
+    )
+
     ax.set_yticklabels(
         matrix.index,
         fontsize=8,
     )
 
+
+    # ======================================================
+    # TITLE
+    # ======================================================
+
     ax.set_title(
-        protein,
+        f"{protein} — {SCORE_TYPE}",
         fontsize=16,
         weight="bold",
     )
 
-    # ------------------------------------------------------
-    # Annotate every cell
-    # ------------------------------------------------------
 
-    for i in range(matrix.shape[0]):
-        for j in range(matrix.shape[1]):
+    # ======================================================
+    # ANNOTATE CELLS
+    # ======================================================
 
-            value = matrix.iloc[i, j]
+    for i in range(
+        matrix.shape[0]
+    ):
 
-            if pd.notna(value):
+        for j in range(
+            matrix.shape[1]
+        ):
+
+            value = matrix.iloc[
+                i,
+                j
+            ]
+
+            if pd.notna(
+                value
+            ):
 
                 ax.text(
                     j,
@@ -115,32 +293,81 @@ for protein in sorted(df["Protein"].unique()):
                     fontsize=6,
                 )
 
-    cbar = plt.colorbar(im)
+
+    # ======================================================
+    # COLORBAR
+    # ======================================================
+
+    cbar = plt.colorbar(
+        im,
+        ax=ax
+    )
 
     cbar.set_label(
-        "Δ Docking Score (Mutant - WT)",
+        SCORE_LABEL,
         fontsize=10,
     )
 
+
+    # ======================================================
+    # LAYOUT
+    # ======================================================
+
     plt.tight_layout()
 
+
+    # ======================================================
+    # SAVE PNG
+    # ======================================================
+
+    png_path = os.path.join(
+        OUTPUT_DIR,
+        f"{protein}_{SCORE_TYPE}_heatmap.png"
+    )
+
     plt.savefig(
-        os.path.join(
-            OUTPUT_DIR,
-            f"{protein}_heatmap.png",
-        ),
+        png_path,
         dpi=300,
         bbox_inches="tight",
     )
 
+
+    # ======================================================
+    # SAVE PDF
+    # ======================================================
+
+    pdf_path = os.path.join(
+        OUTPUT_DIR,
+        f"{protein}_{SCORE_TYPE}_heatmap.pdf"
+    )
+
     plt.savefig(
-        os.path.join(
-            OUTPUT_DIR,
-            f"{protein}_heatmap.pdf",
-        ),
+        pdf_path,
         bbox_inches="tight",
     )
 
+
     plt.close()
 
-print("\nDone!")
+
+    print(
+        f"  PNG: {png_path}"
+    )
+
+    print(
+        f"  PDF: {pdf_path}"
+    )
+
+
+# ==========================================================
+# DONE
+# ==========================================================
+
+print(
+    "\nDone!"
+)
+
+print(
+    f"Generated {len(df['Protein'].unique())} "
+    f"protein heatmap(s)."
+)

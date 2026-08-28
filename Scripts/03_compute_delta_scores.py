@@ -11,7 +11,7 @@ from pathlib import Path
 # ==========================================================
 
 MATCHED_POCKETS_FILE = (
-    "Analysis/02_matched_pockets/matched_pockets.csv"
+    "Analysis/02_matched_pockets/02_matched_pockets.csv"
 )
 
 # ----------------------------------------------------------
@@ -19,7 +19,7 @@ MATCHED_POCKETS_FILE = (
 # ----------------------------------------------------------
 
 POSE_DATA_FILE = (
-    "Data/results_KRAS/pocket_locations/pose_data.json"
+    "Data/kras_article/pocket_locations/pose_data.json"
 )
 
 # ----------------------------------------------------------
