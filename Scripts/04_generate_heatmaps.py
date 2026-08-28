@@ -257,7 +257,7 @@ for protein in sorted(
     # ======================================================
 
     ax.set_title(
-        f"{protein} — {SCORE_TYPE}",
+        f"{protein}",
         fontsize=16,
         weight="bold",
     )
