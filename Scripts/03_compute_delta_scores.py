@@ -148,13 +148,30 @@ def get_best_pose(pocket_dict):
 
     for pose_id, pose_data in pocket_dict.items():
 
-        score = pose_data["total_score"]
+        # Skip poses without a numeric score (failed or empty docking)
+        try:
+            score = float(
+                pose_data["total_score"]
+            )
+        except (
+            KeyError,
+            TypeError,
+            ValueError
+        ):
+            continue
 
         if score < best_score:
 
             best_score = score
 
             best_pose = pose_id
+
+    if best_pose is None:
+
+        raise ValueError(
+            "No pose with a valid PLANTS total_score in this pocket "
+            f"({len(pocket_dict)} poses found)"
+        )
 
     return (
         best_pose,
