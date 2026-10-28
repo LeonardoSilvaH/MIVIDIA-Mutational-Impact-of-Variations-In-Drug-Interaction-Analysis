@@ -269,6 +269,25 @@ def get_wildtype_key(entry):
     )
 
 
+def alignment_mutation_name(protein, mutation):
+    """
+    Convert a CoBDock mutation key to the name used by
+    01_align_structures.py.
+
+    Newer CoBDock runs use a dot as separator:
+
+        ACVR1.G328E  ->  ACVR1-G328E
+    """
+
+    dotted = f"{protein}."
+
+    if mutation.startswith(dotted):
+
+        return f"{protein}-" + mutation[len(dotted):]
+
+    return mutation
+
+
 def split_ligand_name(name):
     """
     Split:
@@ -835,7 +854,10 @@ if MODE == "standard":
 
             alignment_key = (
                 protein,
-                mutation
+                alignment_mutation_name(
+                    protein,
+                    mutation
+                )
             )
 
             if alignment_key not in alignments:

@@ -316,8 +316,12 @@ def process_match_plants(
 
     mutation = row["Mutation"]
 
-    wt_mutation = (
-        f"{protein}-WILD-TYE"
+    # WT key is "KRAS-WILD-TYE" in older runs and
+    # "KRAS.WILD-TYE" in newer ones, so look it up.
+    wt_mutation = next(
+        key
+        for key in pose_data[f"{protein}_{drug}"]
+        if "WILD" in key.upper()
     )
 
     wt_rank = row[
