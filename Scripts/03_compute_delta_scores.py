@@ -18,8 +18,13 @@ MATCHED_POCKETS_FILE = (
 # OLD CoBDock input
 # ----------------------------------------------------------
 
+POCKET_LOCATIONS_DIR = Path(
+    "/hd/leo/MIVIDIA/Data/resultados_mestrado/pocket_locations"
+)
+
 POSE_DATA_FILE = (
-    "Data/kras_article/pocket_locations/pose_data.json"
+    POCKET_LOCATIONS_DIR /
+    "pose_data.json"
 )
 
 # ----------------------------------------------------------

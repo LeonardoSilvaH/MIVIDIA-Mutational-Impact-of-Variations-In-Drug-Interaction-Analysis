@@ -50,12 +50,18 @@ ALIGNMENT_FILE = Path(
 # Standard Drug Screening CoBDock files
 # ---------------------------------------------------------------------------
 
-POSE_JSON = Path(
-    "Data/results/pocket_locations/pose_data.json"
+POCKET_LOCATIONS_DIR = Path(
+    "/hd/leo/MIVIDIA/Data/resultados_mestrado/pocket_locations"
 )
 
-POCKET_JSON = Path(
-    "Data/results/pocket_locations/top_3_pockets.json"
+POSE_JSON = (
+    POCKET_LOCATIONS_DIR /
+    "pose_data.json"
+)
+
+POCKET_JSON = (
+    POCKET_LOCATIONS_DIR /
+    "top_3_pockets.json"
 )
 
 # ---------------------------------------------------------------------------
