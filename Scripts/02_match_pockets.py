@@ -99,6 +99,11 @@ DISTANCE_OUTPUT = (
     "02_distance_matrix.csv"
 )
 
+SKIPPED_OUTPUT = (
+    OUTPUT_DIR /
+    "02_skipped_entries.csv"
+)
+
 
 ###############################################################################
 # DATA STRUCTURE
@@ -692,6 +697,27 @@ matched_rows = []
 
 distance_rows = []
 
+skipped_rows = []
+
+
+def skip_entry(protein, drug, mutation, reason):
+    """
+    Record an entry that could not be processed instead of crashing.
+    """
+
+    print(
+        f"    Skipping {protein} - {drug} - {mutation}: {reason}"
+    )
+
+    skipped_rows.append(
+        {
+            "Protein": protein,
+            "Drug": drug,
+            "Mutation": mutation,
+            "Reason": reason,
+        }
+    )
+
 
 ###############################################################################
 # STANDARD MODE
@@ -715,6 +741,17 @@ if MODE == "standard":
             ligand_name
         ]
 
+        if ligand_name not in pose_json:
+
+            skip_entry(
+                protein,
+                drug,
+                "ALL",
+                "Missing in pose_data.json"
+            )
+
+            continue
+
         pose_entry = pose_json[
             ligand_name
         ]
@@ -723,9 +760,22 @@ if MODE == "standard":
         # WT
         # ---------------------------------------------------------------------
 
-        wt_key = get_wildtype_key(
-            pocket_entry
-        )
+        try:
+
+            wt_key = get_wildtype_key(
+                pocket_entry
+            )
+
+        except ValueError:
+
+            skip_entry(
+                protein,
+                drug,
+                "ALL",
+                "Wild-type missing in top_3_pockets.json"
+            )
+
+            continue
 
         wt_structure = next(
             iter(
@@ -734,6 +784,18 @@ if MODE == "standard":
                 ]
             )
         )
+
+        if wt_structure not in pose_entry.get(wt_key, {}):
+
+            skip_entry(
+                protein,
+                drug,
+                "ALL",
+                f"Wild-type ({wt_key}/{wt_structure}) "
+                f"missing in pose_data.json"
+            )
+
+            continue
 
         wt_docking = best_docking_scores(
             pose_entry[
@@ -794,6 +856,18 @@ if MODE == "standard":
                     ]
                 )
             )
+
+            if mut_structure not in pose_entry.get(mutation, {}):
+
+                skip_entry(
+                    protein,
+                    drug,
+                    mutation,
+                    f"Mutant ({mutation}/{mut_structure}) "
+                    f"missing in pose_data.json"
+                )
+
+                continue
 
             mut_docking = best_docking_scores(
                 pose_entry[
@@ -936,345 +1010,401 @@ if MODE == "standard":
 ###############################################################################
 # ALTERNATIVE FPOCKET + VINA MODE
 ###############################################################################
-###############################################################################
-# ALTERNATIVE FPOCKET + VINA MODE
-###############################################################################
 
-# ---------------------------------------------------------------------------
-# First pass:
-# Build a WT dictionary independently of the order of the Vina JSON.
-# ---------------------------------------------------------------------------
+if MODE == "alternative":
 
-wt_database = {}
+    # ---------------------------------------------------------------------------
+    # First pass:
+    # Build a WT dictionary independently of the order of the Vina JSON.
+    # ---------------------------------------------------------------------------
 
-print()
-print("Building WT pocket database...")
+    wt_database = {}
 
-for run_id, run in sorted(
-    vina_json.get("docking_runs", {}).items()
-):
+    print()
+    print("Building WT pocket database...")
 
-    metadata = run.get(
-        "metadata",
-        {}
-    )
-
-    protein = metadata.get("protein")
-    drug = metadata.get("drug")
-    mutation = metadata.get("mutation")
-    chain = metadata.get("chain")
-
-    if not all(
-        [
-            protein,
-            drug,
-            mutation,
-            chain
-        ]
+    for run_id, run in sorted(
+        vina_json.get("docking_runs", {}).items()
     ):
-        continue
 
-    # Identify WT independently of ordering.
-
-    if "WILD" not in mutation.upper():
-        continue
-
-    # -------------------------------------------------------------
-    # Find corresponding fpocket structure
-    # -------------------------------------------------------------
-
-    if mutation not in pocket_json:
-
-        print(
-            f"WARNING: WT {mutation} not found in fpocket_data.json"
+        metadata = run.get(
+            "metadata",
+            {}
         )
 
-        continue
+        protein = metadata.get("protein")
+        drug = metadata.get("drug")
+        mutation = metadata.get("mutation")
+        chain = metadata.get("chain")
 
-    mutation_entry = pocket_json[
-        mutation
-    ]
+        if not all(
+            [
+                protein,
+                drug,
+                mutation,
+                chain
+            ]
+        ):
+            continue
 
-    expected_structure = (
-        f"{mutation}_{chain}"
-    )
+        # Identify WT independently of ordering.
 
-    if expected_structure in mutation_entry:
+        if "WILD" not in mutation.upper():
+            continue
 
-        structure_key = expected_structure
+        # -------------------------------------------------------------
+        # Find corresponding fpocket structure
+        # -------------------------------------------------------------
 
-    elif mutation_entry:
+        if mutation not in pocket_json:
 
-        structure_key = next(
-            iter(
-                mutation_entry
+            print(
+                f"WARNING: WT {mutation} not found in fpocket_data.json"
+            )
+
+            continue
+
+        mutation_entry = pocket_json[
+            mutation
+        ]
+
+        expected_structure = (
+            f"{mutation}_{chain}"
+        )
+
+        if expected_structure in mutation_entry:
+
+            structure_key = expected_structure
+
+        elif mutation_entry:
+
+            structure_key = next(
+                iter(
+                    mutation_entry
+                )
+            )
+
+        else:
+
+            print(
+                f"WARNING: No structure found for WT "
+                f"{protein} {drug} {mutation}"
+            )
+
+            continue
+
+        structure_pockets = (
+            mutation_entry[
+                structure_key
+            ]
+        )
+
+        # -------------------------------------------------------------
+        # Build WT fpocket list
+        # -------------------------------------------------------------
+
+        wt_pockets = build_fpocket_list(
+            structure_pockets,
+            get_best_vina_score(
+                protein,
+                drug,
+                mutation,
+                chain
             )
         )
 
-    else:
+        # -------------------------------------------------------------
+        # Store using protein + drug
+        # -------------------------------------------------------------
+
+        wt_key = (
+            protein,
+            drug
+        )
+
+        wt_database[wt_key] = {
+
+            "protein": protein,
+
+            "drug": drug,
+
+            "mutation": mutation,
+
+            "chain": chain,
+
+            "structure": structure_key,
+
+            "pockets": wt_pockets,
+
+            "vina_score": get_best_vina_score(
+                protein,
+                drug,
+                mutation,
+                chain
+            )
+        }
 
         print(
-            f"WARNING: No structure found for WT "
-            f"{protein} {drug} {mutation}"
+            f"    WT loaded | "
+            f"{protein} | "
+            f"{drug} | "
+            f"{mutation} | "
+            f"{len(wt_pockets)} pockets | "
+            f"Vina: "
+            f"{wt_database[wt_key]['vina_score']}"
         )
 
-        continue
-
-    structure_pockets = (
-        mutation_entry[
-            structure_key
-        ]
-    )
-
-    # -------------------------------------------------------------
-    # Build WT fpocket list
-    # -------------------------------------------------------------
-
-    wt_pockets = build_fpocket_list(
-        structure_pockets,
-        get_best_vina_score(
-            protein,
-            drug,
-            mutation,
-            chain
-        )
-    )
-
-    # -------------------------------------------------------------
-    # Store using protein + drug
-    # -------------------------------------------------------------
-
-    wt_key = (
-        protein,
-        drug
-    )
-
-    wt_database[wt_key] = {
-
-        "protein": protein,
-
-        "drug": drug,
-
-        "mutation": mutation,
-
-        "chain": chain,
-
-        "structure": structure_key,
-
-        "pockets": wt_pockets,
-
-        "vina_score": get_best_vina_score(
-            protein,
-            drug,
-            mutation,
-            chain
-        )
-    }
 
     print(
-        f"    WT loaded | "
-        f"{protein} | "
-        f"{drug} | "
-        f"{mutation} | "
-        f"{len(wt_pockets)} pockets | "
-        f"Vina: "
-        f"{wt_database[wt_key]['vina_score']}"
+        f"\nWT structures loaded: "
+        f"{len(wt_database)}"
     )
 
 
-print(
-    f"\nWT structures loaded: "
-    f"{len(wt_database)}"
-)
+    # ---------------------------------------------------------------------------
+    # Second pass:
+    # Process every MUTANT against its corresponding WT.
+    # ---------------------------------------------------------------------------
 
+    print()
+    print("Matching mutant pockets against WT...")
 
-# ---------------------------------------------------------------------------
-# Second pass:
-# Process every MUTANT against its corresponding WT.
-# ---------------------------------------------------------------------------
+    for run_id, run in sorted(
+        vina_json.get("docking_runs", {}).items()
+    ):
 
-print()
-print("Matching mutant pockets against WT...")
+        metadata = run.get(
+            "metadata",
+            {}
+        )
 
-for run_id, run in sorted(
-    vina_json.get("docking_runs", {}).items()
-):
+        protein = metadata.get("protein")
+        drug = metadata.get("drug")
+        mutation = metadata.get("mutation")
+        chain = metadata.get("chain")
 
-    metadata = run.get(
-        "metadata",
-        {}
-    )
+        if not all(
+            [
+                protein,
+                drug,
+                mutation,
+                chain
+            ]
+        ):
+            continue
 
-    protein = metadata.get("protein")
-    drug = metadata.get("drug")
-    mutation = metadata.get("mutation")
-    chain = metadata.get("chain")
+        # -------------------------------------------------------------
+        # Ignore WT entries
+        # -------------------------------------------------------------
 
-    if not all(
-        [
+        if "WILD" in mutation.upper():
+            continue
+
+        # -------------------------------------------------------------
+        # Find corresponding WT
+        # -------------------------------------------------------------
+
+        wt_key = (
+            protein,
+            drug
+        )
+
+        if wt_key not in wt_database:
+
+            print(
+                f"WARNING: WT not available for "
+                f"{protein} {drug} {mutation}"
+            )
+
+            continue
+
+        wt_data = wt_database[
+            wt_key
+        ]
+
+        # -------------------------------------------------------------
+        # Find mutant in fpocket data
+        # -------------------------------------------------------------
+
+        if mutation not in pocket_json:
+
+            print(
+                f"WARNING: fpocket data missing "
+                f"{mutation}"
+            )
+
+            continue
+
+        mutation_entry = pocket_json[
+            mutation
+        ]
+
+        expected_structure = (
+            f"{mutation}_{chain}"
+        )
+
+        if expected_structure in mutation_entry:
+
+            structure_key = expected_structure
+
+        elif mutation_entry:
+
+            structure_key = next(
+                iter(
+                    mutation_entry
+                )
+            )
+
+        else:
+
+            print(
+                f"WARNING: No structure found for "
+                f"{protein} {drug} {mutation}"
+            )
+
+            continue
+
+        structure_pockets = (
+            mutation_entry[
+                structure_key
+            ]
+        )
+
+        # -------------------------------------------------------------
+        # Build mutant pockets
+        # -------------------------------------------------------------
+
+        mut_vina_score = get_best_vina_score(
             protein,
             drug,
             mutation,
             chain
-        ]
-    ):
-        continue
-
-    # -------------------------------------------------------------
-    # Ignore WT entries
-    # -------------------------------------------------------------
-
-    if "WILD" in mutation.upper():
-        continue
-
-    # -------------------------------------------------------------
-    # Find corresponding WT
-    # -------------------------------------------------------------
-
-    wt_key = (
-        protein,
-        drug
-    )
-
-    if wt_key not in wt_database:
-
-        print(
-            f"WARNING: WT not available for "
-            f"{protein} {drug} {mutation}"
         )
 
-        continue
-
-    wt_data = wt_database[
-        wt_key
-    ]
-
-    # -------------------------------------------------------------
-    # Find mutant in fpocket data
-    # -------------------------------------------------------------
-
-    if mutation not in pocket_json:
-
-        print(
-            f"WARNING: fpocket data missing "
-            f"{mutation}"
+        mut_pockets = build_fpocket_list(
+            structure_pockets,
+            mut_vina_score
         )
 
-        continue
+        # -------------------------------------------------------------
+        # Alignment
+        # -------------------------------------------------------------
 
-    mutation_entry = pocket_json[
-        mutation
-    ]
+        alignment_key = (
+            protein,
+            mutation
+        )
 
-    expected_structure = (
-        f"{mutation}_{chain}"
-    )
+        if alignment_key not in alignments:
 
-    if expected_structure in mutation_entry:
-
-        structure_key = expected_structure
-
-    elif mutation_entry:
-
-        structure_key = next(
-            iter(
-                mutation_entry
+            print(
+                f"WARNING: Alignment missing for "
+                f"{protein} {mutation}"
             )
+
+            continue
+
+        rotation = alignments[
+            alignment_key
+        ]["rotation"]
+
+        translation = alignments[
+            alignment_key
+        ]["translation"]
+
+        # -------------------------------------------------------------
+        # Transform mutant pocket centers
+        # -------------------------------------------------------------
+
+        mut_pockets = transform_centers(
+            mut_pockets,
+            rotation,
+            translation
         )
 
-    else:
-
-        print(
-            f"WARNING: No structure found for "
-            f"{protein} {drug} {mutation}"
-        )
-
-        continue
-
-    structure_pockets = (
-        mutation_entry[
-            structure_key
+        wt_pockets = wt_data[
+            "pockets"
         ]
-    )
 
-    # -------------------------------------------------------------
-    # Build mutant pockets
-    # -------------------------------------------------------------
+        # -------------------------------------------------------------
+        # Calculate distance matrix
+        # -------------------------------------------------------------
 
-    mut_vina_score = get_best_vina_score(
-        protein,
-        drug,
-        mutation,
-        chain
-    )
-
-    mut_pockets = build_fpocket_list(
-        structure_pockets,
-        mut_vina_score
-    )
-
-    # -------------------------------------------------------------
-    # Alignment
-    # -------------------------------------------------------------
-
-    alignment_key = (
-        protein,
-        mutation
-    )
-
-    if alignment_key not in alignments:
-
-        print(
-            f"WARNING: Alignment missing for "
-            f"{protein} {mutation}"
+        D = build_distance_matrix(
+            wt_pockets,
+            mut_pockets
         )
 
-        continue
+        # -------------------------------------------------------------
+        # Save every WT-mutant pocket distance
+        # -------------------------------------------------------------
 
-    rotation = alignments[
-        alignment_key
-    ]["rotation"]
-
-    translation = alignments[
-        alignment_key
-    ]["translation"]
-
-    # -------------------------------------------------------------
-    # Transform mutant pocket centers
-    # -------------------------------------------------------------
-
-    mut_pockets = transform_centers(
-        mut_pockets,
-        rotation,
-        translation
-    )
-
-    wt_pockets = wt_data[
-        "pockets"
-    ]
-
-    # -------------------------------------------------------------
-    # Calculate distance matrix
-    # -------------------------------------------------------------
-
-    D = build_distance_matrix(
-        wt_pockets,
-        mut_pockets
-    )
-
-    # -------------------------------------------------------------
-    # Save every WT-mutant pocket distance
-    # -------------------------------------------------------------
-
-    for i, wt in enumerate(
-        wt_pockets
-    ):
-
-        for j, mut in enumerate(
-            mut_pockets
+        for i, wt in enumerate(
+            wt_pockets
         ):
 
-            distance_rows.append(
+            for j, mut in enumerate(
+                mut_pockets
+            ):
+
+                distance_rows.append(
+
+                    {
+                        "Protein": protein,
+
+                        "Drug": drug,
+
+                        "Mutation": mutation,
+
+                        "WT_PocketRank": wt.rank,
+
+                        "WT_PocketID": wt.pocket_id,
+
+                        "Mut_PocketRank": mut.rank,
+
+                        "Mut_PocketID": mut.pocket_id,
+
+                        "Distance": float(
+                            D[i, j]
+                        )
+                    }
+                )
+
+        # -------------------------------------------------------------
+        # Hungarian matching
+        # -------------------------------------------------------------
+
+        matches = match_pockets(
+            D
+        )
+
+        # -------------------------------------------------------------
+        # WT and mutant global Vina scores
+        # -------------------------------------------------------------
+
+        wt_vina_score = wt_data[
+            "vina_score"
+        ]
+
+        # -------------------------------------------------------------
+        # Save matched pockets
+        # -------------------------------------------------------------
+
+        for (
+            wt_idx,
+            mut_idx,
+            dist
+        ) in matches:
+
+            wt = wt_pockets[
+                wt_idx
+            ]
+
+            mut = mut_pockets[
+                mut_idx
+            ]
+
+            matched_rows.append(
 
                 {
                     "Protein": protein,
@@ -1292,109 +1422,52 @@ for run_id, run in sorted(
                     "Mut_PocketID": mut.pocket_id,
 
                     "Distance": float(
-                        D[i, j]
-                    )
+                        dist
+                    ),
+
+                    "WT_PocketScore": (
+                        wt.pocket_score
+                    ),
+
+                    "Mut_PocketScore": (
+                        mut.pocket_score
+                    ),
+
+                    "WT_GlobalVinaScore": (
+                        wt_vina_score
+                    ),
+
+                    "Mut_GlobalVinaScore": (
+                        mut_vina_score
+                    ),
+
+                    "ScoreType": (
+                        "GLOBAL_VINA"
+                    ),
+
+                    "WT_X": wt.center[0],
+
+                    "WT_Y": wt.center[1],
+
+                    "WT_Z": wt.center[2],
+
+                    "Mut_X": mut.center[0],
+
+                    "Mut_Y": mut.center[1],
+
+                    "Mut_Z": mut.center[2],
                 }
             )
 
-    # -------------------------------------------------------------
-    # Hungarian matching
-    # -------------------------------------------------------------
-
-    matches = match_pockets(
-        D
-    )
-
-    # -------------------------------------------------------------
-    # WT and mutant global Vina scores
-    # -------------------------------------------------------------
-
-    wt_vina_score = wt_data[
-        "vina_score"
-    ]
-
-    # -------------------------------------------------------------
-    # Save matched pockets
-    # -------------------------------------------------------------
-
-    for (
-        wt_idx,
-        mut_idx,
-        dist
-    ) in matches:
-
-        wt = wt_pockets[
-            wt_idx
-        ]
-
-        mut = mut_pockets[
-            mut_idx
-        ]
-
-        matched_rows.append(
-
-            {
-                "Protein": protein,
-
-                "Drug": drug,
-
-                "Mutation": mutation,
-
-                "WT_PocketRank": wt.rank,
-
-                "WT_PocketID": wt.pocket_id,
-
-                "Mut_PocketRank": mut.rank,
-
-                "Mut_PocketID": mut.pocket_id,
-
-                "Distance": float(
-                    dist
-                ),
-
-                "WT_PocketScore": (
-                    wt.pocket_score
-                ),
-
-                "Mut_PocketScore": (
-                    mut.pocket_score
-                ),
-
-                "WT_GlobalVinaScore": (
-                    wt_vina_score
-                ),
-
-                "Mut_GlobalVinaScore": (
-                    mut_vina_score
-                ),
-
-                "ScoreType": (
-                    "GLOBAL_VINA"
-                ),
-
-                "WT_X": wt.center[0],
-
-                "WT_Y": wt.center[1],
-
-                "WT_Z": wt.center[2],
-
-                "Mut_X": mut.center[0],
-
-                "Mut_Y": mut.center[1],
-
-                "Mut_Z": mut.center[2],
-            }
+        print(
+            f"    OK | "
+            f"{protein} | "
+            f"{drug} | "
+            f"{mutation} | "
+            f"matched {len(matches)} pockets | "
+            f"distance range: "
+            f"{D.min():.2f}-{D.max():.2f} Å"
         )
-
-    print(
-        f"    OK | "
-        f"{protein} | "
-        f"{drug} | "
-        f"{mutation} | "
-        f"matched {len(matches)} pockets | "
-        f"distance range: "
-        f"{D.min():.2f}-{D.max():.2f} Å"
-    )
 
 
 ###############################################################################
@@ -1467,6 +1540,16 @@ distance_df.to_csv(
     index=False
 )
 
+skipped_df = pd.DataFrame(
+    skipped_rows,
+    columns=["Protein", "Drug", "Mutation", "Reason"]
+)
+
+skipped_df.to_csv(
+    SKIPPED_OUTPUT,
+    index=False
+)
+
 
 ###############################################################################
 # SUMMARY
@@ -1489,6 +1572,10 @@ print(
     f"Distance entries  : {len(distance_df)}"
 )
 
+print(
+    f"Skipped entries  : {len(skipped_df)}"
+)
+
 print()
 print(
     f"Matched output:"
@@ -1504,6 +1591,14 @@ print(
 
 print(
     f"    {DISTANCE_OUTPUT}"
+)
+
+print(
+    f"Skipped entries log:"
+)
+
+print(
+    f"    {SKIPPED_OUTPUT}"
 )
 
 print("=" * 70)
