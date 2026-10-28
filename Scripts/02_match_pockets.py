@@ -840,9 +840,11 @@ if MODE == "standard":
 
             if alignment_key not in alignments:
 
-                print(
-                    f"Alignment missing for "
-                    f"{protein} {mutation}"
+                skip_entry(
+                    protein,
+                    drug,
+                    mutation,
+                    "Alignment missing in alignment_matrices.pkl"
                 )
 
                 continue
@@ -1303,9 +1305,11 @@ if MODE == "alternative":
 
         if alignment_key not in alignments:
 
-            print(
-                f"WARNING: Alignment missing for "
-                f"{protein} {mutation}"
+            skip_entry(
+                protein,
+                drug,
+                mutation,
+                "Alignment missing in alignment_matrices.pkl"
             )
 
             continue
@@ -1609,19 +1613,31 @@ print(
 
 print("=" * 70)
 
-dist = matched_df["Distance"]
+if matched_df.empty:
 
-print("\nPocket Matching Statistics")
-print("---------------------------")
-print(f"Number of matches: {len(dist)}")
-print(f"Mean distance:     {dist.mean():.2f} Å")
-print(f"Median distance:   {dist.median():.2f} Å")
-print(f"Std distance:      {dist.std():.2f} Å")
-print(f"Min distance:      {dist.min():.2f} Å")
-print(f"Max distance:      {dist.max():.2f} Å")
+    print(
+        "\nNo pockets were matched, so no statistics were computed."
+    )
 
-print(f"≤1 Å : {(dist <= 1).mean()*100:.2f}%")
-print(f"≤2 Å : {(dist <= 2).mean()*100:.2f}%")
-print(f"≤3 Å : {(dist <= 3).mean()*100:.2f}%")
-print(f"≤5 Å : {(dist <= 5).mean()*100:.2f}%")
-print(f"≤5 Å : {(dist <= 6).mean()*100:.2f}%")
+    print(
+        f"Check {SKIPPED_OUTPUT} to see why each entry was skipped."
+    )
+
+else:
+
+    dist = matched_df["Distance"]
+
+    print("\nPocket Matching Statistics")
+    print("---------------------------")
+    print(f"Number of matches: {len(dist)}")
+    print(f"Mean distance:     {dist.mean():.2f} Å")
+    print(f"Median distance:   {dist.median():.2f} Å")
+    print(f"Std distance:      {dist.std():.2f} Å")
+    print(f"Min distance:      {dist.min():.2f} Å")
+    print(f"Max distance:      {dist.max():.2f} Å")
+
+    print(f"≤1 Å : {(dist <= 1).mean()*100:.2f}%")
+    print(f"≤2 Å : {(dist <= 2).mean()*100:.2f}%")
+    print(f"≤3 Å : {(dist <= 3).mean()*100:.2f}%")
+    print(f"≤5 Å : {(dist <= 5).mean()*100:.2f}%")
+    print(f"≤5 Å : {(dist <= 6).mean()*100:.2f}%")
