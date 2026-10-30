@@ -48,23 +48,8 @@ required = [
     "Distance",
     "WT_PocketRank",
     "Mut_PocketRank",
-]
-
-score_columns = [
     "DeltaDockingScore",
-    "DeltaGlobalVinaScore",
 ]
-
-if not any(
-    column in df.columns
-    for column in score_columns
-):
-    raise ValueError(
-        "Missing delta-score column. "
-        "Expected either "
-        "'DeltaDockingScore' or "
-        "'DeltaGlobalVinaScore'."
-    )
 
 missing = [c for c in required if c not in df.columns]
 

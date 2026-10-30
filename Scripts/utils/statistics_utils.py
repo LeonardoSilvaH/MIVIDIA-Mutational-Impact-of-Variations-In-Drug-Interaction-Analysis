@@ -6,34 +6,6 @@ from scipy.stats import pearsonr, spearmanr
 # Internal score helper
 # ==========================================================
 
-def get_delta_column(df):
-    """
-    Identify the appropriate delta-score column.
-
-    Standard PLANTS workflow:
-        DeltaDockingScore
-
-    Alternative Vina workflow:
-        DeltaGlobalVinaScore
-    """
-
-    if "DeltaDockingScore" in df.columns:
-
-        return "DeltaDockingScore"
-
-    elif "DeltaGlobalVinaScore" in df.columns:
-
-        return "DeltaGlobalVinaScore"
-
-    else:
-
-        raise KeyError(
-            "No valid delta-score column found. "
-            "Expected 'DeltaDockingScore' or "
-            "'DeltaGlobalVinaScore'."
-        )
-
-
 def prepare_delta(df):
     """
     Return a copy of the dataframe with a standardized
@@ -42,10 +14,8 @@ def prepare_delta(df):
 
     df = df.copy()
 
-    delta_column = get_delta_column(df)
-
     df["DeltaScore"] = df[
-        delta_column
+        "DeltaDockingScore"
     ]
 
     return df

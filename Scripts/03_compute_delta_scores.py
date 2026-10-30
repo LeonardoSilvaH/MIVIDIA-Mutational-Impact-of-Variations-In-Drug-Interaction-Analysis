@@ -15,19 +15,16 @@ MATCHED_POCKETS_FILE = (
 )
 
 # ----------------------------------------------------------
-# OLD CoBDock input
+# CoBDock input
 # ----------------------------------------------------------
 
-POSE_DATA_FILE = (
-    "Data/kras_article/pocket_locations/pose_data.json"
+POCKET_LOCATIONS_DIR = Path(
+    "/hd/leo/MIVIDIA/Data/resultados_mestrado/pocket_locations"
 )
 
-# ----------------------------------------------------------
-# NEW fpocket + Vina input
-# ----------------------------------------------------------
-
-VINA_DATA_FILE = (
-    "Data/kras_article/Adagrasib_Daraxonrasib_results/merged_vina_results.json"
+POSE_DATA_FILE = (
+    POCKET_LOCATIONS_DIR /
+    "pose_data.json"
 )
 
 # ----------------------------------------------------------
@@ -69,47 +66,6 @@ def load_json(filename):
 
 
 # ==========================================================
-# DETECT INPUT MODE
-# ==========================================================
-
-def detect_input_mode():
-
-    pose_exists = Path(
-        POSE_DATA_FILE
-    ).exists()
-
-    vina_exists = Path(
-        VINA_DATA_FILE
-    ).exists()
-
-    if pose_exists:
-
-        print(
-            "Input mode: STANDARD CoBDock / PLANTS"
-        )
-
-        return "plants"
-
-    elif vina_exists:
-
-        print(
-            "Input mode: fpocket + global Vina"
-        )
-
-        return "vina"
-
-    else:
-
-        raise FileNotFoundError(
-            "\nNo valid docking input found.\n\n"
-            "Expected either:\n"
-            f"  {POSE_DATA_FILE}\n"
-            "or:\n"
-            f"  {VINA_DATA_FILE}\n"
-        )
-
-
-# ==========================================================
 # STANDARD PLANTS FUNCTIONS
 # ==========================================================
 
@@ -143,13 +99,30 @@ def get_best_pose(pocket_dict):
 
     for pose_id, pose_data in pocket_dict.items():
 
-        score = pose_data["total_score"]
+        # Skip poses without a numeric score (failed or empty docking)
+        try:
+            score = float(
+                pose_data["total_score"]
+            )
+        except (
+            KeyError,
+            TypeError,
+            ValueError
+        ):
+            continue
 
         if score < best_score:
 
             best_score = score
 
             best_pose = pose_id
+
+    if best_pose is None:
+
+        raise ValueError(
+            "No pose with a valid PLANTS total_score in this pocket "
+            f"({len(pocket_dict)} poses found)"
+        )
 
     return (
         best_pose,
@@ -199,104 +172,6 @@ def get_pocket(
 
 
 # ==========================================================
-# VINA FUNCTIONS
-# ==========================================================
-
-def get_vina_run(
-    vina_data,
-    protein,
-    drug,
-    mutation,
-    chain="A"
-):
-    """
-    Retrieve one docking run from
-    merged_vina_results.json.
-
-    Expected run ID:
-
-        KRAS_Adagrasib_KRAS-G12A_A
-    """
-
-    run_id = (
-        f"{protein}_"
-        f"{drug}_"
-        f"{mutation}_"
-        f"{chain}"
-    )
-
-    runs = vina_data.get(
-        "docking_runs",
-        {}
-    )
-
-    return runs.get(
-        run_id
-    )
-
-
-def get_best_vina_score(
-    vina_data,
-    protein,
-    drug,
-    mutation,
-    chain="A"
-):
-    """
-    Retrieve the best global Vina energy
-    for one docking run.
-
-    This is NOT a pocket-specific score.
-    """
-
-    run = get_vina_run(
-        vina_data,
-        protein,
-        drug,
-        mutation,
-        chain
-    )
-
-    if run is None:
-
-        raise KeyError(
-            "Vina docking run not found: "
-            f"{protein}_{drug}_{mutation}_{chain}"
-        )
-
-    docking = run.get(
-        "docking",
-        {}
-    )
-
-    best_mode = docking.get(
-        "best_mode"
-    )
-
-    if best_mode is None:
-
-        raise KeyError(
-            "best_mode not found for: "
-            f"{protein}_{drug}_{mutation}_{chain}"
-        )
-
-    energy = best_mode.get(
-        "energy"
-    )
-
-    if energy is None:
-
-        raise KeyError(
-            "Energy not found for: "
-            f"{protein}_{drug}_{mutation}_{chain}"
-        )
-
-    return float(
-        energy
-    )
-
-
-# ==========================================================
 # PROCESS ONE MATCH — PLANTS
 # ==========================================================
 
@@ -311,8 +186,12 @@ def process_match_plants(
 
     mutation = row["Mutation"]
 
-    wt_mutation = (
-        f"{protein}-WILD-TYE"
+    # WT key is "KRAS-WILD-TYE" in older runs and
+    # "KRAS.WILD-TYE" in newer ones, so look it up.
+    wt_mutation = next(
+        key
+        for key in pose_data[f"{protein}_{drug}"]
+        if "WILD" in key.upper()
     )
 
     wt_rank = row[
@@ -428,119 +307,6 @@ def process_match_plants(
 
 
 # ==========================================================
-# PROCESS ONE MATCH — VINA
-# ==========================================================
-
-def process_match_vina(
-    row,
-    vina_data
-):
-
-    protein = row["Protein"]
-
-    drug = row["Drug"]
-
-    mutation = row["Mutation"]
-
-    # ------------------------------------------------------
-    # WT mutation
-    # ------------------------------------------------------
-
-    wt_mutation = (
-        f"{protein}-WILD-TYE"
-    )
-
-    # ------------------------------------------------------
-    # Chain
-    #
-    # Your current dataset uses chain A.
-    # ------------------------------------------------------
-
-    chain = "A"
-
-    # ------------------------------------------------------
-    # Retrieve global Vina scores
-    # ------------------------------------------------------
-
-    wt_score = get_best_vina_score(
-        vina_data,
-        protein,
-        drug,
-        wt_mutation,
-        chain
-    )
-
-    mut_score = get_best_vina_score(
-        vina_data,
-        protein,
-        drug,
-        mutation,
-        chain
-    )
-
-    # ------------------------------------------------------
-    # Store global scores
-    # ------------------------------------------------------
-
-    row["WT_GlobalVinaScore"] = (
-        wt_score
-    )
-
-    row["Mut_GlobalVinaScore"] = (
-        mut_score
-    )
-
-    # ------------------------------------------------------
-    # Calculate delta
-    # ------------------------------------------------------
-
-    delta = (
-        mut_score -
-        wt_score
-    )
-
-    row["DeltaGlobalVinaScore"] = (
-        delta
-    )
-
-    row["AbsDeltaGlobalVinaScore"] = (
-        abs(delta)
-    )
-
-    # ------------------------------------------------------
-    # Interpretation
-    # ------------------------------------------------------
-
-    if delta < 0:
-
-        row["GlobalAffinityChange"] = (
-            "Stronger"
-        )
-
-    elif delta > 0:
-
-        row["GlobalAffinityChange"] = (
-            "Weaker"
-        )
-
-    else:
-
-        row["GlobalAffinityChange"] = (
-            "Unchanged"
-        )
-
-    # ------------------------------------------------------
-    # Explicitly document score type
-    # ------------------------------------------------------
-
-    row["DockingScoreType"] = (
-        "Vina_GlobalBestMode"
-    )
-
-    return row
-
-
-# ==========================================================
 # MAIN
 # ==========================================================
 
@@ -555,45 +321,55 @@ def main():
     # ------------------------------------------------------
 
     matched_df = pd.read_csv(
-        MATCHED_POCKETS_FILE
+        MATCHED_POCKETS_FILE,
+        dtype={
+            "WT_PocketID": str,
+            "Mut_PocketID": str,
+        }
+    )
+
+    # ------------------------------------------------------
+    # Only compare docking scores within the same pocket
+    # ------------------------------------------------------
+
+    status_counts = (
+        matched_df["MatchStatus"]
+        .value_counts()
     )
 
     print(
-        f"Matched pocket rows: "
-        f"{len(matched_df)}"
+        "Pocket outcomes from 02_match_pockets.py:"
+    )
+
+    for status, count in status_counts.items():
+
+        print(
+            f"  {status:<12} {count}"
+        )
+
+    matched_df = matched_df[
+        matched_df["MatchStatus"] == "Matched"
+    ].copy()
+
+    for column in ("WT_PocketRank", "Mut_PocketRank"):
+
+        matched_df[column] = matched_df[column].astype(int)
+
+    print(
+        f"Scoring {len(matched_df)} same-pocket pairs."
     )
 
     # ------------------------------------------------------
-    # Detect mode
+    # Load PLANTS poses
     # ------------------------------------------------------
 
-    input_mode = (
-        detect_input_mode()
+    print(
+        "Loading pose_data.json..."
     )
 
-    # ------------------------------------------------------
-    # Load appropriate JSON
-    # ------------------------------------------------------
-
-    if input_mode == "plants":
-
-        print(
-            "Loading pose_data.json..."
-        )
-
-        docking_data = load_json(
-            POSE_DATA_FILE
-        )
-
-    else:
-
-        print(
-            "Loading merged_vina_results.json..."
-        )
-
-        docking_data = load_json(
-            VINA_DATA_FILE
-        )
+    docking_data = load_json(
+        POSE_DATA_FILE
+    )
 
     # ------------------------------------------------------
     # Process
@@ -615,23 +391,12 @@ def main():
 
         try:
 
-            if input_mode == "plants":
-
-                processed_row = (
-                    process_match_plants(
-                        row.copy(),
-                        docking_data
-                    )
+            processed_row = (
+                process_match_plants(
+                    row.copy(),
+                    docking_data
                 )
-
-            else:
-
-                processed_row = (
-                    process_match_vina(
-                        row.copy(),
-                        docking_data
-                    )
-                )
+            )
 
             processed_rows.append(
                 processed_row
@@ -702,57 +467,22 @@ def main():
         "Generating summary table..."
     )
 
-    # ------------------------------------------------------
-    # Important:
-    #
-    # In Vina mode, the score is GLOBAL and therefore
-    # identical across the three matched pockets of the
-    # same mutation/drug pair.
-    #
-    # We therefore select the first matched pocket rather
-    # than sorting by docking score.
-    # ------------------------------------------------------
-
-    if input_mode == "vina":
-
-        summary_df = (
-            scored_df
-            .sort_values(
-                [
-                    "Protein",
-                    "Drug",
-                    "Mutation",
-                    "WT_PocketRank"
-                ]
-            )
-            .groupby(
-                [
-                    "Protein",
-                    "Drug",
-                    "Mutation"
-                ],
-                as_index=False
-            )
-            .first()
+    # Best-scoring same pocket per protein / drug / mutation
+    summary_df = (
+        scored_df
+        .sort_values(
+            "Mut_BestDockingScore"
         )
-
-    else:
-
-        summary_df = (
-            scored_df
-            .sort_values(
-                "Mut_BestDockingScore"
-            )
-            .groupby(
-                [
-                    "Protein",
-                    "Drug",
-                    "Mutation"
-                ],
-                as_index=False
-            )
-            .first()
+        .groupby(
+            [
+                "Protein",
+                "Drug",
+                "Mutation"
+            ],
+            as_index=False
         )
+        .first()
+    )
 
     summary_df.to_csv(
         OUTPUT_SUMMARY,
@@ -777,11 +507,7 @@ def main():
     )
 
     print(
-        f"Input mode        : {input_mode}"
-    )
-
-    print(
-        f"Input rows        : {len(matched_df)}"
+        f"Same-pocket rows   : {len(matched_df)}"
     )
 
     print(
