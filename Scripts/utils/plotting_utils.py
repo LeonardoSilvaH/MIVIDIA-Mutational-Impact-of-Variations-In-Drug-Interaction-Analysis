@@ -10,27 +10,10 @@ import pandas as pd
 
 def get_delta_column(df):
 
-    if "DeltaDockingScore" in df.columns:
-
-        return (
-            "DeltaDockingScore",
-            "Δ Docking Score"
-        )
-
-    elif "DeltaGlobalVinaScore" in df.columns:
-
-        return (
-            "DeltaGlobalVinaScore",
-            "Δ Global Vina Score"
-        )
-
-    else:
-
-        raise KeyError(
-            "No valid delta-score column found. "
-            "Expected 'DeltaDockingScore' or "
-            "'DeltaGlobalVinaScore'."
-        )
+    return (
+        "DeltaDockingScore",
+        "Δ Docking Score"
+    )
 
 
 # ==========================================================

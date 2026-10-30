@@ -3,28 +3,46 @@
 """
 02_match_pockets.py
 
-Matches WT and mutant binding pockets after structural alignment.
+Match WT and mutant CoBDock pockets so that docking scores are only
+compared within the SAME structural pocket.
 
-Supports two input modes:
+Pocket identity
+---------------
+Two pockets are the same site when they share enough pocket-lining
+residues (Jaccard overlap of residue numbers >= MIN_RESIDUE_OVERLAP).
+Residues are compared by (chain, residue number) only, so the mutated
+residue still counts as shared.
 
-1. STANDARD CoBDock MODE
-   ----------------------
-   top_3_pockets.json
-   pose_data.json
+Residue lists come from fpocket_data.json / p2rank_data.json, using the
+selected_pocket_program and selected_pocket_id stored for every pocket
+in top_3_pockets.json. When the residues of a pocket cannot be found
+(or the lookup does not agree with the pocket center), the match falls
+back to the aligned center distance (<= MAX_CENTER_DISTANCE).
 
-2. ALTERNATIVE fpocket + Vina MODE
-   ---------------------------------
-   fpocket_data.json
-   merged_vina_results.json
+Outcome for every WT top-3 pocket
+---------------------------------
+Matched      : the same pocket is among the mutant top-3 (docked) pockets
+NotDocked    : the pocket still exists in the mutant, but was not docked
+Lost         : no mutant pocket overlaps it
+Unresolved   : no docked match, and no residue data to search further
 
-The script automatically detects which mode is being used.
+Mutant top-3 pockets without a WT counterpart are reported as NewInMutant.
+Only Matched rows are scored by 03_compute_delta_scores.py.
+
+Inputs
+------
+Analysis/01_align_structures/alignment_matrices.pkl
+<results>/pocket_locations/top_3_pockets.json
+<results>/pocket_locations/pose_data.json
+<results>/docking/fpocket_data.json
+<results>/docking/p2rank_data.json
 
 Outputs
 -------
 Analysis/02_matched_pockets/02_matched_pockets.csv
 Analysis/02_matched_pockets/02_distance_matrix.csv
+Analysis/02_matched_pockets/02_skipped_entries.csv
 """
-
 
 from pathlib import Path
 from dataclasses import dataclass
@@ -33,9 +51,7 @@ import pickle
 
 import numpy as np
 import pandas as pd
-
 from scipy.optimize import linear_sum_assignment
-from scipy.spatial.distance import cdist
 
 
 ###############################################################################
@@ -47,7 +63,7 @@ ALIGNMENT_FILE = Path(
 )
 
 # ---------------------------------------------------------------------------
-# Standard Drug Screening CoBDock files
+# CoBDock results
 # ---------------------------------------------------------------------------
 
 POCKET_LOCATIONS_DIR = Path(
@@ -64,23 +80,29 @@ POCKET_JSON = (
     "top_3_pockets.json"
 )
 
-# ---------------------------------------------------------------------------
-# Alternative fpocket + Vina files
-# ---------------------------------------------------------------------------
-
-FPOCKET_JSON = Path(
-    "Data/kras_article/Adagrasib_Daraxonrasib_results/fpocket_data.json"
+# Pocket residue lists, written by CoBDock next to pocket_locations/
+DOCKING_DIR = (
+    POCKET_LOCATIONS_DIR.parent /
+    "docking"
 )
 
-VINA_JSON = Path(
-    "Data/kras_article/Adagrasib_Daraxonrasib_results/merged_vina_results.json"
-)
+POCKET_RESIDUE_FILES = {
+    "fpocket": DOCKING_DIR / "fpocket_data.json",
+    "p2rank": DOCKING_DIR / "p2rank_data.json",
+}
 
 # ---------------------------------------------------------------------------
-# Number of fpocket pockets to use
+# Same-pocket criteria
 # ---------------------------------------------------------------------------
 
-TOP_N_FPOCKETS = 3
+# Minimum Jaccard overlap of pocket-lining residues
+MIN_RESIDUE_OVERLAP = 0.5
+
+# Maximum aligned center distance (Å), used only when residues are missing
+MAX_CENTER_DISTANCE = 4.0
+
+# A residue lookup is trusted only if its center agrees within this (Å)
+CENTER_TOLERANCE = 0.01
 
 # ---------------------------------------------------------------------------
 # Output
@@ -119,128 +141,57 @@ SKIPPED_OUTPUT = (
 class Pocket:
 
     rank: int
-
+    program: str
     pocket_id: str
-
     pocket_score: float
-
     center: np.ndarray
-
+    residues: frozenset = None
     docking_score: float = np.nan
 
-    docking_score_type: str = "NA"
-
 
 ###############################################################################
-# LOAD ALIGNMENTS
+# LOAD FILES
 ###############################################################################
 
-print(
-    "Loading alignment matrices..."
-)
+def load_json(path):
 
-with open(
-    ALIGNMENT_FILE,
-    "rb"
-) as f:
+    with open(path) as f:
+
+        return json.load(f)
+
+
+print("Loading alignment matrices...")
+
+with open(ALIGNMENT_FILE, "rb") as f:
 
     alignments = pickle.load(f)
 
+print("Loading top_3_pockets.json...")
 
-###############################################################################
-# DETECT INPUT MODE
-###############################################################################
+pocket_json = load_json(POCKET_JSON)
 
-standard_mode = (
-    POCKET_JSON.exists()
-    and POSE_JSON.exists()
-)
+print("Loading pose_data.json...")
 
-alternative_mode = (
-    FPOCKET_JSON.exists()
-    and VINA_JSON.exists()
-)
+pose_json = load_json(POSE_JSON)
 
+pocket_residue_data = {}
 
-if standard_mode:
+for program, path in POCKET_RESIDUE_FILES.items():
 
-    MODE = "standard"
+    if path.exists():
 
-    print(
-        "Input mode: STANDARD CoBDock"
-    )
+        print(f"Loading {path.name}...")
 
-elif alternative_mode:
+        pocket_residue_data[program] = load_json(path)
 
-    MODE = "alternative"
+    else:
 
-    print(
-        "Input mode: ALTERNATIVE fpocket + Vina"
-    )
+        print(
+            f"WARNING: {path} not found. {program} pockets will be "
+            f"matched by center distance only."
+        )
 
-else:
-
-    raise FileNotFoundError(
-        "\nCould not identify a valid input configuration.\n\n"
-        "For standard mode, expected:\n"
-        f"  {POCKET_JSON}\n"
-        f"  {POSE_JSON}\n\n"
-        "For alternative mode, expected:\n"
-        f"  {FPOCKET_JSON}\n"
-        f"  {VINA_JSON}\n"
-    )
-
-
-###############################################################################
-# LOAD JSON FILES
-###############################################################################
-
-if MODE == "standard":
-
-    print(
-        "Loading top_3_pockets.json..."
-    )
-
-    with open(
-        POCKET_JSON
-    ) as f:
-
-        pocket_json = json.load(f)
-
-
-    print(
-        "Loading pose_data.json..."
-    )
-
-    with open(
-        POSE_JSON
-    ) as f:
-
-        pose_json = json.load(f)
-
-
-else:
-
-    print(
-        "Loading fpocket_data.json..."
-    )
-
-    with open(
-        FPOCKET_JSON
-    ) as f:
-
-        pocket_json = json.load(f)
-
-
-    print(
-        "Loading merged_vina_results.json..."
-    )
-
-    with open(
-        VINA_JSON
-    ) as f:
-
-        vina_json = json.load(f)
+        pocket_residue_data[program] = {}
 
 
 ###############################################################################
@@ -255,7 +206,7 @@ def get_wildtype_key(entry):
 
         WILD-TYE
         KRAS-WILD-TYE
-        RAF1-WILD-TYE
+        KRAS.WILD-TYE
     """
 
     for key in entry.keys():
@@ -272,20 +223,22 @@ def get_wildtype_key(entry):
 def alignment_mutation_name(protein, mutation):
     """
     Convert a CoBDock mutation key to the name used by
-    01_align_structures.py.
-
-    Newer CoBDock runs use a dot as separator:
+    01_align_structures.py ("PROTEIN-MUTATION").
 
         ACVR1.G328E  ->  ACVR1-G328E
+        G12D         ->  KRAS-G12D
+        KRAS-G12D    ->  KRAS-G12D
     """
 
-    dotted = f"{protein}."
+    for separator in (".", "-"):
 
-    if mutation.startswith(dotted):
+        prefix = f"{protein}{separator}"
 
-        return f"{protein}-" + mutation[len(dotted):]
+        if mutation.startswith(prefix):
 
-    return mutation
+            return f"{protein}-" + mutation[len(prefix):]
+
+    return f"{protein}-{mutation}"
 
 
 def split_ligand_name(name):
@@ -308,15 +261,92 @@ def split_ligand_name(name):
     return protein, drug
 
 
-###############################################################################
-# STANDARD DOCKING PARSER
-###############################################################################
+def pocket_center(pocket):
+
+    return np.array(
+        [
+            pocket["center_x"],
+            pocket["center_y"],
+            pocket["center_z"]
+        ],
+        dtype=float
+    )
+
+
+def residue_set(residue_ids):
+    """
+    [["A", "GLY", 12], ...]  ->  {("A", 12), ...}
+
+    The residue name is ignored, so the mutated residue is still
+    recognised as the same position in WT and mutant.
+    """
+
+    residues = set()
+
+    for residue in residue_ids or []:
+
+        try:
+
+            residues.add(
+                (
+                    str(residue[0]),
+                    int(residue[-1])
+                )
+            )
+
+        except (
+            IndexError,
+            TypeError,
+            ValueError
+        ):
+
+            continue
+
+    return frozenset(residues) or None
+
+
+def lookup_residues(program, mutation, structure, pocket_id, center):
+    """
+    Pocket-lining residues of one CoBDock pocket, or None when they
+    cannot be found or belong to a different pocket (center mismatch).
+    """
+
+    pocket = (
+        pocket_residue_data
+        .get(program, {})
+        .get(mutation, {})
+        .get(structure, {})
+        .get(str(pocket_id))
+    )
+
+    if pocket is None:
+
+        return None
+
+    try:
+
+        lookup_center = pocket_center(pocket)
+
+    except (
+        KeyError,
+        TypeError,
+        ValueError
+    ):
+
+        return None
+
+    if np.abs(lookup_center - center).max() > CENTER_TOLERANCE:
+
+        return None
+
+    return residue_set(
+        pocket.get("residue_ids")
+    )
+
 
 def best_docking_scores(structure_dict):
     """
-    Extract the best PLANTS score for each pocket.
-
-    Used only in STANDARD CoBDock mode.
+    Extract the best PLANTS score for each pocket rank.
     """
 
     scores = {}
@@ -327,20 +357,17 @@ def best_docking_scores(structure_dict):
 
         for pose in poses.values():
 
-            score = pose.get(
-                "total_score"
-            )
-
-            if score is None:
-                continue
-
             try:
-                score = float(score)
+
+                score = float(
+                    pose.get("total_score")
+                )
 
             except (
                 TypeError,
                 ValueError
             ):
+
                 continue
 
             if (
@@ -350,139 +377,52 @@ def best_docking_scores(structure_dict):
 
                 best = score
 
-        scores[int(pocket_number)] = best
+        scores[int(pocket_number)] = (
+            np.nan if best is None else best
+        )
 
     return scores
 
 
-###############################################################################
-# ALTERNATIVE VINA PARSER
-###############################################################################
-
-def get_vina_run(
-    protein,
-    drug,
-    mutation,
-    chain
-):
-    """
-    Retrieve a docking run from merged_vina_results.json.
-
-    Expected ID:
-
-        KRAS_Adagrasib_KRAS-G12A_A
-    """
-
-    run_id = (
-        f"{protein}_"
-        f"{drug}_"
-        f"{mutation}_"
-        f"{chain}"
-    )
-
-    runs = vina_json.get(
-        "docking_runs",
-        {}
-    )
-
-    if run_id not in runs:
-
-        return None
-
-    return runs[run_id]
-
-
-def get_best_vina_score(
-    protein,
-    drug,
-    mutation,
-    chain
-):
-    """
-    Return the best (lowest) Vina energy for a docking run.
-    """
-
-    run = get_vina_run(
-        protein,
-        drug,
-        mutation,
-        chain
-    )
-
-    if run is None:
-
-        return np.nan
-
-    best_mode = (
-        run
-        .get("docking", {})
-        .get("best_mode")
-    )
-
-    if best_mode is None:
-
-        return np.nan
-
-    energy = best_mode.get(
-        "energy"
-    )
-
-    if energy is None:
-
-        return np.nan
-
-    return float(energy)
-
-
-###############################################################################
-# BUILD POCKET LIST — STANDARD
-###############################################################################
-
-def build_standard_pocket_list(
+def build_docked_pockets(
     pocket_list,
-    docking_scores
+    docking_scores,
+    mutation,
+    structure
 ):
     """
-    Build Pocket objects from top_3_pockets.json.
+    Build Pocket objects for the top-3 (docked) pockets.
     """
 
     pockets = []
 
     for pocket in pocket_list:
 
-        rank = int(
-            pocket["pocket_rank"]
+        rank = int(pocket["pocket_rank"])
+
+        program = str(
+            pocket.get("selected_pocket_program", "fpocket")
         )
 
+        pocket_id = str(pocket["selected_pocket_id"])
+
+        center = pocket_center(pocket)
+
         pockets.append(
-
             Pocket(
-
                 rank=rank,
-
-                pocket_id=str(
-                    pocket["selected_pocket_id"]
+                program=program,
+                pocket_id=pocket_id,
+                pocket_score=float(pocket["pocket_score"]),
+                center=center,
+                residues=lookup_residues(
+                    program,
+                    mutation,
+                    structure,
+                    pocket_id,
+                    center
                 ),
-
-                pocket_score=float(
-                    pocket["pocket_score"]
-                ),
-
-                center=np.array(
-                    [
-                        pocket["center_x"],
-                        pocket["center_y"],
-                        pocket["center_z"]
-                    ],
-                    dtype=float
-                ),
-
-                docking_score=docking_scores.get(
-                    rank,
-                    np.nan
-                ),
-
-                docking_score_type="PLANTS"
+                docking_score=docking_scores.get(rank, np.nan),
             )
         )
 
@@ -493,225 +433,152 @@ def build_standard_pocket_list(
     return pockets
 
 
-###############################################################################
-# BUILD POCKET LIST — FPOCKET
-###############################################################################
-
-def build_fpocket_list(
-    structure_pockets,
-    global_vina_score
-):
+def all_detected_pockets(mutation, structure):
     """
-    Build Pocket objects from fpocket_data.json.
-
-    fpocket_data.json contains all detected pockets.
-
-    The TOP_N_FPOCKETS pockets are selected according to
-    fpocket pocket_score, with higher scores ranked first.
-
-    IMPORTANT:
-    The Vina score is a GLOBAL docking score for the
-    protein-drug run and is therefore NOT interpreted as
-    a pocket-specific score.
+    Every pocket detected by fpocket and p2rank in one structure,
+    including those that were not docked.
     """
-
-    candidates = []
-
-    for pocket_id, pocket in structure_pockets.items():
-
-        try:
-
-            center = np.array(
-                [
-                    float(
-                        pocket["center_x"]
-                    ),
-                    float(
-                        pocket["center_y"]
-                    ),
-                    float(
-                        pocket["center_z"]
-                    )
-                ],
-                dtype=float
-            )
-
-            pocket_score = float(
-                pocket.get(
-                    "pocket_score",
-                    np.nan
-                )
-            )
-
-        except (
-            KeyError,
-            TypeError,
-            ValueError
-        ):
-
-            continue
-
-        candidates.append(
-            {
-                "pocket_id": str(
-                    pocket_id
-                ),
-
-                "pocket_score": pocket_score,
-
-                "center": center
-            }
-        )
-
-    # -------------------------------------------------------------------------
-    # Rank by fpocket score.
-    #
-    # Higher pocket_score = higher rank.
-    # -------------------------------------------------------------------------
-
-    candidates.sort(
-        key=lambda x: x["pocket_score"],
-        reverse=True
-    )
-
-    candidates = candidates[
-        :TOP_N_FPOCKETS
-    ]
 
     pockets = []
 
-    for rank, pocket in enumerate(
-        candidates,
-        start=1
-    ):
+    for program, data in pocket_residue_data.items():
 
-        pockets.append(
-
-            Pocket(
-
-                rank=rank,
-
-                pocket_id=pocket["pocket_id"],
-
-                pocket_score=pocket[
-                    "pocket_score"
-                ],
-
-                center=pocket["center"],
-
-                # We intentionally DO NOT assign the global
-                # Vina score as a pocket docking score.
-                docking_score=np.nan,
-
-                docking_score_type="GLOBAL_VINA"
-            )
+        structure_pockets = (
+            data
+            .get(mutation, {})
+            .get(structure, {})
         )
+
+        for pocket_id, pocket in structure_pockets.items():
+
+            residues = residue_set(
+                pocket.get("residue_ids")
+            )
+
+            if residues is None:
+
+                continue
+
+            try:
+
+                center = pocket_center(pocket)
+
+            except (
+                KeyError,
+                TypeError,
+                ValueError
+            ):
+
+                continue
+
+            pockets.append(
+                Pocket(
+                    rank=None,
+                    program=program,
+                    pocket_id=str(pocket_id),
+                    pocket_score=float(
+                        pocket.get("pocket_score", np.nan)
+                    ),
+                    center=center,
+                    residues=residues,
+                )
+            )
 
     return pockets
 
 
-###############################################################################
-# TRANSFORM CENTERS
-###############################################################################
-
-def transform_centers(
-    pockets,
-    rotation,
-    translation
-):
+def residue_overlap(a, b):
     """
-    Apply structural alignment to mutant pocket centers.
+    Jaccard overlap of two residue sets, or None if either is missing.
     """
 
-    transformed = []
+    if a is None or b is None:
 
-    for pocket in pockets:
+        return None
 
-        xyz = (
-            pocket.center @ rotation
-        ) + translation
-
-        transformed.append(
-
-            Pocket(
-
-                rank=pocket.rank,
-
-                pocket_id=pocket.pocket_id,
-
-                pocket_score=pocket.pocket_score,
-
-                center=xyz,
-
-                docking_score=pocket.docking_score,
-
-                docking_score_type=(
-                    pocket.docking_score_type
-                )
-            )
-        )
-
-    return transformed
+    return len(a & b) / len(a | b)
 
 
-###############################################################################
-# DISTANCE MATRIX
-###############################################################################
+def transform_center(center, alignment):
+    """
+    Move a mutant pocket center into the WT reference frame.
+    """
 
-def build_distance_matrix(
-    wt_pockets,
-    mut_pockets
-):
+    if alignment is None:
 
-    wt_xyz = np.array(
-        [
-            p.center
-            for p in wt_pockets
-        ]
+        return None
+
+    return (
+        center @ alignment["rotation"]
+    ) + alignment["translation"]
+
+
+def compare_pockets(wt, mut, alignment):
+    """
+    Decide whether a WT and a mutant pocket are the same site.
+
+    Returns
+    -------
+    dict with ResidueOverlap, Distance, MatchMethod, SamePocket
+    """
+
+    overlap = residue_overlap(
+        wt.residues,
+        mut.residues
     )
 
-    mut_xyz = np.array(
-        [
-            p.center
-            for p in mut_pockets
-        ]
+    mut_center = transform_center(
+        mut.center,
+        alignment
     )
 
-    return cdist(
-        wt_xyz,
-        mut_xyz,
-        metric="euclidean"
+    distance = (
+        np.nan if mut_center is None
+        else float(np.linalg.norm(wt.center - mut_center))
     )
 
+    if overlap is not None:
 
-###############################################################################
-# HUNGARIAN MATCHING
-###############################################################################
+        method = "Residues"
 
-def match_pockets(
-    distance_matrix
-):
+        same = overlap >= MIN_RESIDUE_OVERLAP
 
-    rows, cols = linear_sum_assignment(
-        distance_matrix
-    )
+    elif not np.isnan(distance):
 
-    matches = []
+        method = "Distance"
 
-    for r, c in zip(
-        rows,
-        cols
-    ):
+        same = distance <= MAX_CENTER_DISTANCE
 
-        matches.append(
-            (
-                r,
-                c,
-                distance_matrix[r, c]
-            )
-        )
+    else:
 
-    return matches
+        method = "None"
+
+        same = False
+
+    return {
+        "ResidueOverlap": np.nan if overlap is None else overlap,
+        "Distance": distance,
+        "MatchMethod": method,
+        "SamePocket": same,
+        "MutCenterAligned": mut_center,
+    }
+
+
+def match_cost(comparison):
+    """
+    Lower is better. Residue overlap is preferred; distance only
+    decides when residues are unavailable.
+    """
+
+    if not comparison["SamePocket"]:
+
+        return 1e6
+
+    if comparison["MatchMethod"] == "Residues":
+
+        return 1.0 - comparison["ResidueOverlap"]
+
+    return 1.0 + comparison["Distance"] / MAX_CENTER_DISTANCE
 
 
 ###############################################################################
@@ -744,762 +611,356 @@ def skip_entry(protein, drug, mutation, reason):
     )
 
 
-###############################################################################
-# STANDARD MODE
-###############################################################################
+def pocket_fields(prefix, pocket, center=None):
 
-if MODE == "standard":
+    if pocket is None:
 
-    for ligand_name in sorted(
-        pocket_json
-    ):
+        return {
+            f"{prefix}_PocketRank": np.nan,
+            f"{prefix}_PocketProgram": None,
+            f"{prefix}_PocketID": None,
+            f"{prefix}_PocketScore": np.nan,
+            f"{prefix}_DockingScore": np.nan,
+            f"{prefix}_NResidues": np.nan,
+            f"{prefix}_X": np.nan,
+            f"{prefix}_Y": np.nan,
+            f"{prefix}_Z": np.nan,
+        }
 
-        protein, drug = split_ligand_name(
-            ligand_name
+    if center is None:
+
+        center = np.full(3, np.nan)
+
+    return {
+        f"{prefix}_PocketRank": pocket.rank,
+        f"{prefix}_PocketProgram": pocket.program,
+        f"{prefix}_PocketID": pocket.pocket_id,
+        f"{prefix}_PocketScore": pocket.pocket_score,
+        f"{prefix}_DockingScore": pocket.docking_score,
+        f"{prefix}_NResidues": (
+            np.nan if pocket.residues is None
+            else len(pocket.residues)
+        ),
+        f"{prefix}_X": center[0],
+        f"{prefix}_Y": center[1],
+        f"{prefix}_Z": center[2],
+    }
+
+
+def match_row(protein, drug, mutation, status, wt, mut, comparison):
+
+    comparison = comparison or {}
+
+    return {
+        "Protein": protein,
+        "Drug": drug,
+        "Mutation": mutation,
+        "MatchStatus": status,
+        "MatchMethod": comparison.get("MatchMethod"),
+        "ResidueOverlap": comparison.get("ResidueOverlap", np.nan),
+        "Distance": comparison.get("Distance", np.nan),
+        **pocket_fields(
+            "WT",
+            wt,
+            None if wt is None else wt.center
+        ),
+        # Mutant coordinates are given in the WT reference frame
+        **pocket_fields(
+            "Mut",
+            mut,
+            comparison.get("MutCenterAligned")
+        ),
+    }
+
+
+for ligand_name in sorted(pocket_json):
+
+    protein, drug = split_ligand_name(
+        ligand_name
+    )
+
+    print(
+        f"\nProcessing {protein} - {drug}"
+    )
+
+    pocket_entry = pocket_json[ligand_name]
+
+    if ligand_name not in pose_json:
+
+        skip_entry(
+            protein,
+            drug,
+            "ALL",
+            "Missing in pose_data.json"
         )
 
-        print(
-            f"\nProcessing {protein} - {drug}"
+        continue
+
+    pose_entry = pose_json[ligand_name]
+
+    # -------------------------------------------------------------------------
+    # WT
+    # -------------------------------------------------------------------------
+
+    try:
+
+        wt_key = get_wildtype_key(
+            pocket_entry
         )
 
-        pocket_entry = pocket_json[
-            ligand_name
-        ]
+    except ValueError:
 
-        if ligand_name not in pose_json:
+        skip_entry(
+            protein,
+            drug,
+            "ALL",
+            "Wild-type missing in top_3_pockets.json"
+        )
 
-            skip_entry(
-                protein,
-                drug,
-                "ALL",
-                "Missing in pose_data.json"
-            )
+        continue
+
+    wt_structure = next(
+        iter(pocket_entry[wt_key])
+    )
+
+    if wt_structure not in pose_entry.get(wt_key, {}):
+
+        skip_entry(
+            protein,
+            drug,
+            "ALL",
+            f"Wild-type ({wt_key}/{wt_structure}) "
+            f"missing in pose_data.json"
+        )
+
+        continue
+
+    wt_pockets = build_docked_pockets(
+        pocket_entry[wt_key][wt_structure],
+        best_docking_scores(
+            pose_entry[wt_key][wt_structure]
+        ),
+        wt_key,
+        wt_structure
+    )
+
+    # -------------------------------------------------------------------------
+    # Mutants
+    # -------------------------------------------------------------------------
+
+    for mutation in pocket_entry:
+
+        if mutation == wt_key:
 
             continue
 
-        pose_entry = pose_json[
-            ligand_name
-        ]
-
-        # ---------------------------------------------------------------------
-        # WT
-        # ---------------------------------------------------------------------
-
-        try:
-
-            wt_key = get_wildtype_key(
-                pocket_entry
-            )
-
-        except ValueError:
-
-            skip_entry(
-                protein,
-                drug,
-                "ALL",
-                "Wild-type missing in top_3_pockets.json"
-            )
-
-            continue
-
-        wt_structure = next(
-            iter(
-                pocket_entry[
-                    wt_key
-                ]
-            )
+        mut_structure = next(
+            iter(pocket_entry[mutation])
         )
 
-        if wt_structure not in pose_entry.get(wt_key, {}):
+        if mut_structure not in pose_entry.get(mutation, {}):
 
             skip_entry(
                 protein,
                 drug,
-                "ALL",
-                f"Wild-type ({wt_key}/{wt_structure}) "
+                mutation,
+                f"Mutant ({mutation}/{mut_structure}) "
                 f"missing in pose_data.json"
             )
 
             continue
 
-        wt_docking = best_docking_scores(
-            pose_entry[
-                wt_key
-            ][
-                wt_structure
-            ]
-        )
-
-        wt_pockets = (
-            build_standard_pocket_list(
-                pocket_entry[
-                    wt_key
-                ][
-                    wt_structure
-                ],
-
-                wt_docking
-            )
-        )
-
-        # ---------------------------------------------------------------------
-        # Mutants
-        # ---------------------------------------------------------------------
-
-        for mutation in pocket_entry:
-
-            if mutation == wt_key:
-
-                continue
-
-            alignment_key = (
+        # Residue overlap does not need the alignment; it is only
+        # used for center distances.
+        alignment = alignments.get(
+            (
                 protein,
-                alignment_mutation_name(
-                    protein,
-                    mutation
-                )
-            )
-
-            if alignment_key not in alignments:
-
-                skip_entry(
-                    protein,
-                    drug,
-                    mutation,
-                    "Alignment missing in alignment_matrices.pkl"
-                )
-
-                continue
-
-            rotation = alignments[
-                alignment_key
-            ]["rotation"]
-
-            translation = alignments[
-                alignment_key
-            ]["translation"]
-
-            mut_structure = next(
-                iter(
-                    pocket_entry[
-                        mutation
-                    ]
-                )
-            )
-
-            if mut_structure not in pose_entry.get(mutation, {}):
-
-                skip_entry(
-                    protein,
-                    drug,
-                    mutation,
-                    f"Mutant ({mutation}/{mut_structure}) "
-                    f"missing in pose_data.json"
-                )
-
-                continue
-
-            mut_docking = best_docking_scores(
-                pose_entry[
-                    mutation
-                ][
-                    mut_structure
-                ]
-            )
-
-            mut_pockets = (
-                build_standard_pocket_list(
-                    pocket_entry[
-                        mutation
-                    ][
-                        mut_structure
-                    ],
-
-                    mut_docking
-                )
-            )
-
-            mut_pockets = transform_centers(
-                mut_pockets,
-                rotation,
-                translation
-            )
-
-            # -------------------------------------------------------------
-            # Distance matrix
-            # -------------------------------------------------------------
-
-            D = build_distance_matrix(
-                wt_pockets,
-                mut_pockets
-            )
-
-            # -------------------------------------------------------------
-            # Save complete distance matrix
-            # -------------------------------------------------------------
-
-            for i, wt in enumerate(
-                wt_pockets
-            ):
-
-                for j, mut in enumerate(
-                    mut_pockets
-                ):
-
-                    distance_rows.append(
-
-                        {
-                            "Protein": protein,
-                            "Drug": drug,
-                            "Mutation": mutation,
-
-                            "WT_PocketRank": wt.rank,
-                            "WT_PocketID": wt.pocket_id,
-
-                            "Mut_PocketRank": mut.rank,
-                            "Mut_PocketID": mut.pocket_id,
-
-                            "Distance": float(
-                                D[i, j]
-                            )
-                        }
-                    )
-
-            # -------------------------------------------------------------
-            # Hungarian assignment
-            # -------------------------------------------------------------
-
-            matches = match_pockets(
-                D
-            )
-
-            # -------------------------------------------------------------
-            # Save matches
-            # -------------------------------------------------------------
-
-            for (
-                wt_idx,
-                mut_idx,
-                dist
-            ) in matches:
-
-                wt = wt_pockets[
-                    wt_idx
-                ]
-
-                mut = mut_pockets[
-                    mut_idx
-                ]
-
-                matched_rows.append(
-
-                    {
-                        "Protein": protein,
-                        "Drug": drug,
-                        "Mutation": mutation,
-
-                        "WT_PocketRank": wt.rank,
-                        "WT_PocketID": wt.pocket_id,
-
-                        "Mut_PocketRank": mut.rank,
-                        "Mut_PocketID": mut.pocket_id,
-
-                        "Distance": float(
-                            dist
-                        ),
-
-                        "WT_PocketScore": (
-                            wt.pocket_score
-                        ),
-
-                        "Mut_PocketScore": (
-                            mut.pocket_score
-                        ),
-
-                        "WT_DockingScore": (
-                            wt.docking_score
-                        ),
-
-                        "Mut_DockingScore": (
-                            mut.docking_score
-                        ),
-
-                        "ScoreType": "PLANTS",
-
-                        "WT_X": wt.center[0],
-                        "WT_Y": wt.center[1],
-                        "WT_Z": wt.center[2],
-
-                        "Mut_X": mut.center[0],
-                        "Mut_Y": mut.center[1],
-                        "Mut_Z": mut.center[2],
-                    }
-                )
-
-
-###############################################################################
-# ALTERNATIVE FPOCKET + VINA MODE
-###############################################################################
-
-if MODE == "alternative":
-
-    # ---------------------------------------------------------------------------
-    # First pass:
-    # Build a WT dictionary independently of the order of the Vina JSON.
-    # ---------------------------------------------------------------------------
-
-    wt_database = {}
-
-    print()
-    print("Building WT pocket database...")
-
-    for run_id, run in sorted(
-        vina_json.get("docking_runs", {}).items()
-    ):
-
-        metadata = run.get(
-            "metadata",
-            {}
-        )
-
-        protein = metadata.get("protein")
-        drug = metadata.get("drug")
-        mutation = metadata.get("mutation")
-        chain = metadata.get("chain")
-
-        if not all(
-            [
-                protein,
-                drug,
-                mutation,
-                chain
-            ]
-        ):
-            continue
-
-        # Identify WT independently of ordering.
-
-        if "WILD" not in mutation.upper():
-            continue
-
-        # -------------------------------------------------------------
-        # Find corresponding fpocket structure
-        # -------------------------------------------------------------
-
-        if mutation not in pocket_json:
-
-            print(
-                f"WARNING: WT {mutation} not found in fpocket_data.json"
-            )
-
-            continue
-
-        mutation_entry = pocket_json[
-            mutation
-        ]
-
-        expected_structure = (
-            f"{mutation}_{chain}"
-        )
-
-        if expected_structure in mutation_entry:
-
-            structure_key = expected_structure
-
-        elif mutation_entry:
-
-            structure_key = next(
-                iter(
-                    mutation_entry
-                )
-            )
-
-        else:
-
-            print(
-                f"WARNING: No structure found for WT "
-                f"{protein} {drug} {mutation}"
-            )
-
-            continue
-
-        structure_pockets = (
-            mutation_entry[
-                structure_key
-            ]
-        )
-
-        # -------------------------------------------------------------
-        # Build WT fpocket list
-        # -------------------------------------------------------------
-
-        wt_pockets = build_fpocket_list(
-            structure_pockets,
-            get_best_vina_score(
-                protein,
-                drug,
-                mutation,
-                chain
+                alignment_mutation_name(protein, mutation)
             )
         )
 
-        # -------------------------------------------------------------
-        # Store using protein + drug
-        # -------------------------------------------------------------
-
-        wt_key = (
-            protein,
-            drug
-        )
-
-        wt_database[wt_key] = {
-
-            "protein": protein,
-
-            "drug": drug,
-
-            "mutation": mutation,
-
-            "chain": chain,
-
-            "structure": structure_key,
-
-            "pockets": wt_pockets,
-
-            "vina_score": get_best_vina_score(
-                protein,
-                drug,
-                mutation,
-                chain
-            )
-        }
-
-        print(
-            f"    WT loaded | "
-            f"{protein} | "
-            f"{drug} | "
-            f"{mutation} | "
-            f"{len(wt_pockets)} pockets | "
-            f"Vina: "
-            f"{wt_database[wt_key]['vina_score']}"
-        )
-
-
-    print(
-        f"\nWT structures loaded: "
-        f"{len(wt_database)}"
-    )
-
-
-    # ---------------------------------------------------------------------------
-    # Second pass:
-    # Process every MUTANT against its corresponding WT.
-    # ---------------------------------------------------------------------------
-
-    print()
-    print("Matching mutant pockets against WT...")
-
-    for run_id, run in sorted(
-        vina_json.get("docking_runs", {}).items()
-    ):
-
-        metadata = run.get(
-            "metadata",
-            {}
-        )
-
-        protein = metadata.get("protein")
-        drug = metadata.get("drug")
-        mutation = metadata.get("mutation")
-        chain = metadata.get("chain")
-
-        if not all(
-            [
-                protein,
-                drug,
-                mutation,
-                chain
-            ]
-        ):
-            continue
-
-        # -------------------------------------------------------------
-        # Ignore WT entries
-        # -------------------------------------------------------------
-
-        if "WILD" in mutation.upper():
-            continue
-
-        # -------------------------------------------------------------
-        # Find corresponding WT
-        # -------------------------------------------------------------
-
-        wt_key = (
-            protein,
-            drug
-        )
-
-        if wt_key not in wt_database:
-
-            print(
-                f"WARNING: WT not available for "
-                f"{protein} {drug} {mutation}"
-            )
-
-            continue
-
-        wt_data = wt_database[
-            wt_key
-        ]
-
-        # -------------------------------------------------------------
-        # Find mutant in fpocket data
-        # -------------------------------------------------------------
-
-        if mutation not in pocket_json:
-
-            print(
-                f"WARNING: fpocket data missing "
-                f"{mutation}"
-            )
-
-            continue
-
-        mutation_entry = pocket_json[
-            mutation
-        ]
-
-        expected_structure = (
-            f"{mutation}_{chain}"
-        )
-
-        if expected_structure in mutation_entry:
-
-            structure_key = expected_structure
-
-        elif mutation_entry:
-
-            structure_key = next(
-                iter(
-                    mutation_entry
-                )
-            )
-
-        else:
-
-            print(
-                f"WARNING: No structure found for "
-                f"{protein} {drug} {mutation}"
-            )
-
-            continue
-
-        structure_pockets = (
-            mutation_entry[
-                structure_key
-            ]
-        )
-
-        # -------------------------------------------------------------
-        # Build mutant pockets
-        # -------------------------------------------------------------
-
-        mut_vina_score = get_best_vina_score(
-            protein,
-            drug,
+        mut_pockets = build_docked_pockets(
+            pocket_entry[mutation][mut_structure],
+            best_docking_scores(
+                pose_entry[mutation][mut_structure]
+            ),
             mutation,
-            chain
+            mut_structure
         )
 
-        mut_pockets = build_fpocket_list(
-            structure_pockets,
-            mut_vina_score
-        )
-
-        # -------------------------------------------------------------
-        # Alignment
-        # -------------------------------------------------------------
-
-        alignment_key = (
-            protein,
-            mutation
-        )
-
-        if alignment_key not in alignments:
+        if alignment is None and any(
+            p.residues is None
+            for p in wt_pockets + mut_pockets
+        ):
 
             skip_entry(
                 protein,
                 drug,
                 mutation,
-                "Alignment missing in alignment_matrices.pkl"
+                "Alignment missing in alignment_matrices.pkl and "
+                "pocket residues unavailable"
             )
 
             continue
 
-        rotation = alignments[
-            alignment_key
-        ]["rotation"]
+        # ---------------------------------------------------------------------
+        # Compare every WT pocket with every docked mutant pocket
+        # ---------------------------------------------------------------------
 
-        translation = alignments[
-            alignment_key
-        ]["translation"]
-
-        # -------------------------------------------------------------
-        # Transform mutant pocket centers
-        # -------------------------------------------------------------
-
-        mut_pockets = transform_centers(
-            mut_pockets,
-            rotation,
-            translation
-        )
-
-        wt_pockets = wt_data[
-            "pockets"
+        comparisons = [
+            [
+                compare_pockets(wt, mut, alignment)
+                for mut in mut_pockets
+            ]
+            for wt in wt_pockets
         ]
 
-        # -------------------------------------------------------------
-        # Calculate distance matrix
-        # -------------------------------------------------------------
+        for i, wt in enumerate(wt_pockets):
 
-        D = build_distance_matrix(
-            wt_pockets,
-            mut_pockets
-        )
+            for j, mut in enumerate(mut_pockets):
 
-        # -------------------------------------------------------------
-        # Save every WT-mutant pocket distance
-        # -------------------------------------------------------------
-
-        for i, wt in enumerate(
-            wt_pockets
-        ):
-
-            for j, mut in enumerate(
-                mut_pockets
-            ):
+                c = comparisons[i][j]
 
                 distance_rows.append(
-
                     {
                         "Protein": protein,
-
                         "Drug": drug,
-
                         "Mutation": mutation,
-
                         "WT_PocketRank": wt.rank,
-
                         "WT_PocketID": wt.pocket_id,
-
                         "Mut_PocketRank": mut.rank,
-
                         "Mut_PocketID": mut.pocket_id,
-
-                        "Distance": float(
-                            D[i, j]
-                        )
+                        "ResidueOverlap": c["ResidueOverlap"],
+                        "Distance": c["Distance"],
+                        "MatchMethod": c["MatchMethod"],
+                        "SamePocket": c["SamePocket"],
                     }
                 )
 
-        # -------------------------------------------------------------
-        # Hungarian matching
-        # -------------------------------------------------------------
+        # ---------------------------------------------------------------------
+        # One-to-one assignment, keeping only same-pocket pairs
+        # ---------------------------------------------------------------------
 
-        matches = match_pockets(
-            D
-        )
-
-        # -------------------------------------------------------------
-        # WT and mutant global Vina scores
-        # -------------------------------------------------------------
-
-        wt_vina_score = wt_data[
-            "vina_score"
-        ]
-
-        # -------------------------------------------------------------
-        # Save matched pockets
-        # -------------------------------------------------------------
-
-        for (
-            wt_idx,
-            mut_idx,
-            dist
-        ) in matches:
-
-            wt = wt_pockets[
-                wt_idx
+        cost = np.array(
+            [
+                [match_cost(c) for c in row]
+                for row in comparisons
             ]
+        ).reshape(len(wt_pockets), len(mut_pockets))
 
-            mut = mut_pockets[
-                mut_idx
-            ]
+        matches = {}
+
+        if cost.size:
+
+            for i, j in zip(*linear_sum_assignment(cost)):
+
+                if comparisons[i][j]["SamePocket"]:
+
+                    matches[i] = j
+
+        # ---------------------------------------------------------------------
+        # Outcome of every WT pocket
+        # ---------------------------------------------------------------------
+
+        candidates = None
+
+        for i, wt in enumerate(wt_pockets):
+
+            if i in matches:
+
+                j = matches[i]
+
+                matched_rows.append(
+                    match_row(
+                        protein,
+                        drug,
+                        mutation,
+                        "Matched",
+                        wt,
+                        mut_pockets[j],
+                        comparisons[i][j]
+                    )
+                )
+
+                continue
+
+            if wt.residues is None:
+
+                matched_rows.append(
+                    match_row(
+                        protein,
+                        drug,
+                        mutation,
+                        "Unresolved",
+                        wt,
+                        None,
+                        None
+                    )
+                )
+
+                continue
+
+            # Search every pocket detected in the mutant, docked or not
+            if candidates is None:
+
+                candidates = all_detected_pockets(
+                    mutation,
+                    mut_structure
+                )
+
+            best, best_comparison = None, None
+
+            for candidate in candidates:
+
+                c = compare_pockets(wt, candidate, alignment)
+
+                if c["SamePocket"] and (
+                    best_comparison is None
+                    or c["ResidueOverlap"] > best_comparison["ResidueOverlap"]
+                ):
+
+                    best, best_comparison = candidate, c
 
             matched_rows.append(
-
-                {
-                    "Protein": protein,
-
-                    "Drug": drug,
-
-                    "Mutation": mutation,
-
-                    "WT_PocketRank": wt.rank,
-
-                    "WT_PocketID": wt.pocket_id,
-
-                    "Mut_PocketRank": mut.rank,
-
-                    "Mut_PocketID": mut.pocket_id,
-
-                    "Distance": float(
-                        dist
-                    ),
-
-                    "WT_PocketScore": (
-                        wt.pocket_score
-                    ),
-
-                    "Mut_PocketScore": (
-                        mut.pocket_score
-                    ),
-
-                    "WT_GlobalVinaScore": (
-                        wt_vina_score
-                    ),
-
-                    "Mut_GlobalVinaScore": (
-                        mut_vina_score
-                    ),
-
-                    "ScoreType": (
-                        "GLOBAL_VINA"
-                    ),
-
-                    "WT_X": wt.center[0],
-
-                    "WT_Y": wt.center[1],
-
-                    "WT_Z": wt.center[2],
-
-                    "Mut_X": mut.center[0],
-
-                    "Mut_Y": mut.center[1],
-
-                    "Mut_Z": mut.center[2],
-                }
+                match_row(
+                    protein,
+                    drug,
+                    mutation,
+                    "Lost" if best is None else "NotDocked",
+                    wt,
+                    best,
+                    best_comparison
+                )
             )
 
-        print(
-            f"    OK | "
-            f"{protein} | "
-            f"{drug} | "
-            f"{mutation} | "
-            f"matched {len(matches)} pockets | "
-            f"distance range: "
-            f"{D.min():.2f}-{D.max():.2f} Å"
-        )
+        # ---------------------------------------------------------------------
+        # Docked mutant pockets with no WT counterpart
+        # ---------------------------------------------------------------------
+
+        used = set(matches.values())
+
+        for j, mut in enumerate(mut_pockets):
+
+            if j in used:
+
+                continue
+
+            matched_rows.append(
+                match_row(
+                    protein,
+                    drug,
+                    mutation,
+                    "NewInMutant",
+                    None,
+                    mut,
+                    {
+                        "MutCenterAligned": transform_center(
+                            mut.center,
+                            alignment
+                        )
+                    }
+                )
+            )
 
 
 ###############################################################################
@@ -1514,37 +975,29 @@ distance_df = pd.DataFrame(
     distance_rows
 )
 
+skipped_df = pd.DataFrame(
+    skipped_rows,
+    columns=["Protein", "Drug", "Mutation", "Reason"]
+)
 
-###############################################################################
-# HANDLE EMPTY OUTPUT
-###############################################################################
+if not matched_df.empty:
 
-if matched_df.empty:
+    for column in ("WT_PocketRank", "Mut_PocketRank"):
 
-    print(
-        "\nWARNING: No matched pockets were generated."
-    )
-
-else:
+        matched_df[column] = matched_df[column].astype("Int64")
 
     matched_df.sort_values(
         [
             "Protein",
             "Drug",
             "Mutation",
-            "WT_PocketRank"
+            "WT_PocketRank",
+            "Mut_PocketRank"
         ],
         inplace=True
     )
 
-
-if distance_df.empty:
-
-    print(
-        "\nWARNING: No distance matrix entries generated."
-    )
-
-else:
+if not distance_df.empty:
 
     distance_df.sort_values(
         [
@@ -1572,11 +1025,6 @@ distance_df.to_csv(
     index=False
 )
 
-skipped_df = pd.DataFrame(
-    skipped_rows,
-    columns=["Protein", "Drug", "Mutation", "Reason"]
-)
-
 skipped_df.to_csv(
     SKIPPED_OUTPUT,
     index=False
@@ -1592,53 +1040,24 @@ print("=" * 70)
 print("Finished.")
 print("=" * 70)
 
-print(
-    f"Input mode       : {MODE}"
-)
-
-print(
-    f"Matched pockets  : {len(matched_df)}"
-)
-
-print(
-    f"Distance entries  : {len(distance_df)}"
-)
-
-print(
-    f"Skipped entries  : {len(skipped_df)}"
-)
+print(f"Pocket rows      : {len(matched_df)}")
+print(f"Distance entries : {len(distance_df)}")
+print(f"Skipped entries  : {len(skipped_df)}")
 
 print()
-print(
-    f"Matched output:"
-)
-
-print(
-    f"    {MATCHED_OUTPUT}"
-)
-
-print(
-    f"Distance output:"
-)
-
-print(
-    f"    {DISTANCE_OUTPUT}"
-)
-
-print(
-    f"Skipped entries log:"
-)
-
-print(
-    f"    {SKIPPED_OUTPUT}"
-)
+print("Matched output:")
+print(f"    {MATCHED_OUTPUT}")
+print("Distance output:")
+print(f"    {DISTANCE_OUTPUT}")
+print("Skipped entries log:")
+print(f"    {SKIPPED_OUTPUT}")
 
 print("=" * 70)
 
 if matched_df.empty:
 
     print(
-        "\nNo pockets were matched, so no statistics were computed."
+        "\nNo pockets were processed, so no statistics were computed."
     )
 
     print(
@@ -1647,19 +1066,44 @@ if matched_df.empty:
 
 else:
 
-    dist = matched_df["Distance"]
+    print("\nWT pocket outcome")
+    print("-----------------")
 
-    print("\nPocket Matching Statistics")
+    print(
+        matched_df["MatchStatus"]
+        .value_counts()
+        .to_string()
+    )
+
+    matched = matched_df[
+        matched_df["MatchStatus"] == "Matched"
+    ]
+
+    print("\nMatch method (Matched only)")
     print("---------------------------")
-    print(f"Number of matches: {len(dist)}")
-    print(f"Mean distance:     {dist.mean():.2f} Å")
-    print(f"Median distance:   {dist.median():.2f} Å")
-    print(f"Std distance:      {dist.std():.2f} Å")
-    print(f"Min distance:      {dist.min():.2f} Å")
-    print(f"Max distance:      {dist.max():.2f} Å")
 
-    print(f"≤1 Å : {(dist <= 1).mean()*100:.2f}%")
-    print(f"≤2 Å : {(dist <= 2).mean()*100:.2f}%")
-    print(f"≤3 Å : {(dist <= 3).mean()*100:.2f}%")
-    print(f"≤5 Å : {(dist <= 5).mean()*100:.2f}%")
-    print(f"≤5 Å : {(dist <= 6).mean()*100:.2f}%")
+    print(
+        matched["MatchMethod"]
+        .value_counts()
+        .to_string()
+    )
+
+    overlap = matched["ResidueOverlap"].dropna()
+
+    dist = matched["Distance"].dropna()
+
+    if len(overlap):
+
+        print("\nResidue overlap (Matched)")
+        print("-------------------------")
+        print(f"Mean:   {overlap.mean():.2f}")
+        print(f"Median: {overlap.median():.2f}")
+        print(f"Min:    {overlap.min():.2f}")
+
+    if len(dist):
+
+        print("\nCenter distance (Matched)")
+        print("-------------------------")
+        print(f"Mean:   {dist.mean():.2f} Å")
+        print(f"Median: {dist.median():.2f} Å")
+        print(f"Max:    {dist.max():.2f} Å")

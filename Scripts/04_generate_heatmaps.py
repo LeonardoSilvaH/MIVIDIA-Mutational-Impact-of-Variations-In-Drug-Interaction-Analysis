@@ -42,47 +42,23 @@ print(
 
 
 # ==========================================================
-# DETECT SCORE TYPE
+# SCORE
 # ==========================================================
 
-if "DeltaDockingScore" in df.columns:
+SCORE_COLUMN = "DeltaDockingScore"
 
-    SCORE_COLUMN = "DeltaDockingScore"
+SCORE_LABEL = (
+    "Δ Docking Score (Mutant − WT)"
+)
 
-    SCORE_LABEL = (
-        "Δ Docking Score (Mutant − WT)"
-    )
+SCORE_TYPE = "PLANTS"
 
-    SCORE_TYPE = "PLANTS"
-
-elif "DeltaGlobalVinaScore" in df.columns:
-
-    SCORE_COLUMN = "DeltaGlobalVinaScore"
-
-    SCORE_LABEL = (
-        "Δ Global Vina Score (Mutant − WT)"
-    )
-
-    SCORE_TYPE = "Vina"
-
-else:
+if SCORE_COLUMN not in df.columns:
 
     raise KeyError(
-        "\nCould not identify a valid delta-score column.\n\n"
-        "Expected one of:\n"
-        "  DeltaDockingScore\n"
-        "  DeltaGlobalVinaScore\n\n"
+        f"\nColumn '{SCORE_COLUMN}' not found in {INPUT_CSV}.\n\n"
         f"Available columns:\n{list(df.columns)}"
     )
-
-
-print(
-    f"Score type: {SCORE_TYPE}"
-)
-
-print(
-    f"Score column: {SCORE_COLUMN}"
-)
 
 
 # ==========================================================
